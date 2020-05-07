@@ -182,8 +182,7 @@ create table mtcash.u_tb_recibo(
 id_recibo int identity not null primary key,
 id_usuario int not null,
 data_recibo datetime not null,
-valor_total decimal(8,2) not null,
-forma_pgto varchar(20) not null
+valor_total decimal(8,2) not null
 foreign key(id_usuario)
 references mtcash.tb_usuario(id_usuario)
 );
@@ -194,7 +193,9 @@ id_recibo int not null,
 id_receita int not null,
 valor_receita decimal(8,2) not null
 foreign key (id_recibo)
-references mtcash.u_tb_recibo(id_recibo)
+references mtcash.u_tb_recibo(id_recibo),
+foreign key(id_receita)
+references mtcash.u_tb_receita(id_receita)
 );
 go
 
@@ -205,6 +206,7 @@ id_conta_corrente int null,
 id_recibo int not null,
 status varchar(45) not null,
 data_recebimento datetime not null,
+forma_pgto varchar(20) not null,
 valor_pago decimal(8,2) null,
 troco decimal(8,2) null
 foreign key(id_recibo)
