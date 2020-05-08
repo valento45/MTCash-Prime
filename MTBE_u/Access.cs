@@ -162,7 +162,7 @@ namespace MTBE_u
 
         public static IDbConnection GetConnection()
         {
-            string connectionString = @"Data Source=MRX\SQLEXPRESS01;Initial Catalog=bd_mtcash;Integrated Security=true;";
+            string connectionString = @"Data Source=MX15733\DEVELOPER;Initial Catalog=bd_mtcash;Integrated Security=true;";
             SqlConnection con = new SqlConnection(connectionString);
             return con;
         }
@@ -300,23 +300,29 @@ namespace MTBE_u
 
         public static string Decrypt(string user, string pass)
         {
-            string EncryptionKey = user + "Daynight456!@#";
-            //pass = pass.Replace(" ", "+");
-            byte[] cipherBytes = Convert.FromBase64String(pass);
-            using (Aes encryptor = Aes.Create())
+            try
             {
-                Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
-                encryptor.Key = pdb.GetBytes(32);
-                encryptor.IV = pdb.GetBytes(16);
-                using (MemoryStream ms = new MemoryStream())
+                string EncryptionKey = user + "Daynight456!@#";
+                //pass = pass.Replace(" ", "+");
+                byte[] cipherBytes = Convert.FromBase64String(pass);
+                using (Aes encryptor = Aes.Create())
                 {
-                    using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                    Rfc2898DeriveBytes pdb = new Rfc2898DeriveBytes(EncryptionKey, new byte[] { 0x49, 0x76, 0x61, 0x6e, 0x20, 0x4d, 0x65, 0x64, 0x76, 0x65, 0x64, 0x65, 0x76 });
+                    encryptor.Key = pdb.GetBytes(32);
+                    encryptor.IV = pdb.GetBytes(16);
+                    using (MemoryStream ms = new MemoryStream())
                     {
-                        cs.Write(cipherBytes, 0, cipherBytes.Length);
-                        cs.Close();
+                        using (CryptoStream cs = new CryptoStream(ms, encryptor.CreateDecryptor(), CryptoStreamMode.Write))
+                        {
+                            cs.Write(cipherBytes, 0, cipherBytes.Length);
+                            cs.Close();
+                        }
+                        pass = Encoding.Unicode.GetString(ms.ToArray());
                     }
-                    pass = Encoding.Unicode.GetString(ms.ToArray());
                 }
+            }catch(Exception ex)
+            {
+                MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
             return pass;
         }

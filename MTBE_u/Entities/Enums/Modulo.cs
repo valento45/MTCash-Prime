@@ -50,7 +50,7 @@ namespace MTBE_u.Entities.Enums
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ops!!\n" + ex.Message);
+                MessageBox.Show("Ops!!\n" + ex.Message, "Atenção",MessageBoxButtons.OK,MessageBoxIcon.Warning);
             }
             return result;
         }
@@ -149,9 +149,6 @@ namespace MTBE_u.Entities.Enums
                 Access.ExecuteReader(cmd);
             }
         }
-
-
-
     }
 
     public enum Modulos

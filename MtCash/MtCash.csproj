@@ -67,6 +67,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UI\frmIncluiCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmIncluiCliente.Designer.cs">
+      <DependentUpon>frmIncluiCliente.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmConfigurarU.resx">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,6 +92,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\frmIncluiCliente.resx">
+      <DependentUpon>frmIncluiCliente.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -103,10 +112,6 @@
     <ProjectReference Include="..\MTBE_u\MTBE_u.csproj">
       <Project>{b26b2c9a-1e9f-40d7-8f09-f1fd330bae57}</Project>
       <Name>MTBE_u</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\MT_u\MT_u.csproj">
-      <Project>{ec106f14-f9ba-4d1a-9562-d8ee09d86ced}</Project>
-      <Name>MT_u</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

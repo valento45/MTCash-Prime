@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Access.cs" />
     <Compile Include="Entities\Enums\Modulo.cs" />
+    <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Permissao.cs" />
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Exceptions\UsuarioException.cs" />

@@ -156,6 +156,10 @@ namespace MT_u.Usuario
                         user.Documento = txtRg.Text;
                         user.Cpf_Cnpj = txtCpf.Text;
                         user.Tipo = cmbTipo.Text;
+                        if (cmbUserAtv.SelectedIndex == 0)
+                            user.User_atv = true;
+                        else
+                            user.User_atv = false;
                         user._Usuario = txtUsuario.Text;
                         user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
 
@@ -176,13 +180,19 @@ namespace MT_u.Usuario
                         user.Documento = txtRg.Text;
                         user.Cpf_Cnpj = txtCpf.Text;
                         user.Tipo = cmbTipo.Text;
+                        if (cmbUserAtv.SelectedIndex == 0)
+                            user.User_atv = true;
+                        else
+                            user.User_atv = false;
                         //user.Modulos = "ucfi";
                         user._Usuario = txtUsuario.Text;
                         user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
                         int chave = user.Insert_User(user);
                         if (chave > 0)
+                        {
                             Permissao_Modulo_Usuario.Insert_Permissao_Usuario(chave);
-                        sucesso = true;
+                            sucesso = true;
+                        }
                     }
                     if (sucesso)
                     {

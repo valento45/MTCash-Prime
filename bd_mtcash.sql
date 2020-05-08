@@ -103,7 +103,6 @@ references mtcash.tb_usuario(id_usuario)
 );
 go
 
-
 create table mtcash.tb_cliente(
 id_cliente int identity not null primary key,
 nome varchar(150) not null,
@@ -187,6 +186,7 @@ foreign key(id_usuario)
 references mtcash.tb_usuario(id_usuario)
 );
 go
+
 create table mtcash.u_tb_item_recibo(
 id_item_recibo int identity not null primary key,
 id_recibo int not null,

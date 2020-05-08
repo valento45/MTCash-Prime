@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MT_u
+namespace MtCash.UI
 {
-    public partial class frmIncluiF : Form
+    public partial class frmIncluiCliente : Form
     {
-        public frmIncluiF()
+        public frmIncluiCliente()
         {
             InitializeComponent();
         }
