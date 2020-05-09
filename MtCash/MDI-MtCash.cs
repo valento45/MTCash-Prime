@@ -74,5 +74,15 @@ namespace MtCash
                 frm.Show();
             }
         }
+
+        private void incluirToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            UI.frmIncluiCliente frm = new UI.frmIncluiCliente();
+            frm.MdiParent = this;
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
+        }
     }
 }

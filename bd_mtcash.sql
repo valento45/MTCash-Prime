@@ -74,10 +74,12 @@ GO
 
 create table mtcash.tb_endereco_usuario(
 id_endereco_usuario int identity not null primary key,
-id_endereco int not null,
+uf varchar(2) not null,
+cidade varchar(30) not null,
+endereco varchar(100) null,
+numero int null,
+complemento varchar(30) null,
 id_usuario int not null
-foreign key(id_endereco)
-references mtcash.tb_endereco(id_endereco),
 foreign key(id_usuario)
 references mtcash.tb_usuario(id_usuario)
 );
@@ -114,12 +116,15 @@ tipo varchar(50) null
 );
 GO
 
+
 create table mtcash.tb_endereco_cliente(
 id_endereco_cliente int identity not null primary key,
-id_endereco int not null,
+uf varchar(2) not null,
+cidade varchar(30) not null,
+endereco varchar(100) null,
+numero int null,
+complemento varchar(30) null,
 id_cliente int not null
-foreign key(id_endereco)
-references mtcash.tb_endereco(id_endereco),
 foreign key(id_cliente)
 references mtcash.tb_cliente(id_cliente)
 );
@@ -127,10 +132,9 @@ go
 
 create table mtcash.tb_contato_cliente(
 id_contato_cliente int identity not null primary key,
-id_contato int not null,
+email varchar(100) null,
+telefone varchar(14) null,
 id_cliente int not null
-foreign key(id_contato)
-references mtcash.tb_contato(id_contato),
 foreign key (id_cliente)
 references mtcash.tb_cliente(id_cliente)
 );

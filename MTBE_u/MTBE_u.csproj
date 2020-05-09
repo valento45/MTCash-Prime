@@ -53,6 +53,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.cs" />
+    <Compile Include="Entities\Cliente.cs" />
+    <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Enums\Modulo.cs" />
     <Compile Include="Entities\UF.cs" />
     <Compile Include="Entities\Permissao.cs" />
