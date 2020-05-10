@@ -61,6 +61,8 @@
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Exceptions\UsuarioException.cs" />
     <Compile Include="Entities\Login.cs" />
+    <Compile Include="Gateway\MtGateway.cs" />
+    <Compile Include="Gateway\NetworkLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Usuario.cs" />
   </ItemGroup>

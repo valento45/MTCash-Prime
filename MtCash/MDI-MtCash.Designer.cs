@@ -318,14 +318,14 @@
             // incluirToolStripMenuItem5
             // 
             this.incluirToolStripMenuItem5.Name = "incluirToolStripMenuItem5";
-            this.incluirToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem5.Size = new System.Drawing.Size(124, 22);
             this.incluirToolStripMenuItem5.Text = "Incluir";
             this.incluirToolStripMenuItem5.Click += new System.EventHandler(this.incluirToolStripMenuItem5_Click);
             // 
             // pesquisarToolStripMenuItem5
             // 
             this.pesquisarToolStripMenuItem5.Name = "pesquisarToolStripMenuItem5";
-            this.pesquisarToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.pesquisarToolStripMenuItem5.Size = new System.Drawing.Size(124, 22);
             this.pesquisarToolStripMenuItem5.Text = "Pesquisar";
             // 
             // configuraçõesToolStripMenuItem2
@@ -365,6 +365,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MDI_MtCash";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MDI_MtCash_Load);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);

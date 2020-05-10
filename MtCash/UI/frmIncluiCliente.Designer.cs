@@ -51,6 +51,14 @@
             this.colUF = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colCidade = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabContato = new System.Windows.Forms.TabPage();
+            this.btnAddContato = new System.Windows.Forms.Button();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.dgvContato = new System.Windows.Forms.DataGridView();
+            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.cmbTipoPessoa = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtDataNasc = new System.Windows.Forms.MaskedTextBox();
@@ -65,15 +73,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAcao = new System.Windows.Forms.Button();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.txtEmail = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.dgvContato = new System.Windows.Forms.DataGridView();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
-            this.btnAddContato = new System.Windows.Forms.Button();
-            this.colEmail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colTelefone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -319,6 +318,79 @@
             this.tabContato.Text = "Contato";
             this.tabContato.UseVisualStyleBackColor = true;
             // 
+            // btnAddContato
+            // 
+            this.btnAddContato.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnAddContato.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnAddContato.Location = new System.Drawing.Point(592, 37);
+            this.btnAddContato.Name = "btnAddContato";
+            this.btnAddContato.Size = new System.Drawing.Size(88, 23);
+            this.btnAddContato.TabIndex = 13;
+            this.btnAddContato.Text = "Adicionar";
+            this.btnAddContato.UseVisualStyleBackColor = false;
+            this.btnAddContato.Click += new System.EventHandler(this.btnAddContato_Click);
+            // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(504, 6);
+            this.txtTelefone.Mask = "(00)00000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(176, 20);
+            this.txtTelefone.TabIndex = 8;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(449, 9);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(49, 13);
+            this.label13.TabIndex = 7;
+            this.label13.Text = "Telefone";
+            // 
+            // dgvContato
+            // 
+            this.dgvContato.AllowUserToAddRows = false;
+            this.dgvContato.AllowUserToDeleteRows = false;
+            this.dgvContato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvContato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvContato.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colEmail,
+            this.colTelefone});
+            this.dgvContato.Location = new System.Drawing.Point(6, 66);
+            this.dgvContato.Name = "dgvContato";
+            this.dgvContato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvContato.Size = new System.Drawing.Size(783, 120);
+            this.dgvContato.TabIndex = 6;
+            // 
+            // colEmail
+            // 
+            this.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.colEmail.HeaderText = "Email";
+            this.colEmail.Name = "colEmail";
+            // 
+            // colTelefone
+            // 
+            this.colTelefone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.colTelefone.HeaderText = "Telefone";
+            this.colTelefone.Name = "colTelefone";
+            this.colTelefone.Width = 74;
+            // 
+            // txtEmail
+            // 
+            this.txtEmail.Location = new System.Drawing.Point(59, 7);
+            this.txtEmail.Name = "txtEmail";
+            this.txtEmail.Size = new System.Drawing.Size(384, 20);
+            this.txtEmail.TabIndex = 5;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(21, 10);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(32, 13);
+            this.label12.TabIndex = 4;
+            this.label12.Text = "Email";
+            // 
             // cmbTipoPessoa
             // 
             this.cmbTipoPessoa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -445,90 +517,7 @@
             this.btnImprimir.TabIndex = 14;
             this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = false;
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExcluir.Location = new System.Drawing.Point(498, 383);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(88, 23);
-            this.btnExcluir.TabIndex = 15;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = false;
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(59, 7);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(384, 20);
-            this.txtEmail.TabIndex = 5;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(21, 10);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(32, 13);
-            this.label12.TabIndex = 4;
-            this.label12.Text = "Email";
-            // 
-            // dgvContato
-            // 
-            this.dgvContato.AllowUserToAddRows = false;
-            this.dgvContato.AllowUserToDeleteRows = false;
-            this.dgvContato.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvContato.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvContato.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colEmail,
-            this.colTelefone});
-            this.dgvContato.Location = new System.Drawing.Point(6, 66);
-            this.dgvContato.Name = "dgvContato";
-            this.dgvContato.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvContato.Size = new System.Drawing.Size(783, 120);
-            this.dgvContato.TabIndex = 6;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(449, 9);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(49, 13);
-            this.label13.TabIndex = 7;
-            this.label13.Text = "Telefone";
-            // 
-            // txtTelefone
-            // 
-            this.txtTelefone.Location = new System.Drawing.Point(504, 6);
-            this.txtTelefone.Mask = "(00)00000-0000";
-            this.txtTelefone.Name = "txtTelefone";
-            this.txtTelefone.Size = new System.Drawing.Size(176, 20);
-            this.txtTelefone.TabIndex = 8;
-            // 
-            // btnAddContato
-            // 
-            this.btnAddContato.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnAddContato.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAddContato.Location = new System.Drawing.Point(592, 37);
-            this.btnAddContato.Name = "btnAddContato";
-            this.btnAddContato.Size = new System.Drawing.Size(88, 23);
-            this.btnAddContato.TabIndex = 13;
-            this.btnAddContato.Text = "Adicionar";
-            this.btnAddContato.UseVisualStyleBackColor = false;
-            this.btnAddContato.Click += new System.EventHandler(this.btnAddContato_Click);
-            // 
-            // colEmail
-            // 
-            this.colEmail.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.colEmail.HeaderText = "Email";
-            this.colEmail.Name = "colEmail";
-            // 
-            // colTelefone
-            // 
-            this.colTelefone.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.colTelefone.HeaderText = "Telefone";
-            this.colTelefone.Name = "colTelefone";
-            this.colTelefone.Width = 74;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
             // frmIncluiCliente
             // 
@@ -536,7 +525,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(853, 416);
-            this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnImprimir);
             this.Controls.Add(this.btnAcao);
             this.Controls.Add(this.tabControl1);
@@ -597,7 +585,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colCidade;
         private System.Windows.Forms.Button btnAcao;
         private System.Windows.Forms.Button btnImprimir;
-        private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAddContato;

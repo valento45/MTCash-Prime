@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MTBE_u.Gateway;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data;
@@ -55,7 +56,7 @@ namespace MTBE_u
                 catch (SqlException ex)
                 {
                     result = -1;
-                    //NetworkLog.Insert(ex, pCommand.CommandText);
+                    NetworkLog.Insert(ex, cmd.CommandText);
                     if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))
                     {
                         if (!retry)
@@ -124,7 +125,7 @@ namespace MTBE_u
                 catch (SqlException ex)
                 {
                     sucesso = false;
-                    //NetworkLog.Insert(ex, pCommand.CommandText);
+                    NetworkLog.Insert(ex, cmd.CommandText);
                     if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))
                     {
                         if (!retry)
@@ -204,7 +205,7 @@ namespace MTBE_u
 
                     IDbDataAdapter da = new SqlDataAdapter((SqlCommand)command);
                     ds = new DataSet();
-                   
+
                     da.Fill(ds);
 
                     if (retry)
@@ -212,6 +213,7 @@ namespace MTBE_u
                 }
                 catch (SqlException ex)
                 {
+                    NetworkLog.Insert(ex, command.CommandText);
                     if (ex.Message.Contains("Exception while writing to stream") || ex.Message.Contains("Exception while reading from stream"))
                     {
                         if (!retry)
@@ -320,7 +322,8 @@ namespace MTBE_u
                         pass = Encoding.Unicode.GetString(ms.ToArray());
                     }
                 }
-            }catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
@@ -393,7 +396,7 @@ namespace MTBE_u
                     command.Connection = null;
 
                 if (command.Connection == null)
-                    command.Connection =(SqlConnection)GetConnection();
+                    command.Connection = (SqlConnection)GetConnection();
 
                 try
                 {
@@ -407,13 +410,13 @@ namespace MTBE_u
 
                     if (command.Connection.State == ConnectionState.Closed)
                         command.Connection.Open();
-                   
-                     dr = command.ExecuteReader();
+
+                    dr = command.ExecuteReader();
 
                     if (retry)
                         retry = false;
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     MessageBox.Show("" + ex.Message + (ex.InnerException != null ? "\n\r\n\r" + ex.InnerException.Message : ""), "Erro ao executar o comando sql", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }

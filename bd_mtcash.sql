@@ -342,7 +342,17 @@ references mtcash.u_tb_transacao_mensal(id_transacao_mensal)
 );
 go
 
+create table mtcash.u_log(
+id_log int identity not null primary key,
+messagem varchar(200) not null,
+stacktrace varchar  null,
+detalhes varchar(200) null,
+data_ocorreu datetime not null
+);
+GO
 
+
+select  * from mtcash.u_log;
 insert into mtcash.tb_usuario (nome, usuario, senha, modulos) values('admin','admin','admin', 'ucfi');
 GO
 

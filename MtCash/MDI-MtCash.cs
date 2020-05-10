@@ -84,5 +84,10 @@ namespace MtCash
             else
                 frm.Show();
         }
+
+        private void MDI_MtCash_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

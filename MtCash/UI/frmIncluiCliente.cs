@@ -9,11 +9,13 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using MTBE_u;
 using MTBE_u.Entities;
+using MtCash.BusinessEntities;
 
 namespace MtCash.UI
 {
     public partial class frmIncluiCliente : Form
     {
+        Cliente client_;
         bool alterar = false;
         public frmIncluiCliente()
         {
@@ -39,12 +41,14 @@ namespace MtCash.UI
                         cliente.Tipo_Documento = cmbTipoDocumento.Text;
                         cliente.Documento = txtDocumento.Text.Trim();
                         cliente.Cpf_Cnpj = txtCpf.Text;
-                        cliente.Data_Nascimento = DateTime.Parse(txtDataNasc.Text);
+                        cliente.Data_Nascimento = txtDataNasc.Text.Trim().Length >  9 ? DateTime.Parse(txtDataNasc.Text) : (DateTime?)null;
                         cliente.Tipo_Pessoa = cmbTipoPessoa.Text;
-                        chave = Cliente.InsertCliente(cliente);
+
+                        chave = Cliente.InsertClient(cliente);
 
                         if (chave > 0)
                         {
+                            cliente.Id_Pessoa = chave;
                             if (dgvEndereco.RowCount > 0)
                                 for (int i = 0; i < dgvEndereco.RowCount; i++)
                                 {
@@ -53,16 +57,16 @@ namespace MtCash.UI
                                     enderecoCliente.Complemento = dgvEndereco.Rows[i].Cells[colComplemento.Index].Value.ToString();
                                     enderecoCliente.Uf = dgvEndereco.Rows[i].Cells[colUF.Index].Value.ToString();
                                     enderecoCliente.Cidade = dgvEndereco.Rows[i].Cells[colCidade.Index].Value.ToString();
-                                    enderecoCliente.Cliente_ = cliente;
-                                    enderecoCliente.Cliente_.Id_Pessoa = chave;
 
-                                    EnderecoCliente.InsertEnderecoCliente(enderecoCliente, chave);
+                                    EnderecoCliente.InsertEnderecoClient(enderecoCliente, cliente.Id_Pessoa);
                                 }
-                        }
+                            client_ = cliente;
+                        }                        
                         MessageBox.Show("Cliente registrado com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (Exception ex)
                     {
+                        LOG.Insert(ex.Message + (ex.InnerException != null ? "\r\n\r\n\r" + ex.InnerException.Message : ""), ex.StackTrace.ToString(), DateTime.Now);
                         MessageBox.Show(ex.Message, "Ocorreu um erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
         }
@@ -103,6 +107,16 @@ namespace MtCash.UI
                 dgvContato.Rows.Add(txtEmail.Text, txtTelefone.Text);
             else
                 MessageBox.Show("Não foi possíve adicional o Endereço!\r\n\r\n\r\nPreencha todos os campos!", "Valida Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+            Cliente.ExportarXML(client_);               
         }
     }
 }

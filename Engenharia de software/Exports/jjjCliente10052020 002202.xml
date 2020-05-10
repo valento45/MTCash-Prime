@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CLIENTE>
+  <versao>1.0</versao>
+  <registro NOME="aaa" TIPODOCUMENTO="" DOCUMENTO="1111111111" CPFCNJP="111.111.111-11" DATANASCIMENTO="2000-09-22T00:00:00" TIPOPESSOA="" />
+</CLIENTE>
