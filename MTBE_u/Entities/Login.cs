@@ -24,7 +24,7 @@ namespace MTBE_u
             {
                 User = user;
                 Insert_Login(User.Id_Pessoa);
-                Modulo = new Modulo();
+               // Modulo = new Modulo();
             }
         }
 

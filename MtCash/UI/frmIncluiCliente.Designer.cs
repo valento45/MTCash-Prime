@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPageRegistro = new System.Windows.Forms.TabPage();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.tabEndereco = new System.Windows.Forms.TabPage();
@@ -72,9 +72,10 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAcao = new System.Windows.Forms.Button();
-            this.btnImprimir = new System.Windows.Forms.Button();
+            this.btnExportaXml = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
+            this.tabPageRegistro.SuspendLayout();
             this.panel1.SuspendLayout();
             this.tabControl2.SuspendLayout();
             this.tabEndereco.SuspendLayout();
@@ -85,35 +86,38 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPageRegistro);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(829, 365);
+            this.tabControl1.Size = new System.Drawing.Size(829, 392);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPage1
+            // tabPageRegistro
             // 
-            this.tabPage1.Controls.Add(this.panel1);
-            this.tabPage1.Controls.Add(this.cmbTipoPessoa);
-            this.tabPage1.Controls.Add(this.label6);
-            this.tabPage1.Controls.Add(this.txtDataNasc);
-            this.tabPage1.Controls.Add(this.label5);
-            this.tabPage1.Controls.Add(this.txtCpf);
-            this.tabPage1.Controls.Add(this.label4);
-            this.tabPage1.Controls.Add(this.txtDocumento);
-            this.tabPage1.Controls.Add(this.label3);
-            this.tabPage1.Controls.Add(this.cmbTipoDocumento);
-            this.tabPage1.Controls.Add(this.label2);
-            this.tabPage1.Controls.Add(this.txtNome);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(821, 339);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Registro";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabPageRegistro.Controls.Add(this.panel1);
+            this.tabPageRegistro.Controls.Add(this.cmbTipoPessoa);
+            this.tabPageRegistro.Controls.Add(this.label6);
+            this.tabPageRegistro.Controls.Add(this.txtDataNasc);
+            this.tabPageRegistro.Controls.Add(this.label5);
+            this.tabPageRegistro.Controls.Add(this.txtCpf);
+            this.tabPageRegistro.Controls.Add(this.label4);
+            this.tabPageRegistro.Controls.Add(this.txtDocumento);
+            this.tabPageRegistro.Controls.Add(this.label3);
+            this.tabPageRegistro.Controls.Add(this.cmbTipoDocumento);
+            this.tabPageRegistro.Controls.Add(this.label2);
+            this.tabPageRegistro.Controls.Add(this.txtNome);
+            this.tabPageRegistro.Controls.Add(this.label1);
+            this.tabPageRegistro.Location = new System.Drawing.Point(4, 22);
+            this.tabPageRegistro.Name = "tabPageRegistro";
+            this.tabPageRegistro.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageRegistro.Size = new System.Drawing.Size(821, 366);
+            this.tabPageRegistro.TabIndex = 0;
+            this.tabPageRegistro.Text = "Registro";
+            this.tabPageRegistro.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
@@ -497,9 +501,10 @@
             // 
             // btnAcao
             // 
+            this.btnAcao.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAcao.BackColor = System.Drawing.Color.WhiteSmoke;
             this.btnAcao.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnAcao.Location = new System.Drawing.Point(310, 383);
+            this.btnAcao.Location = new System.Drawing.Point(310, 410);
             this.btnAcao.Name = "btnAcao";
             this.btnAcao.Size = new System.Drawing.Size(88, 23);
             this.btnAcao.TabIndex = 13;
@@ -507,33 +512,49 @@
             this.btnAcao.UseVisualStyleBackColor = false;
             this.btnAcao.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnImprimir
+            // btnExportaXml
             // 
-            this.btnImprimir.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnImprimir.Location = new System.Drawing.Point(404, 383);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(88, 23);
-            this.btnImprimir.TabIndex = 14;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = false;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
+            this.btnExportaXml.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnExportaXml.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnExportaXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnExportaXml.Location = new System.Drawing.Point(404, 410);
+            this.btnExportaXml.Name = "btnExportaXml";
+            this.btnExportaXml.Size = new System.Drawing.Size(88, 23);
+            this.btnExportaXml.TabIndex = 14;
+            this.btnExportaXml.Text = "Exportar XML";
+            this.btnExportaXml.UseVisualStyleBackColor = false;
+            this.btnExportaXml.Click += new System.EventHandler(this.btnImprimir_Click);
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnNovo.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnNovo.Location = new System.Drawing.Point(92, 410);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(88, 23);
+            this.btnNovo.TabIndex = 15;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = false;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
             // frmIncluiCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(853, 416);
-            this.Controls.Add(this.btnImprimir);
+            this.ClientSize = new System.Drawing.Size(853, 443);
+            this.Controls.Add(this.btnNovo);
+            this.Controls.Add(this.btnExportaXml);
             this.Controls.Add(this.btnAcao);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmIncluiCliente";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmIncluiCliente";
+            this.Load += new System.EventHandler(this.frmIncluiCliente_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
+            this.tabPageRegistro.ResumeLayout(false);
+            this.tabPageRegistro.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.tabControl2.ResumeLayout(false);
             this.tabEndereco.ResumeLayout(false);
@@ -549,7 +570,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPageRegistro;
         private System.Windows.Forms.ComboBox cmbTipoPessoa;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox txtDataNasc;
@@ -584,7 +605,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUF;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCidade;
         private System.Windows.Forms.Button btnAcao;
-        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button btnExportaXml;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAddContato;
@@ -593,5 +614,6 @@
         private System.Windows.Forms.DataGridView dgvContato;
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefone;
+        private System.Windows.Forms.Button btnNovo;
     }
 }

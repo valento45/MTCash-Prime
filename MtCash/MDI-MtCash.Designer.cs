@@ -117,7 +117,7 @@
             this.incluirToolStripMenuItem1,
             this.pesquisarToolStripMenuItem1});
             this.investimentoToolStripMenuItem1.Name = "investimentoToolStripMenuItem1";
-            this.investimentoToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.investimentoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.investimentoToolStripMenuItem1.Text = "Investimento";
             // 
             // incluirToolStripMenuItem1
@@ -139,7 +139,7 @@
             this.incluirToolStripMenuItem2,
             this.pesquisarToolStripMenuItem2});
             this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
-            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ordemServiçoToolStripMenuItem.Text = "Receita/Despesa";
             this.ordemServiçoToolStripMenuItem.Click += new System.EventHandler(this.ordemServiçoToolStripMenuItem_Click);
             // 
@@ -223,7 +223,7 @@
             this.gráficosToolStripMenuItem,
             this.faturamentoToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // conferênciaDeCaixaToolStripMenuItem
@@ -261,7 +261,7 @@
             this.configuraçõesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.preferênciasToolStripMenuItem});
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // preferênciasToolStripMenuItem
@@ -285,7 +285,7 @@
             this.pesquisarToolStripMenuItem,
             this.relatóriosToolStripMenuItem1});
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // incluirToolStripMenuItem
@@ -318,14 +318,14 @@
             // incluirToolStripMenuItem5
             // 
             this.incluirToolStripMenuItem5.Name = "incluirToolStripMenuItem5";
-            this.incluirToolStripMenuItem5.Size = new System.Drawing.Size(124, 22);
+            this.incluirToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem5.Text = "Incluir";
             this.incluirToolStripMenuItem5.Click += new System.EventHandler(this.incluirToolStripMenuItem5_Click);
             // 
             // pesquisarToolStripMenuItem5
             // 
             this.pesquisarToolStripMenuItem5.Name = "pesquisarToolStripMenuItem5";
-            this.pesquisarToolStripMenuItem5.Size = new System.Drawing.Size(124, 22);
+            this.pesquisarToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem5.Text = "Pesquisar";
             // 
             // configuraçõesToolStripMenuItem2

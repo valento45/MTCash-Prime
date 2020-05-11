@@ -30,18 +30,18 @@
         {
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnLogin = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnCriarConta = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnImagem = new System.Windows.Forms.PictureBox();
+            this.pctImagem = new System.Windows.Forms.PictureBox();
             this.button2 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnImagem)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImagem)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -51,9 +51,9 @@
             this.panel1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel1.Controls.Add(this.btnLogin);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.btnCriarConta);
             this.panel1.Controls.Add(this.groupBox1);
-            this.panel1.Controls.Add(this.btnImagem);
+            this.panel1.Controls.Add(this.pctImagem);
             this.panel1.Location = new System.Drawing.Point(3, 16);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(455, 173);
@@ -69,24 +69,24 @@
             this.btnLogin.Location = new System.Drawing.Point(211, 116);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(172, 23);
-            this.btnLogin.TabIndex = 4;
+            this.btnLogin.TabIndex = 3;
             this.btnLogin.Text = "&Acessar";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 
-            // button1
+            // btnCriarConta
             // 
-            this.button1.BackColor = System.Drawing.Color.MintCream;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Image = global::MtCash.Properties.Resources.write;
-            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button1.Location = new System.Drawing.Point(211, 145);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(172, 23);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "&Criar conta";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnCriarConta.BackColor = System.Drawing.Color.MintCream;
+            this.btnCriarConta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCriarConta.Image = global::MtCash.Properties.Resources.write;
+            this.btnCriarConta.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnCriarConta.Location = new System.Drawing.Point(211, 145);
+            this.btnCriarConta.Name = "btnCriarConta";
+            this.btnCriarConta.Size = new System.Drawing.Size(172, 23);
+            this.btnCriarConta.TabIndex = 4;
+            this.btnCriarConta.Text = "&Criar conta";
+            this.btnCriarConta.UseVisualStyleBackColor = false;
+            this.btnCriarConta.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -108,11 +108,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.label3.ForeColor = System.Drawing.Color.DarkRed;
             this.label3.Location = new System.Drawing.Point(85, 80);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 13);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 5;
             this.label3.Text = "Esqueceu sua senha?";
             // 
             // txtSenha
@@ -121,7 +122,8 @@
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(172, 20);
-            this.txtSenha.TabIndex = 3;
+            this.txtSenha.TabIndex = 2;
+            this.txtSenha.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSenha_KeyPress);
             // 
             // label2
             // 
@@ -138,6 +140,7 @@
             this.txtUsuario.Name = "txtUsuario";
             this.txtUsuario.Size = new System.Drawing.Size(172, 20);
             this.txtUsuario.TabIndex = 1;
+            this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // label1
             // 
@@ -148,18 +151,18 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Usuario";
             // 
-            // btnImagem
+            // pctImagem
             // 
-            this.btnImagem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pctImagem.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnImagem.BackgroundImage = global::MtCash.Properties.Resources.Login;
-            this.btnImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.btnImagem.ErrorImage = null;
-            this.btnImagem.Location = new System.Drawing.Point(10, 3);
-            this.btnImagem.Name = "btnImagem";
-            this.btnImagem.Size = new System.Drawing.Size(102, 159);
-            this.btnImagem.TabIndex = 0;
-            this.btnImagem.TabStop = false;
+            this.pctImagem.BackgroundImage = global::MtCash.Properties.Resources.Login;
+            this.pctImagem.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pctImagem.ErrorImage = null;
+            this.pctImagem.Location = new System.Drawing.Point(10, 3);
+            this.pctImagem.Name = "pctImagem";
+            this.pctImagem.Size = new System.Drawing.Size(102, 159);
+            this.pctImagem.TabIndex = 0;
+            this.pctImagem.TabStop = false;
             // 
             // button2
             // 
@@ -190,7 +193,7 @@
             this.panel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnImagem)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pctImagem)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -203,10 +206,10 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.PictureBox btnImagem;
+        private System.Windows.Forms.PictureBox pctImagem;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnLogin;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnCriarConta;
         private System.Windows.Forms.Label label3;
     }
 }

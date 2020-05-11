@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CLIENTE>
+  <registro>
+    <CODIGO>16</CODIGO>
+    <NOME>teste</NOME>
+    <TIPODOCUMENTO></TIPODOCUMENTO>
+    <DOCUMENTO></DOCUMENTO>
+    <CPFCNJP>   .   .   -</CPFCNJP>
+    <DATANASCIMENTO />
+    <TIPOPESSOA></TIPOPESSOA>
+    <ENDERECO1>
+      <UF>et</UF>
+      <CIDADE>teste</CIDADE>
+      <ENDERECO>teste</ENDERECO>
+      <NUMERO>11</NUMERO>
+      <COMPLEMENTO>teste</COMPLEMENTO>
+    </ENDERECO1>
+    <ENDERECO1>
+      <UF>et</UF>
+      <CIDADE>teste</CIDADE>
+      <ENDERECO>teste</ENDERECO>
+      <NUMERO>11</NUMERO>
+      <COMPLEMENTO>teste</COMPLEMENTO>
+    </ENDERECO1>
+    <ENDERECO1>
+      <UF>et</UF>
+      <CIDADE>teste</CIDADE>
+      <ENDERECO>teste</ENDERECO>
+      <NUMERO>11</NUMERO>
+      <COMPLEMENTO>teste</COMPLEMENTO>
+    </ENDERECO1>
+  </registro>
+</CLIENTE>

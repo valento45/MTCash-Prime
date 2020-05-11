@@ -12,6 +12,7 @@ using MTBE_u;
 using MTBE_u.Entities.Enums;
 using MTBE_u.Exceptions;
 using MtCash;
+using MtCash.BusinessEntities;
 
 namespace MT_u
 {
@@ -60,32 +61,43 @@ namespace MT_u
             {
                 EfetuaLogin();
             }
+            catch (UsuarioException ex)
+            {                
+                MessageBox.Show(ex.Message, "Não foi possível efetuar o login!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                txtUsuario.Focus();
+                txtUsuario.Select(0, txtUsuario.Text.Length);
+            } 
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "Erro ao efetuar login!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                LOG.Insert(ex, null);
+                MessageBox.Show(ex.Message, "Ops !!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
         private void EfetuaLogin()
         {
-            if (txtUsuario.Text.Length == 0 || txtSenha.Text.Length == 0)
-            {
-                throw new UsuarioException("Preencha os campos corretamente!");
-            }
+            if (txtUsuario.Text.Trim().Length == 0)            
+                throw new UsuarioException("Preencha o login corretamente!");
+            
+            if(txtSenha.Text.Trim().Length == 0)
+                throw new UsuarioException("Preencha a senha corretamente!");
+
             else
             {
                 MTBE_u.Usuario usuario = new MTBE_u.Usuario();
                 usuario._Usuario = txtUsuario.Text.Trim();
-                usuario.Senha = txtSenha.Text.Trim();
+                usuario.Senha = Access.Encrypt(txtUsuario.Text.Trim(), txtSenha.Text.Trim());
 
                 usuario = usuario.Logar(usuario);
-                if (usuario.Id_Pessoa <= 0)
-                {
-                    MessageBox.Show("Usuário ou senha inválidos!", "Valida Login", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+
+                if (usuario.Id_Pessoa <= 0)                
+                    throw new UsuarioException("Usuário ou senha inválidos!");
+
+                if(!(bool)usuario.User_atv)
+                    throw new UsuarioException("Usuário bloqueado ou inativo!");
+
                 else
                 {
-                    MessageBox.Show("Seja bem-vindo, " + usuario.Nome + "\n\r\n\r", "Data: " + DateTime.Now.ToString("dd/MM/yyyy"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Seja bem-vindo, " + usuario.Nome + ".\n\n - Hoje é dia: " + DateTime.Now.ToString("dd/MM/yyyy"), "Você está logado!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     Login log = new Login(usuario);
                   //  Login.Modulo._Permissoes = Modulo.GetPermition(usuario).Where(x => x.);
                     this.Hide();
@@ -98,6 +110,7 @@ namespace MT_u
                                 Application.Exit();                            
                         }
                     }
+                    this.Visible = true;
                 }
             }
         }
@@ -112,6 +125,21 @@ namespace MT_u
             using (frmConfigurarU frmUsuario = new frmConfigurarU())
             {
                 frmUsuario.ShowDialog();
+            }
+        }
+
+        private void txtSenha_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+                btnLogin.PerformClick();
+        }
+
+        private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                txtSenha.Focus();
+                txtSenha.Select(0, txtSenha.Text.Length);
             }
         }
     }

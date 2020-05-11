@@ -13,7 +13,7 @@ create schema mtcash;
 GO
 
 create table mtcash.tb_uf(
-id_uf int identity not null primary key,
+id_uf int identity not null primary key,	
 uf varchar(2) not null,
 pais varchar(15) null
 );

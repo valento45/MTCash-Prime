@@ -21,7 +21,7 @@ namespace MTBE_u.Gateway
                 XElement erro = new XElement("ERRORS");
                 erro.Add(new XElement("Message", ex.Message));
                 erro.Add(new XElement("StackTrace", ex.StackTrace));
-                erro.Add(new XElement("Detalhes", (ex.InnerException != null ? ex.InnerException.Message : "") + (pCommand.Length > 0 ? "\r\n\r\n\r\n" + pCommand : "")));
+                erro.Add(new XElement("Detalhes", (ex.InnerException != null ? ex.InnerException.Message : "") + (pCommand != null && pCommand.Length > 0 ? " - " + pCommand : "")));
                 erro.Add(new XElement("Data", DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss")));
 
                 cabecalho.Add(erro);

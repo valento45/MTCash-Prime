@@ -123,7 +123,7 @@ namespace MTBE_u
         {
             SqlCommand cmd = new SqlCommand("select * from mtcash.tb_usuario where usuario = @usuario and senha = @senha");
             cmd.Parameters.AddWithValue(@"usuario", usuario._Usuario);
-            cmd.Parameters.AddWithValue(@"senha", Access.Encrypt(usuario._Usuario ,usuario.Senha));
+            cmd.Parameters.AddWithValue(@"senha", usuario.Senha);
             
             DataTable dt = new DataTable();
             dt = Access.ExecuteReader(cmd)?.Tables[0];

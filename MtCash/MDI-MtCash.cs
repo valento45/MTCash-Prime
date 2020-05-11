@@ -30,6 +30,8 @@ namespace MtCash
         private void Permissoes_Usuario()
         {
             usuarioConfigurarToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Usuario);
+            financeiroToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Financeiro);
+            clienteToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Cliente);
         }
 
         private void ordemServiçoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -77,12 +79,17 @@ namespace MtCash
 
         private void incluirToolStripMenuItem5_Click(object sender, EventArgs e)
         {
-            UI.frmIncluiCliente frm = new UI.frmIncluiCliente();
-            frm.MdiParent = this;
-            if (frm.Visible)
-                frm.Focus();
+            if (Modulo.CanInclude(Login.User, Modulos.Cliente))
+            {
+                UI.frmIncluiCliente frm = new UI.frmIncluiCliente();
+                frm.MdiParent = this;
+                if (frm.Visible)
+                    frm.Focus();
+                else
+                    frm.Show();
+            }
             else
-                frm.Show();
+                MessageBox.Show("Acesso negado! \n\r\n\rVocê não possui permissão para prosseguir!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
         }
 
         private void MDI_MtCash_Load(object sender, EventArgs e)
