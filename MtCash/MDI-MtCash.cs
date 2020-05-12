@@ -23,15 +23,17 @@ namespace MtCash
             InitializeComponent();
 
             if (user.Id_Pessoa > 0)
+            {
                 UsuarioLogado = user;
-
-            Permissoes_Usuario();
+                Permissoes_Usuario();
+            }
         }
         private void Permissoes_Usuario()
         {
             usuarioConfigurarToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Usuario);
             financeiroToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Financeiro);
             clienteToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Cliente);
+            investimentosToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Investimento);
         }
 
         private void ordemServiçoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -95,6 +97,17 @@ namespace MtCash
         private void MDI_MtCash_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void pesquisarToolStripMenuItem5_Click(object sender, EventArgs e)
+        {
+            UI.frmPesquisaClient frm = new UI.frmPesquisaClient();
+            frm.MdiParent = this;
+
+            if (frm.Visible)
+                frm.Focus();
+            else
+                frm.Show();
         }
     }
 }

@@ -56,6 +56,13 @@
             this.faturamentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configuraçõesToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.preferênciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.investimentosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incluirToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pesquisarToolStripMenuItem6 = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
+            this.planoDeInvestimentoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.estatísticaPrevisãoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.estoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -91,12 +98,13 @@
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.financeiroToolStripMenuItem,
+            this.investimentosToolStripMenuItem,
             this.estoqueToolStripMenuItem,
             this.clienteToolStripMenuItem,
             this.configuraçõesToolStripMenuItem2});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1180, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1180, 56);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -107,8 +115,10 @@
             this.ordemServiçoToolStripMenuItem,
             this.relatóriosToolStripMenuItem,
             this.configuraçõesToolStripMenuItem1});
+            this.financeiroToolStripMenuItem.Image = global::MtCash.Properties.Resources.dsds;
+            this.financeiroToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.financeiroToolStripMenuItem.Name = "financeiroToolStripMenuItem";
-            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.financeiroToolStripMenuItem.Size = new System.Drawing.Size(120, 52);
             this.financeiroToolStripMenuItem.Text = "Financeiro";
             // 
             // investimentoToolStripMenuItem1
@@ -270,12 +280,66 @@
             this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.preferênciasToolStripMenuItem.Text = "Preferências";
             // 
+            // investimentosToolStripMenuItem
+            // 
+            this.investimentosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem,
+            this.relatóriosToolStripMenuItem4});
+            this.investimentosToolStripMenuItem.Image = global::MtCash.Properties.Resources.chart;
+            this.investimentosToolStripMenuItem.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
+            this.investimentosToolStripMenuItem.Name = "investimentosToolStripMenuItem";
+            this.investimentosToolStripMenuItem.Size = new System.Drawing.Size(141, 52);
+            this.investimentosToolStripMenuItem.Text = "Investimentos";
+            // 
+            // gerenciarOrçamentosPesquisarToolStripMenuItem
+            // 
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.incluirToolStripMenuItem6,
+            this.pesquisarToolStripMenuItem6});
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem.Name = "gerenciarOrçamentosPesquisarToolStripMenuItem";
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.gerenciarOrçamentosPesquisarToolStripMenuItem.Text = "Gerenciar / Orçamentos ";
+            // 
+            // incluirToolStripMenuItem6
+            // 
+            this.incluirToolStripMenuItem6.Name = "incluirToolStripMenuItem6";
+            this.incluirToolStripMenuItem6.Size = new System.Drawing.Size(124, 22);
+            this.incluirToolStripMenuItem6.Text = "Incluir";
+            // 
+            // pesquisarToolStripMenuItem6
+            // 
+            this.pesquisarToolStripMenuItem6.Name = "pesquisarToolStripMenuItem6";
+            this.pesquisarToolStripMenuItem6.Size = new System.Drawing.Size(124, 22);
+            this.pesquisarToolStripMenuItem6.Text = "Pesquisar";
+            // 
+            // relatóriosToolStripMenuItem4
+            // 
+            this.relatóriosToolStripMenuItem4.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.planoDeInvestimentoToolStripMenuItem,
+            this.estatísticaPrevisãoToolStripMenuItem});
+            this.relatóriosToolStripMenuItem4.Name = "relatóriosToolStripMenuItem4";
+            this.relatóriosToolStripMenuItem4.Size = new System.Drawing.Size(203, 22);
+            this.relatóriosToolStripMenuItem4.Text = "Relatórios";
+            // 
+            // planoDeInvestimentoToolStripMenuItem
+            // 
+            this.planoDeInvestimentoToolStripMenuItem.Name = "planoDeInvestimentoToolStripMenuItem";
+            this.planoDeInvestimentoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.planoDeInvestimentoToolStripMenuItem.Text = "Plano de investimento";
+            // 
+            // estatísticaPrevisãoToolStripMenuItem
+            // 
+            this.estatísticaPrevisãoToolStripMenuItem.Name = "estatísticaPrevisãoToolStripMenuItem";
+            this.estatísticaPrevisãoToolStripMenuItem.Size = new System.Drawing.Size(192, 22);
+            this.estatísticaPrevisãoToolStripMenuItem.Text = "Estatística / Previsão";
+            // 
             // estoqueToolStripMenuItem
             // 
             this.estoqueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.produtosToolStripMenuItem});
+            this.estoqueToolStripMenuItem.Image = global::MtCash.Properties.Resources.Estoque;
             this.estoqueToolStripMenuItem.Name = "estoqueToolStripMenuItem";
-            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(61, 20);
+            this.estoqueToolStripMenuItem.Size = new System.Drawing.Size(77, 52);
             this.estoqueToolStripMenuItem.Text = "Estoque";
             // 
             // produtosToolStripMenuItem
@@ -311,8 +375,9 @@
             this.clienteToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incluirToolStripMenuItem5,
             this.pesquisarToolStripMenuItem5});
+            this.clienteToolStripMenuItem.Image = global::MtCash.Properties.Resources.Cliente1;
             this.clienteToolStripMenuItem.Name = "clienteToolStripMenuItem";
-            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.clienteToolStripMenuItem.Size = new System.Drawing.Size(72, 52);
             this.clienteToolStripMenuItem.Text = "Cliente";
             // 
             // incluirToolStripMenuItem5
@@ -327,13 +392,16 @@
             this.pesquisarToolStripMenuItem5.Name = "pesquisarToolStripMenuItem5";
             this.pesquisarToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem5.Text = "Pesquisar";
+            this.pesquisarToolStripMenuItem5.Click += new System.EventHandler(this.pesquisarToolStripMenuItem5_Click);
             // 
             // configuraçõesToolStripMenuItem2
             // 
             this.configuraçõesToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.usuarioConfigurarToolStripMenuItem});
+            this.configuraçõesToolStripMenuItem2.Image = global::MtCash.Properties.Resources.process;
+            this.configuraçõesToolStripMenuItem2.ImageScaling = System.Windows.Forms.ToolStripItemImageScaling.None;
             this.configuraçõesToolStripMenuItem2.Name = "configuraçõesToolStripMenuItem2";
-            this.configuraçõesToolStripMenuItem2.Size = new System.Drawing.Size(96, 20);
+            this.configuraçõesToolStripMenuItem2.Size = new System.Drawing.Size(144, 52);
             this.configuraçõesToolStripMenuItem2.Text = "Configurações";
             // 
             // usuarioConfigurarToolStripMenuItem
@@ -355,15 +423,17 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1180, 532);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MDI_MtCash";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MDI_MtCash";
+            this.Text = "MDI-MtCash";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDI_MtCash_Load);
             this.statusStrip.ResumeLayout(false);
@@ -414,6 +484,13 @@
         private System.Windows.Forms.ToolStripMenuItem usuarioConfigurarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incluirAlterarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem faturamentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem investimentosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem gerenciarOrçamentosPesquisarToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incluirToolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem pesquisarToolStripMenuItem6;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem planoDeInvestimentoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem estatísticaPrevisãoToolStripMenuItem;
     }
 }
 

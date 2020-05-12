@@ -48,11 +48,36 @@ namespace MTBE_u.Entities
         }
         public static void DeleteClient(int id)
         {
-            SqlCommand cmd = new SqlCommand("delete from mtcash.tb_endereco_cliente where id_cliente =" + id);
-            Access.ExecuteNonQuery(cmd);
+            if (id > 0)
+            {
+                SqlCommand cmd = new SqlCommand();
+                try
+                {
+                    cmd.CommandText = ("delete from mtcash.tb_endereco_cliente where id_cliente =" + id);
 
-            cmd.CommandText = "delete from mtcash.tb_cliente where id_cliente =" + id;
-            Access.ExecuteNonQuery(cmd);
+                    cmd.Connection = (SqlConnection)Access.GetConnection();
+                    if (cmd.Connection.State == ConnectionState.Closed)
+                        cmd.Connection.Open();
+
+                    Access.ExecuteNonQuery(cmd);
+
+                    cmd.CommandText = "delete from mtcash.tb_contato_cliente where id_cliente =" + id;
+                    Access.ExecuteNonQuery(cmd);
+
+                    cmd.CommandText = "delete from mtcash.tb_cliente where id_cliente =" + id;
+                    Access.ExecuteNonQuery(cmd);
+                }
+                catch(Exception ex)
+                {
+                    NetworkLog.Insert(ex, cmd.CommandText);
+                    MessageBox.Show("" + ex.Message, "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                finally
+                {
+                    if (cmd.Connection.State == ConnectionState.Open)
+                        cmd.Connection.Close();
+                }
+            }
         }
 
         public static List<Cliente> ListarClients()
@@ -103,55 +128,55 @@ namespace MTBE_u.Entities
         public static void ExportarXML(Cliente client)
         {
             SaveFileDialog savefile = new SaveFileDialog();
-                try
-                {
-                    XDocument xml = new XDocument(new XDeclaration("1.0", "utf-8", null));
-                    XElement cabecalho = new XElement("CLIENTE");
-                    XElement cliente = new XElement("registro");
-                    cliente.Add(new XElement("CODIGO", client.Id_Pessoa));
-                    cliente.Add(new XElement("NOME", client.Nome));
-                    cliente.Add(new XElement("TIPODOCUMENTO", client.Tipo_Documento));
-                    cliente.Add(new XElement("DOCUMENTO", client.Documento));
-                    cliente.Add(new XElement("CPFCNJP", client.Cpf_Cnpj));
-                    cliente.Add(new XElement("DATANASCIMENTO", client.Data_Nascimento));
-                    cliente.Add(new XElement("TIPOPESSOA", client.Tipo_Pessoa));
+            try
+            {
+                XDocument xml = new XDocument(new XDeclaration("1.0", "utf-8", null));
+                XElement cabecalho = new XElement("CLIENTE");
+                XElement cliente = new XElement("registro");
+                cliente.Add(new XElement("CODIGO", client.Id_Pessoa));
+                cliente.Add(new XElement("NOME", client.Nome));
+                cliente.Add(new XElement("TIPODOCUMENTO", client.Tipo_Documento));
+                cliente.Add(new XElement("DOCUMENTO", client.Documento));
+                cliente.Add(new XElement("CPFCNJP", client.Cpf_Cnpj));
+                cliente.Add(new XElement("DATANASCIMENTO", client.Data_Nascimento));
+                cliente.Add(new XElement("TIPOPESSOA", client.Tipo_Pessoa));
 
-                    var list_endereco = EnderecoCliente.GetListByIdClient(client.Id_Pessoa);
+                var list_endereco = EnderecoCliente.GetListByIdClient(client.Id_Pessoa);
 
-                    if (list_endereco.Count > 0)
-                        foreach (var x in list_endereco.OrderBy(n => n.id_endereco_cliente))
-                        {
-                            int i = 1;
-                            XElement endereco = new XElement("ENDERECO" + i);
-                            endereco.Add(new XElement("UF", x.Uf));
-                            endereco.Add(new XElement("CIDADE", x.Cidade));
-                            endereco.Add(new XElement("ENDERECO", x.Endereco_));
-                            endereco.Add(new XElement("NUMERO", x.Numero));
-                            endereco.Add(new XElement("COMPLEMENTO", x.Complemento));
-
-                            cliente.Add(endereco);
-                            i++;
-                        }
-
-                    cabecalho.Add(cliente);
-                    xml.Add(cabecalho);
-
-                    savefile.Filter = "Xml (*.xml) | *xml| All files (*.*) |*.*";
-                    savefile.FilterIndex = 2;
-                    savefile.FileName = "cliente" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace("/", "-").Replace(":", "");
-                    savefile.RestoreDirectory = true;
-
-                    if (savefile.ShowDialog() == DialogResult.OK)
+                if (list_endereco.Count > 0)
+                    foreach (var x in list_endereco.OrderBy(n => n.id_endereco_cliente))
                     {
-                        xml.Save(savefile.FileName + ".xml");
-                        MessageBox.Show("Arquivo salvo em: " + savefile.FileName, "log " + DateTime.Now.ToString("dd/MM/yyyy - HH:ss:mm"), MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        int i = 1;
+                        XElement endereco = new XElement("ENDERECO" + i);
+                        endereco.Add(new XElement("UF", x.Uf));
+                        endereco.Add(new XElement("CIDADE", x.Cidade));
+                        endereco.Add(new XElement("ENDERECO", x.Endereco_));
+                        endereco.Add(new XElement("NUMERO", x.Numero));
+                        endereco.Add(new XElement("COMPLEMENTO", x.Complemento));
+
+                        cliente.Add(endereco);
+                        i++;
                     }
-                }
-                catch (Exception ex)
+
+                cabecalho.Add(cliente);
+                xml.Add(cabecalho);
+
+                savefile.Filter = "Xml (*.xml) | *xml| All files (*.*) |*.*";
+                savefile.FilterIndex = 2;
+                savefile.FileName = "cliente" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace("/", "-").Replace(":", "");
+                savefile.RestoreDirectory = true;
+
+                if (savefile.ShowDialog() == DialogResult.OK)
                 {
-                    NetworkLog.Insert(ex, savefile.FileName);
-                    MessageBox.Show("O arquivo pode não ter sido salvo corretamente! \r\n\r\n\r\n" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    xml.Save(savefile.FileName + ".xml");
+                    MessageBox.Show("Arquivo salvo em: " + savefile.FileName, "log " + DateTime.Now.ToString("dd/MM/yyyy - HH:ss:mm"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
+            }
+            catch (Exception ex)
+            {
+                NetworkLog.Insert(ex, savefile.FileName);
+                MessageBox.Show("O arquivo pode não ter sido salvo corretamente! \r\n\r\n\r\n" + ex.Message, "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
     }
 

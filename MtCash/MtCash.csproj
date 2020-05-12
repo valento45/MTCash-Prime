@@ -74,6 +74,12 @@
     <Compile Include="UI\frmIncluiCliente.Designer.cs">
       <DependentUpon>frmIncluiCliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\frmPesquisaClient.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\frmPesquisaClient.Designer.cs">
+      <DependentUpon>frmPesquisaClient.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="frmConfigurarU.resx">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
     </EmbeddedResource>
@@ -95,6 +101,9 @@
     </Compile>
     <EmbeddedResource Include="UI\frmIncluiCliente.resx">
       <DependentUpon>frmIncluiCliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\frmPesquisaClient.resx">
+      <DependentUpon>frmPesquisaClient.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -135,6 +144,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\write.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\vegetasayajin.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dsds.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Estoque.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\process.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chart.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

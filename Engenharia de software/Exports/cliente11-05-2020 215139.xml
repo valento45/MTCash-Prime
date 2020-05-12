@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CLIENTE>
+  <registro>
+    <CODIGO>21</CODIGO>
+    <NOME>Kratos</NOME>
+    <TIPODOCUMENTO></TIPODOCUMENTO>
+    <DOCUMENTO>5544477788</DOCUMENTO>
+    <CPFCNJP>419.807.598-04</CPFCNJP>
+    <DATANASCIMENTO>1900-01-01T00:00:00</DATANASCIMENTO>
+    <TIPOPESSOA>Fisíca</TIPOPESSOA>
+    <ENDERECO1>
+      <UF>SP</UF>
+      <CIDADE>Francisco Morato</CIDADE>
+      <ENDERECO>Esparta</ENDERECO>
+      <NUMERO>1000</NUMERO>
+      <COMPLEMENTO>Esparta - Grecia Antiga</COMPLEMENTO>
+    </ENDERECO1>
+    <ENDERECO1>
+      <UF>MG</UF>
+      <CIDADE>MG</CIDADE>
+      <ENDERECO>Termopilas</ENDERECO>
+      <NUMERO>1000</NUMERO>
+      <COMPLEMENTO>Grecia vs Persia</COMPLEMENTO>
+    </ENDERECO1>
+  </registro>
+</CLIENTE>

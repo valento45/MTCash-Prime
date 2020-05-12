@@ -25,8 +25,29 @@ namespace MtCash.UI
         public frmIncluiCliente(Cliente cliente)
         {
             InitializeComponent();
-            alterar = true;
+            
             Client_ = cliente;
+            if(Client_ != null)
+            {
+                DesabilitaHabilitaAlteracao();
+                txtNome.Text = Client_.Nome;
+                cmbTipoDocumento.SelectedText = Client_.Tipo_Documento;
+                txtDocumento.Text = Client_.Documento;
+                if((cmbTipoPessoa.SelectedText = Client_.Tipo_Pessoa) == "Física")
+                {
+                    txtCpf.Mask = "000.000.000-00";
+                    txtCpf.Text = Client_.Cpf_Cnpj;
+                }
+                else if ((cmbTipoPessoa.SelectedText = Client_.Tipo_Pessoa) == "Jurídica")
+                {
+                    cmbTipoPessoa.SelectedText = Client_.Tipo_Pessoa;
+                    txtCpf.Mask = "00.000.000/0000-00";
+                    txtCpf.Text = Client_.Cpf_Cnpj;
+                }
+                txtDataNasc.Text = Client_.Data_Nascimento.ToString();
+                FillGridEnderecoClient(Client_.Id_Pessoa);
+                FillGridContatoClient(Client_.Id_Pessoa);
+            }
         }
         private void button1_Click(object sender, EventArgs e)
         {
