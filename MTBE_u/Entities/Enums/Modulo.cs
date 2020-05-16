@@ -11,9 +11,8 @@ namespace MTBE_u.Entities.Enums
 {
     public class Modulo
     {
-        private static Modulos[] modulos_ = { Modulos.Usuario, Modulos.Cliente, Modulos.Financeiro, Modulos.Investimento };
+        private static Modulos[] modulos_ = { Modulos.Usuario, Modulos.Cliente, Modulos.Financeiro, Modulos.Investimento, Modulos.Estoque };
         private static Permissoes[] permissoes_ = { Permissoes.Incluir, Permissoes.Alterar, Permissoes.Excluir, Permissoes.Relatorio };
-
 
         public static List<Permissao_Modulo_Usuario> Get_Permissoes
         {
@@ -92,7 +91,12 @@ namespace MTBE_u.Entities.Enums
             }
             return result;
         }
-
+        /// <summary>
+        /// Retorna bool para permissão do usuário especificado, no módulo especificado.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <param name="modulo"></param>
+        /// <returns>bool</returns>
         public static bool CanInclude(Usuario user, Modulos modulo)
         {
             if (GetPermissaoByModulo(user, modulo).Contains((Char)Permissoes.Incluir))
@@ -157,6 +161,7 @@ namespace MTBE_u.Entities.Enums
         Cliente = 'c',
         Financeiro = 'f',
         Investimento = 'i',
+        Estoque = 'e',
         vazio = ' '
     }
 

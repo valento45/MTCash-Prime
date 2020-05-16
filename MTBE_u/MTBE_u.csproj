@@ -53,6 +53,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.cs" />
+    <Compile Include="EntitiesCash\Categoria.cs" />
+    <Compile Include="EntitiesCash\IConta.cs" />
+    <Compile Include="EntitiesCash\PlanoConta.cs" />
+    <Compile Include="EntitiesCash\Enums\TipoConta.cs" />
+    <Compile Include="EntitiesCash\Receita.cs" />
     <Compile Include="Entities\Cliente.cs" />
     <Compile Include="Entities\Endereco.cs" />
     <Compile Include="Entities\Enums\Modulo.cs" />

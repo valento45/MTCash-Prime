@@ -325,7 +325,7 @@ namespace MTBE_u
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Ocorreu um erro: " + ex.Message);
+               // MessageBox.Show("Ocorreu um erro: " + ex.Message);
             }
             return pass;
         }

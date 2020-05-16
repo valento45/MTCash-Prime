@@ -1,5 +1,6 @@
 ﻿using MTBE_u;
 using MTBE_u.Entities.Enums;
+using MtCash.BusinessEntities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,23 +21,21 @@ namespace MT_u.Usuario
         {
             InitializeComponent();
             cmbUserAtv.SelectedIndex = cmbTipo.SelectedIndex = 0;
-           
         }
 
         public frmConfigurarU(MTBE_u.Usuario user)
         {
             InitializeComponent();
-            cmbUserAtv.SelectedIndex = cmbTipo.SelectedIndex = 0;
-            Permissoes();
-        }
-
-        private void Permissoes()
-        {
-            btnNovo.Enabled = btnSalvar.Enabled = Modulo.CanInclude(Login.User, Modulos.Usuario);
-            treeView1.Nodes[0].Nodes[1].TreeView.Visible = btnEditar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
-            btnExcluir.Enabled = Modulo.CanExclude(Login.User, Modulos.Usuario);
-            
-        }
+            if (user != null)
+            {
+                cmbUserAtv.SelectedIndex = cmbTipo.SelectedIndex = 0;
+                btnNovo.Enabled = btnSalvar.Enabled = Modulo.CanInclude(Login.User, Modulos.Usuario);
+                btnEditar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
+                btnExcluir.Enabled = Modulo.CanExclude(Login.User, Modulos.Usuario);
+                if (!btnSalvar.Enabled)
+                    btnSalvar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
+            }
+        }        
 
         private void PopularGrid(DataGridView dgv)
         {
@@ -83,6 +82,7 @@ namespace MT_u.Usuario
                 }
                 catch (Exception ex)
                 {
+                    LOG.Insert(ex, null);
                     MessageBox.Show(ex.Message + "\n\r\n\r\n\r" + ex.StackTrace.Substring(0, 200), "Ops!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
@@ -147,53 +147,54 @@ namespace MT_u.Usuario
             {
                 if (ValidaCampos())
                 {
-                    if (alterar)
-                    {
-                        if (user == null)
-                            return;
-
-                        user.Nome = txtNome.Text;
-                        user.Documento = txtRg.Text;
-                        user.Cpf_Cnpj = txtCpf.Text;
-                        user.Tipo = cmbTipo.Text;
-                        if (cmbUserAtv.SelectedIndex == 0)
-                            user.User_atv = true;
-                        else
-                            user.User_atv = false;
-                        user._Usuario = txtUsuario.Text;
-                        user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
-
-                        user.Update_User(user);
-                        sucesso = true;
-                        ResetCampos();
-                        Permissoes();
-                    }
-                    else
-                    {
-                        if (user != null)
-                            user = null;
-
-                        if (user == null)
-                            user = new MTBE_u.Usuario();
-
-                        user.Nome = txtNome.Text;
-                        user.Documento = txtRg.Text;
-                        user.Cpf_Cnpj = txtCpf.Text;
-                        user.Tipo = cmbTipo.Text;
-                        if (cmbUserAtv.SelectedIndex == 0)
-                            user.User_atv = true;
-                        else
-                            user.User_atv = false;
-                        //user.Modulos = "ucfi";
-                        user._Usuario = txtUsuario.Text;
-                        user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
-                        int chave = user.Insert_User(user);
-                        if (chave > 0)
+                   // if (Modulo.CanUpdate(Login.User, Modulos.Usuario))
+                        if (alterar)
                         {
-                            Permissao_Modulo_Usuario.Insert_Permissao_Usuario(chave);
+                            if (user == null)
+                                return;
+
+                            user.Nome = txtNome.Text;
+                            user.Documento = txtRg.Text;
+                            user.Cpf_Cnpj = txtCpf.Text;
+                            user.Tipo = cmbTipo.Text;
+                            if (cmbUserAtv.SelectedIndex == 0)
+                                user.User_atv = true;
+                            else
+                                user.User_atv = false;
+                            user._Usuario = txtUsuario.Text;
+                            user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
+
+                            user.Update_User(user);
                             sucesso = true;
+                            ResetCampos();
+                            //btnSalvar.Enabled = true;
                         }
-                    }
+                        else
+                        {
+                            if (user != null)
+                                user = null;
+
+                            if (user == null)
+                                user = new MTBE_u.Usuario();
+
+                            user.Nome = txtNome.Text;
+                            user.Documento = txtRg.Text;
+                            user.Cpf_Cnpj = txtCpf.Text;
+                            user.Tipo = cmbTipo.Text;
+                            if (cmbUserAtv.SelectedIndex == 0)
+                                user.User_atv = true;
+                            else
+                                user.User_atv = false;
+                            //user.Modulos = "ucfi";
+                            user._Usuario = txtUsuario.Text;
+                            user.Senha = Access.Encrypt(user._Usuario, txtSenha.Text);
+                            int chave = user.Insert_User(user);
+                            if (chave > 0)
+                            {
+                                Permissao_Modulo_Usuario.Insert_Permissao_Usuario(chave);
+                                sucesso = true;
+                            }
+                        }
                     if (sucesso)
                     {
                         MessageBox.Show($"Usuário {(alterar ? "Atualizado" : "Cadastrado")} com sucesso! ", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -278,7 +279,7 @@ namespace MT_u.Usuario
                     txtUsuario.Text = user._Usuario;
                     txtSenha.Text = Access.Decrypt(user._Usuario, user.Senha);
                     Alterar();
-                    btnSalvar.Visible = Modulo.CanUpdate(Login.User, Modulos.Usuario);
+
                     tabIncluirEditar.SelectedTab = pageIncluir;
                 }
             }
@@ -287,6 +288,8 @@ namespace MT_u.Usuario
         {
             alterar = true;
             btnSalvar.Text = "Alterar";
+            if (!btnSalvar.Enabled)
+                btnSalvar.Enabled = true;
         }
         private void btnExcluir_Click(object sender, EventArgs e)
         {

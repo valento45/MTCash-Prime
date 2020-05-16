@@ -26,7 +26,15 @@ namespace MtCash
             {
                 UsuarioLogado = user;
                 Permissoes_Usuario();
+                AjustarIcons();
+                    
             }
+        }
+
+        private void AjustarIcons()
+        {
+            this.BackColor = Color.White;
+            this.BackgroundImage = Image.FromFile(@"C:\Users\MRX\Pictures\Images\84d.jpg");
         }
         private void Permissoes_Usuario()
         {
@@ -34,6 +42,7 @@ namespace MtCash
             financeiroToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Financeiro);
             clienteToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Cliente);
             investimentosToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Investimento);
+            estoqueToolStripMenuItem.Visible = Modulo.CanAccess(Modulos.Estoque);
         }
 
         private void ordemServiçoToolStripMenuItem_Click(object sender, EventArgs e)

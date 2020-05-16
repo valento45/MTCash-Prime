@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CLIENTE>
+  <registro>
+    <CODIGO>27</CODIGO>
+    <NOME>ggggg</NOME>
+    <TIPODOCUMENTO></TIPODOCUMENTO>
+    <DOCUMENTO></DOCUMENTO>
+    <CPFCNJP>   .   .   -</CPFCNJP>
+    <DATANASCIMENTO>1900-01-01T00:00:00</DATANASCIMENTO>
+    <TIPOPESSOA></TIPOPESSOA>
+  </registro>
+</CLIENTE>

@@ -160,5 +160,41 @@
   <ItemGroup>
     <None Include="Resources\chart.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgFinanceiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\estoque 2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\investimento2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Financeiro.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tools2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dinheiropng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\contasreceberpng.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iii.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clientes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgConProduto1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\imgCadUsuario.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

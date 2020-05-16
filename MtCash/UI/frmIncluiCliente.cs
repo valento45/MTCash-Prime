@@ -47,6 +47,7 @@ namespace MtCash.UI
                 txtDataNasc.Text = Client_.Data_Nascimento.ToString();
                 FillGridEnderecoClient(Client_.Id_Pessoa);
                 FillGridContatoClient(Client_.Id_Pessoa);
+                btnNovo.Visible = false;
             }
         }
         private void button1_Click(object sender, EventArgs e)
@@ -278,6 +279,32 @@ namespace MtCash.UI
             Client_ = null;
             if (alterar)
                 DesabilitaHabilitaAlteracao();
+            NewClient();
+        }
+
+        private void NewClient()
+        {
+            Client_ = null;
+            //registro
+            txtNome.Clear();
+            cmbTipoDocumento.SelectedIndex = -1;
+            txtDocumento.Clear();
+            txtCpf.Clear();
+            txtDataNasc.Clear();
+            cmbTipoPessoa.SelectedIndex = -1; 
+
+            //endereco
+            txtUf.Text = "";
+            txtCidade.ResetText();
+            txtEndereco.Clear();
+            txtNumero.Clear();
+            txtComplemento.Clear();
+            dgvEndereco.Rows.Clear();
+
+            //contato
+            txtTelefone.Clear();
+            txtEmail.Clear();
+            dgvContato.Rows.Clear();
         }
     }
 }

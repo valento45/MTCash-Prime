@@ -72,7 +72,6 @@
             this.txtNome = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnAcao = new System.Windows.Forms.Button();
-            this.btnExportaXml = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageRegistro.SuspendLayout();
@@ -512,19 +511,6 @@
             this.btnAcao.UseVisualStyleBackColor = false;
             this.btnAcao.Click += new System.EventHandler(this.button1_Click);
             // 
-            // btnExportaXml
-            // 
-            this.btnExportaXml.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExportaXml.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.btnExportaXml.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btnExportaXml.Location = new System.Drawing.Point(404, 410);
-            this.btnExportaXml.Name = "btnExportaXml";
-            this.btnExportaXml.Size = new System.Drawing.Size(88, 23);
-            this.btnExportaXml.TabIndex = 14;
-            this.btnExportaXml.Text = "Exportar XML";
-            this.btnExportaXml.UseVisualStyleBackColor = false;
-            this.btnExportaXml.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
             // btnNovo
             // 
             this.btnNovo.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
@@ -545,7 +531,6 @@
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(853, 443);
             this.Controls.Add(this.btnNovo);
-            this.Controls.Add(this.btnExportaXml);
             this.Controls.Add(this.btnAcao);
             this.Controls.Add(this.tabControl1);
             this.Name = "frmIncluiCliente";
@@ -605,7 +590,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colUF;
         private System.Windows.Forms.DataGridViewTextBoxColumn colCidade;
         private System.Windows.Forms.Button btnAcao;
-        private System.Windows.Forms.Button btnExportaXml;
         private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Button btnAddContato;

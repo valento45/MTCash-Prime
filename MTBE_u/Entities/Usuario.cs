@@ -126,7 +126,7 @@ namespace MTBE_u
             cmd.Parameters.AddWithValue(@"senha", usuario.Senha);
             
             DataTable dt = new DataTable();
-            dt = Access.ExecuteReader(cmd)?.Tables[0];
+            dt = Access.ExecuteReader(cmd).Tables[0];
 
             //conseguiu logar
             if (dt.Rows.Count > 0)
