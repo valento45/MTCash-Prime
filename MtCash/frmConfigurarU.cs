@@ -1,5 +1,6 @@
 ﻿using MTBE_u;
 using MTBE_u.Entities.Enums;
+using MtCash;
 using MtCash.BusinessEntities;
 using System;
 using System.Collections.Generic;
@@ -10,10 +11,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Aux_Mt;
 namespace MT_u.Usuario
 {
-    public partial class frmConfigurarU : Form
+    public partial class frmConfigurarU : frmDefault
     {
         MTBE_u.Usuario user;
         bool alterar = false;

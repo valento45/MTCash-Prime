@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MtCash", "MtCash\MtCash.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MT_u", "MT_u\MT_u.csproj", "{4DFF31AC-56AB-46D0-87E4-9238AF1320CB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aux_Mt", "Aux_Mt\Aux_Mt.csproj", "{64C593DD-2800-4A60-B82E-D7DF87747A1C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{4DFF31AC-56AB-46D0-87E4-9238AF1320CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4DFF31AC-56AB-46D0-87E4-9238AF1320CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4DFF31AC-56AB-46D0-87E4-9238AF1320CB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64C593DD-2800-4A60-B82E-D7DF87747A1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64C593DD-2800-4A60-B82E-D7DF87747A1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64C593DD-2800-4A60-B82E-D7DF87747A1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64C593DD-2800-4A60-B82E-D7DF87747A1C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

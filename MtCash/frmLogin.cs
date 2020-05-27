@@ -13,10 +13,11 @@ using MTBE_u.Entities.Enums;
 using MTBE_u.Exceptions;
 using MtCash;
 using MtCash.BusinessEntities;
+using Aux_Mt;
 
 namespace MT_u
 {
-    public partial class frmLogin : Form
+    public partial class frmLogin : frmDefault
     {
         public frmLogin()
         {

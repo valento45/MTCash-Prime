@@ -28,19 +28,25 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Incluir / Editar");
-            System.Windows.Forms.TreeNode treeNode30 = new System.Windows.Forms.TreeNode("Permissões");
-            System.Windows.Forms.TreeNode treeNode31 = new System.Windows.Forms.TreeNode("Configurações");
-            System.Windows.Forms.TreeNode treeNode32 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
-            treeNode29,
-            treeNode30,
-            treeNode31});
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Incluir / Editar");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Permissões");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Configurações");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Usuario", new System.Windows.Forms.TreeNode[] {
+            treeNode1,
+            treeNode2,
+            treeNode3});
             this.pnlFundo = new System.Windows.Forms.Panel();
             this.pnlItems = new System.Windows.Forms.Panel();
             this.pnlPrincipal = new System.Windows.Forms.Panel();
             this.pnlPermissoes = new System.Windows.Forms.Panel();
             this.btnSalvarPermissoes = new System.Windows.Forms.Button();
             this.pnlPermissoes2 = new System.Windows.Forms.Panel();
+            this.dgvPermissoes = new System.Windows.Forms.DataGridView();
+            this.colModulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIncluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colAlterar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colExcluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.colRelatorio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.lblUsuario = new System.Windows.Forms.Label();
             this.btnEditPermissoes = new System.Windows.Forms.Button();
@@ -97,17 +103,12 @@
             this.btnEditar = new System.Windows.Forms.Button();
             this.pnlConfiguracoes = new System.Windows.Forms.Panel();
             this.treeView1 = new System.Windows.Forms.TreeView();
-            this.dgvPermissoes = new System.Windows.Forms.DataGridView();
-            this.colModulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.colIncluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colAlterar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colExcluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.colRelatorio = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.pnlFundo.SuspendLayout();
             this.pnlItems.SuspendLayout();
             this.pnlPrincipal.SuspendLayout();
             this.pnlPermissoes.SuspendLayout();
             this.pnlPermissoes2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoesUsuario)).BeginInit();
             this.pnlIncluirEditar.SuspendLayout();
             this.tabIncluirEditar.SuspendLayout();
@@ -116,7 +117,6 @@
             this.pageConsult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).BeginInit();
             this.pnlConfiguracoes.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoes)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlFundo
@@ -199,6 +199,62 @@
             this.pnlPermissoes2.Size = new System.Drawing.Size(586, 125);
             this.pnlPermissoes2.TabIndex = 25;
             // 
+            // dgvPermissoes
+            // 
+            this.dgvPermissoes.AllowUserToAddRows = false;
+            this.dgvPermissoes.AllowUserToDeleteRows = false;
+            this.dgvPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dgvPermissoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvPermissoes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dgvPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPermissoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colModulo,
+            this.colIncluir,
+            this.colAlterar,
+            this.colExcluir,
+            this.colRelatorio});
+            this.dgvPermissoes.Location = new System.Drawing.Point(6, 21);
+            this.dgvPermissoes.Name = "dgvPermissoes";
+            this.dgvPermissoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvPermissoes.Size = new System.Drawing.Size(575, 95);
+            this.dgvPermissoes.TabIndex = 4;
+            // 
+            // colModulo
+            // 
+            this.colModulo.HeaderText = "Módulos";
+            this.colModulo.Name = "colModulo";
+            this.colModulo.ReadOnly = true;
+            // 
+            // colIncluir
+            // 
+            this.colIncluir.HeaderText = "Incluir";
+            this.colIncluir.Name = "colIncluir";
+            this.colIncluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colIncluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colAlterar
+            // 
+            this.colAlterar.HeaderText = "Alterar";
+            this.colAlterar.Name = "colAlterar";
+            this.colAlterar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colAlterar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colExcluir
+            // 
+            this.colExcluir.HeaderText = "Excluir";
+            this.colExcluir.Name = "colExcluir";
+            this.colExcluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colExcluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // colRelatorio
+            // 
+            this.colRelatorio.HeaderText = "Relatórios";
+            this.colRelatorio.Name = "colRelatorio";
+            this.colRelatorio.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.colRelatorio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -220,6 +276,7 @@
             // 
             // btnEditPermissoes
             // 
+            this.btnEditPermissoes.BackColor = System.Drawing.SystemColors.Window;
             this.btnEditPermissoes.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnEditPermissoes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditPermissoes.Location = new System.Drawing.Point(9, 168);
@@ -227,7 +284,7 @@
             this.btnEditPermissoes.Size = new System.Drawing.Size(105, 22);
             this.btnEditPermissoes.TabIndex = 24;
             this.btnEditPermissoes.Text = "Editar Permissões";
-            this.btnEditPermissoes.UseVisualStyleBackColor = true;
+            this.btnEditPermissoes.UseVisualStyleBackColor = false;
             this.btnEditPermissoes.Click += new System.EventHandler(this.btnEditPermissoes_Click);
             // 
             // dgvPermissoesUsuario
@@ -237,6 +294,7 @@
             this.dgvPermissoesUsuario.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvPermissoesUsuario.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvPermissoesUsuario.BackgroundColor = System.Drawing.Color.White;
             this.dgvPermissoesUsuario.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPermissoesUsuario.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.colId,
@@ -295,7 +353,7 @@
             this.colDataNasc.HeaderText = "Data Nasc.";
             this.colDataNasc.Name = "colDataNasc";
             this.colDataNasc.ReadOnly = true;
-            this.colDataNasc.Width = 79;
+            this.colDataNasc.Width = 86;
             // 
             // dataGridViewTextBoxColumn6
             // 
@@ -347,7 +405,7 @@
             // 
             this.dataGridViewCheckBoxColumn1.HeaderText = "                ";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
-            this.dataGridViewCheckBoxColumn1.Width = 17;
+            this.dataGridViewCheckBoxColumn1.Width = 61;
             // 
             // pnlIncluirEditar
             // 
@@ -719,6 +777,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnExcluir.BackColor = System.Drawing.SystemColors.Window;
             this.btnExcluir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Location = new System.Drawing.Point(108, 302);
@@ -726,7 +785,7 @@
             this.btnExcluir.Size = new System.Drawing.Size(88, 22);
             this.btnExcluir.TabIndex = 47;
             this.btnExcluir.Text = "E&xcluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnEditar
@@ -758,75 +817,19 @@
             | System.Windows.Forms.AnchorStyles.Left)));
             this.treeView1.Location = new System.Drawing.Point(3, 3);
             this.treeView1.Name = "treeView1";
-            treeNode29.Name = "NoUincluir";
-            treeNode29.Text = "Incluir / Editar";
-            treeNode30.Name = "NoUPermissoes";
-            treeNode30.Text = "Permissões";
-            treeNode31.Name = "NoUConfiguracoes";
-            treeNode31.Text = "Configurações";
-            treeNode32.Name = "NoU";
-            treeNode32.Text = "Usuario";
+            treeNode1.Name = "NoUincluir";
+            treeNode1.Text = "Incluir / Editar";
+            treeNode2.Name = "NoUPermissoes";
+            treeNode2.Text = "Permissões";
+            treeNode3.Name = "NoUConfiguracoes";
+            treeNode3.Text = "Configurações";
+            treeNode4.Name = "NoU";
+            treeNode4.Text = "Usuario";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode32});
+            treeNode4});
             this.treeView1.Size = new System.Drawing.Size(156, 400);
             this.treeView1.TabIndex = 0;
             this.treeView1.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.treeView1_NodeMouseDoubleClick);
-            // 
-            // dgvPermissoes
-            // 
-            this.dgvPermissoes.AllowUserToAddRows = false;
-            this.dgvPermissoes.AllowUserToDeleteRows = false;
-            this.dgvPermissoes.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvPermissoes.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvPermissoes.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dgvPermissoes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPermissoes.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.colModulo,
-            this.colIncluir,
-            this.colAlterar,
-            this.colExcluir,
-            this.colRelatorio});
-            this.dgvPermissoes.Location = new System.Drawing.Point(6, 21);
-            this.dgvPermissoes.Name = "dgvPermissoes";
-            this.dgvPermissoes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPermissoes.Size = new System.Drawing.Size(575, 95);
-            this.dgvPermissoes.TabIndex = 4;
-            // 
-            // colModulo
-            // 
-            this.colModulo.HeaderText = "Módulos";
-            this.colModulo.Name = "colModulo";
-            this.colModulo.ReadOnly = true;
-            // 
-            // colIncluir
-            // 
-            this.colIncluir.HeaderText = "Incluir";
-            this.colIncluir.Name = "colIncluir";
-            this.colIncluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colIncluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colAlterar
-            // 
-            this.colAlterar.HeaderText = "Alterar";
-            this.colAlterar.Name = "colAlterar";
-            this.colAlterar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colAlterar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colExcluir
-            // 
-            this.colExcluir.HeaderText = "Excluir";
-            this.colExcluir.Name = "colExcluir";
-            this.colExcluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colExcluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // colRelatorio
-            // 
-            this.colRelatorio.HeaderText = "Relatórios";
-            this.colRelatorio.Name = "colRelatorio";
-            this.colRelatorio.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.colRelatorio.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // frmConfigurarU
             // 
@@ -845,6 +848,7 @@
             this.pnlPermissoes.ResumeLayout(false);
             this.pnlPermissoes2.ResumeLayout(false);
             this.pnlPermissoes2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoes)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoesUsuario)).EndInit();
             this.pnlIncluirEditar.ResumeLayout(false);
             this.tabIncluirEditar.ResumeLayout(false);
@@ -855,7 +859,6 @@
             this.pageConsult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuario)).EndInit();
             this.pnlConfiguracoes.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPermissoes)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -77,6 +77,12 @@
   <ItemGroup>
     <Folder Include="Business\" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Aux_Mt\Aux_Mt.csproj">
+      <Project>{64c593dd-2800-4a60-b82e-d7df87747a1c}</Project>
+      <Name>Aux_Mt</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

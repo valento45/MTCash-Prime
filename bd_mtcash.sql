@@ -2,7 +2,7 @@
 --GO
 --drop database bd_mtcash;
 --GO
-
+	
 CREATE database bd_mtcash;
 GO
 
@@ -161,14 +161,16 @@ entidade_pai int null
 );
 go
 
-create table mtcash.u_tb_plano_conta(
-id_plano_conta int identity not null primary key,
-id_categoria int not null,
-id_despesa int not null,
-foreign key(id_categoria)
-references mtcash.u_tb_categoria(id_categoria),
-foreign key(id_despesa)
-references mtcash.u_tb_despesa(id_despesa)
+
+
+
+create table mtcash.u_tb_receita(
+id_receita int identity not null primary key,
+descricao varchar(100) null,
+data_inicio datetime null,
+data_recibo datetime null,
+pagante varchar(100) not null,
+valor_receita decimal(8,2) not null
 );
 go
 
@@ -183,27 +185,13 @@ references mtcash.u_tb_receita(id_receita)
 );
 go
 
-create table mtcash.u_tb_receita(
-id_receita int identity not null primary key,
-descricao varchar(100) null,
-data_inicio datetime null,
-data_recibo datetime null,
-pagante varchar(100) not null,
-valor_receita decimal(8,2) not null,
-desconto decimal(8,2) null
-);
-go
-
 create table mtcash.u_tb_recibo(
 id_recibo int identity not null primary key,
-id_receita int not null,
 id_usuario int not null,
 data_recibo datetime not null,
 valor_total decimal(8,2) not null
 foreign key(id_usuario)
-references mtcash.tb_usuario(id_usuario),
-foreign key(id_receita)
-references mtcash.u_tb_receita(id_receita)
+references mtcash.tb_usuario(id_usuario)
 );
 go
 
@@ -211,11 +199,12 @@ create table mtcash.u_tb_item_recibo(
 id_item_recibo int identity not null primary key,
 id_recibo int not null,
 id_receita int not null,
-valor_receita decimal(8,2) not null
-foreign key (id_recibo)
-references mtcash.u_tb_recibo(id_recibo),
+valor_receita decimal(8,2) not null,
+desconto decimal(8,2) null
 foreign key(id_receita)
-references mtcash.u_tb_receita(id_receita)
+references mtcash.u_tb_receita(id_receita),
+foreign key(id_recibo)
+references mtcash.u_tb_recibo(id_recibo)
 );
 go
 
@@ -246,6 +235,18 @@ data_vencimento datetime  null,
 favorecido varchar(100) null,
 valor_despesa decimal(8,2) not null,
 desconto decimal(8,2) null
+);
+go
+
+
+create table mtcash.u_tb_plano_conta(
+id_plano_conta int identity not null primary key,
+id_categoria int not null,
+id_despesa int not null,
+foreign key(id_categoria)
+references mtcash.u_tb_categoria(id_categoria),
+foreign key(id_despesa)
+references mtcash.u_tb_despesa(id_despesa)
 );
 go
 

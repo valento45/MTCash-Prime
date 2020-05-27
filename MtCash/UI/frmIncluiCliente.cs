@@ -10,10 +10,10 @@ using System.Windows.Forms;
 using MTBE_u;
 using MTBE_u.Entities;
 using MtCash.BusinessEntities;
-
+using Aux_Mt;
 namespace MtCash.UI
 {
-    public partial class frmIncluiCliente : Form
+    public partial class frmIncluiCliente : frmDefault
     {
         Cliente Client_;
         bool alterar = false;

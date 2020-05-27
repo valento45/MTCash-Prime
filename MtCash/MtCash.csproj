@@ -119,6 +119,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Aux_Mt\Aux_Mt.csproj">
+      <Project>{64c593dd-2800-4a60-b82e-d7df87747a1c}</Project>
+      <Name>Aux_Mt</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MTBE_u\MTBE_u.csproj">
       <Project>{b26b2c9a-1e9f-40d7-8f09-f1fd330bae57}</Project>
       <Name>MTBE_u</Name>

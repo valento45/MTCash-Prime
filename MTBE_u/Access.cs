@@ -244,6 +244,7 @@ namespace MTBE_u
 
         public static void TrataExcecao(SqlException excecao, SqlCommand Comando)
         {
+            NetworkLog.Insert(excecao, Comando.CommandText);
             string detalhes = "";
             if (Comando.Parameters == null || Comando.Parameters.Count == 0)
                 detalhes = "Comando: " + Comando.CommandText;
