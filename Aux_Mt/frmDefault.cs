@@ -17,22 +17,9 @@ namespace Aux_Mt
             InitializeComponent();
         }
 
-        private void AjustarBotoes(Form frm)
-        {
-            //Form.ControlCollection controls = new ControlCollection(frm);
-            //foreach(var control in controls.Owner.Controls)
-            //{
-            //    if(control is TextBox)
-            //    {
-            //        ((TextBox)control).BackColor = Color.MidnightBlue;
-
-            //    }
-            //}
-
-        }
-
         private void GetAllControls(Control container)
         {
+            #region OLD
             //foreach (Control c in container.Controls)
             //{
             //    if (c is Button)
@@ -57,10 +44,20 @@ namespace Aux_Mt
             //            GetAllControls(c.Controls[i]);
             //        }
             //}
+            #endregion
 
+            AplicarThemes(container);
+            for (int i = 0; i < container.Controls.Count; i++)
+            {
+                GetAllControls(container.Controls[i]);
+            }
+        }
+
+        private void AplicarThemes(Control container)
+        {
             if (container is Button)
             {
-                ((Button)container).BackColor = Color.MidnightBlue;
+                ((Button)container).BackColor = Color.White;
             }
             else if (container is TextBox)
             {
@@ -74,12 +71,8 @@ namespace Aux_Mt
             {
                 ((DataGridView)container).BackgroundColor = Color.White;
             }
-
-            for (int i = 0; i < container.Controls.Count; i++)
-            {
-                GetAllControls(container.Controls[i]);
-            }
         }
+
         private void frmDefault_Load(object sender, EventArgs e)
         {
             GetAllControls(this);
