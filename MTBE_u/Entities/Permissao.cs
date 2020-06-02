@@ -16,7 +16,7 @@ namespace MTBE_u.Entities
         public string Permissoes { get; set; }
         public Modulos Modulo { get; set; }
         public int Id_Usuario { get; set; }
-        public List<Permissao> ListPermissoes_ { get; set; } 
+        public List<Permissao> ListPermissoes_ { get; set; }
 
         public Permissao(DataRow dr)
         {
@@ -25,6 +25,14 @@ namespace MTBE_u.Entities
             Modulo = (Modulos)((Char)dr["modulo"]);
             Id_Usuario = Convert.ToInt32(dr["id_usuario"]);
         }
+        public static List<Permissao> GetByIdUser(int codigo)
+        {
+            List<Permissao> result = new List<Permissao>();
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM tb_permissao_usuario WHERE id_usuario = '{codigo}'");
+            foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Permissao(x));
 
+            return result;
+        }
     }
 }

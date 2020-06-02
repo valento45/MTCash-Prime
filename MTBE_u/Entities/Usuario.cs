@@ -116,7 +116,12 @@ namespace MTBE_u
         }
         public void Delete_User(Usuario usuario)
         {
-            SqlCommand cmd = new SqlCommand($"delete from mtcash.tb_usuario where id_usuario ={usuario.Id_Pessoa}; ");
+            SqlCommand cmd = new SqlCommand();
+            
+            cmd.CommandText = $"delete from mtcash.tb_permissao_usuario where id_usuario ={usuario.Id_Pessoa};";
+            Access.ExecuteNonQuery(cmd);
+
+            cmd.CommandText = $"delete from mtcash.tb_usuario where id_usuario ={usuario.Id_Pessoa};";
             Access.ExecuteNonQuery(cmd);
         }
         public Usuario Logar(Usuario usuario)

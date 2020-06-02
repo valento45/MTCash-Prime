@@ -54,6 +54,12 @@
     <Compile Include="frmConfigurarU.Designer.cs">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmErro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmErro.Designer.cs">
+      <DependentUpon>FrmErro.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -82,6 +88,9 @@
     </Compile>
     <EmbeddedResource Include="frmConfigurarU.resx">
       <DependentUpon>frmConfigurarU.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmErro.resx">
+      <DependentUpon>FrmErro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
@@ -199,6 +208,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\imgCadUsuario.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\close.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

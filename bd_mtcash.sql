@@ -19,7 +19,7 @@ pais varchar(15) null
 );
 go
 
-create table mtcash.tb_cidade(
+create table mtcash.tb_cidade(	
 id_cidade int identity not null primary key,
 cidade varchar(30) not null,
 id_uf int not null

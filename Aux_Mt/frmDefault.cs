@@ -33,29 +33,51 @@ namespace Aux_Mt
 
         private void GetAllControls(Control container)
         {
-            foreach (Control c in container.Controls)
+            //foreach (Control c in container.Controls)
+            //{
+            //    if (c is Button)
+            //    {
+            //        ((Button)c).BackColor = Color.MidnightBlue;
+            //    }
+            //    else if (c is TextBox)
+            //    {
+            //        ((TextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
+            //    }
+            //    else if (c is MaskedTextBox)
+            //    {
+            //        ((MaskedTextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
+            //    }
+            //    else if (c is DataGridView)
+            //    {
+            //        ((DataGridView)c).BackgroundColor = Color.White;
+            //    }
+            //    else
+            //        for (int i = 0; i < c.Controls.Count; i++)
+            //        {
+            //            GetAllControls(c.Controls[i]);
+            //        }
+            //}
+
+            if (container is Button)
             {
-                if (c is Button)
-                {
-                    ((Button)c).BackColor = Color.MidnightBlue;
-                }
-                else if (c is TextBox)
-                {
-                    ((TextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
-                }
-                else if (c is MaskedTextBox)
-                {
-                    ((MaskedTextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
-                }
-                else if (c is DataGridView)
-                {
-                    ((DataGridView)c).BackgroundColor = Color.White;
-                }
-                else
-                    for (int i = 0; i < c.Controls.Count; i++)
-                    {
-                        GetAllControls(c.Controls[i]);
-                    }
+                ((Button)container).BackColor = Color.MidnightBlue;
+            }
+            else if (container is TextBox)
+            {
+                ((TextBox)container).Font = new Font("Arial", 9, FontStyle.Regular);
+            }
+            else if (container is MaskedTextBox)
+            {
+                ((MaskedTextBox)container).Font = new Font("Arial", 9, FontStyle.Regular);
+            }
+            else if (container is DataGridView)
+            {
+                ((DataGridView)container).BackgroundColor = Color.White;
+            }
+
+            for (int i = 0; i < container.Controls.Count; i++)
+            {
+                GetAllControls(container.Controls[i]);
             }
         }
         private void frmDefault_Load(object sender, EventArgs e)
