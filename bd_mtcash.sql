@@ -156,12 +156,10 @@ create table mtcash.u_tb_categoria(
 id_categoria int identity not null primary key,
 categoria varchar(50) null,
 tipo_categoria varchar(20) null,
-tipo_plano varchar(10) not null,
+tipo_plano varchar(10) null,
 entidade_pai int null
 );
 go
-
-
 
 
 create table mtcash.u_tb_receita(

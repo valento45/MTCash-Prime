@@ -16,6 +16,11 @@ namespace MTBE_u.EntitiesCash
         public int entidade_pai { get; private set; }
 
 
+        public Categoria(DataRow row)
+        {
+
+        }
+
         public  void InsertCategoria()
         {
             SqlCommand cmd = new SqlCommand("INSERT INTO mtcash.u_tb_categoria (categoria, tipo_categoria, entidade_pai) values (@categoria, @tipo_categoria, @entidade_pai)");
@@ -30,6 +35,11 @@ namespace MTBE_u.EntitiesCash
             Access.ExecuteNonQuery(cmd);
         }
 
-
+        //public static List<Categoria> GetAllCateogiras()
+        //{
+        //    List<Categoria> result = new List<Categoria>();
+        //    SqlCommand cmd = new SqlCommand("select * from mtcash.u_tb_categoria");
+        //    foreach()
+        //}
     }
 }
