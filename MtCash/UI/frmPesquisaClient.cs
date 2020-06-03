@@ -1,4 +1,5 @@
-﻿using MTBE_u.Entities;
+﻿using Aux_Mt;
+using MTBE_u.Entities;
 using MtCash.BusinessEntities;
 using System;
 using System.Collections.Generic;
@@ -12,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MtCash.UI
 {
-    public partial class frmPesquisaClient : Form
+    public partial class frmPesquisaClient : frmDefault
     {
         public frmPesquisaClient()
         {

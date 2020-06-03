@@ -119,9 +119,9 @@ namespace MtCash.UI
 
                         Cliente.UpdateClient(Client_);
 
+                        EnderecoCliente.DeleteEnderecoClient(Client_.Id_Pessoa);
                         if (dgvEndereco.RowCount > 0)
-                        {
-                            EnderecoCliente.DeleteEnderecoClient(Client_.Id_Pessoa);
+                        {                            
                             EnderecoCliente enderecoCliente = new EnderecoCliente();                            
                             for (int i = 0; i < dgvEndereco.RowCount; i++)
                             {
@@ -134,10 +134,9 @@ namespace MtCash.UI
                                 EnderecoCliente.InsertEnderecoClient(enderecoCliente, Client_.Id_Pessoa);
                             }
                         }
-
+                        ContatoCliente.DeleteContatoClient(Client_.Id_Pessoa);
                         if (dgvContato.RowCount > 0)
-                        {
-                            ContatoCliente.DeleteContatoClient(Client_.Id_Pessoa);
+                        {                            
                             ContatoCliente contatoCliente = new ContatoCliente();
                             for (int i = 0; i < dgvContato.RowCount; i++)
                             {
@@ -305,6 +304,18 @@ namespace MtCash.UI
             txtTelefone.Clear();
             txtEmail.Clear();
             dgvContato.Rows.Clear();
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if(dgvEndereco.RowCount > 0)
+                dgvEndereco.Rows.Remove(dgvEndereco.SelectedRows[0]);
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if(dgvContato.RowCount > 0)
+                dgvContato.Rows.Remove(dgvContato.SelectedRows[0]);
         }
     }
 }

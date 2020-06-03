@@ -73,6 +73,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnAcao = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageRegistro.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -138,6 +140,7 @@
             // 
             // tabEndereco
             // 
+            this.tabEndereco.Controls.Add(this.button1);
             this.tabEndereco.Controls.Add(this.btnAddEnd);
             this.tabEndereco.Controls.Add(this.txtCidade);
             this.tabEndereco.Controls.Add(this.label11);
@@ -265,6 +268,7 @@
             this.colUF,
             this.colCidade});
             this.dgvEndereco.Location = new System.Drawing.Point(6, 66);
+            this.dgvEndereco.MultiSelect = false;
             this.dgvEndereco.Name = "dgvEndereco";
             this.dgvEndereco.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvEndereco.Size = new System.Drawing.Size(783, 120);
@@ -307,6 +311,7 @@
             // 
             // tabContato
             // 
+            this.tabContato.Controls.Add(this.button2);
             this.tabContato.Controls.Add(this.btnAddContato);
             this.tabContato.Controls.Add(this.txtTelefone);
             this.tabContato.Controls.Add(this.label13);
@@ -524,6 +529,30 @@
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button1.Location = new System.Drawing.Point(607, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(88, 23);
+            this.button1.TabIndex = 13;
+            this.button1.Text = "Remover";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // button2
+            // 
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.button2.Location = new System.Drawing.Point(498, 37);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(88, 23);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Remover";
+            this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
             // frmIncluiCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -599,5 +628,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn colEmail;
         private System.Windows.Forms.DataGridViewTextBoxColumn colTelefone;
         private System.Windows.Forms.Button btnNovo;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
     }
 }
