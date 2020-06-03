@@ -31,10 +31,10 @@ namespace MT_u.Usuario
             {
                 cmbUserAtv.SelectedIndex = cmbTipo.SelectedIndex = 0;
                 btnNovo.Enabled = btnSalvar.Enabled = Modulo.CanInclude(Login.User, Modulos.Usuario);
-                btnEditar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
+                btnEditPermissoes.Enabled = btnEditar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
                 btnExcluir.Enabled = Modulo.CanExclude(Login.User, Modulos.Usuario);
                 if (!btnSalvar.Enabled)
-                    btnSalvar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);
+                    btnSalvar.Enabled = Modulo.CanUpdate(Login.User, Modulos.Usuario);                
             }
         }        
 

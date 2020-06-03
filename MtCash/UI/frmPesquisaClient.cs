@@ -1,5 +1,7 @@
 ﻿using Aux_Mt;
+using MTBE_u;
 using MTBE_u.Entities;
+using MTBE_u.Entities.Enums;
 using MtCash.BusinessEntities;
 using System;
 using System.Collections.Generic;
@@ -18,6 +20,14 @@ namespace MtCash.UI
         public frmPesquisaClient()
         {
             InitializeComponent();
+
+            if (Login.User != null)
+            {
+                btnEdit.Enabled = Modulo.CanUpdate(Login.User, Modulos.Cliente);
+                btnExcluir.Enabled = Modulo.CanExclude(Login.User, Modulos.Cliente);
+                btnExportXml.Enabled = btnPrint.Enabled = Modulo.CanRelatorio(Login.User, Modulos.Cliente);
+            }
+
             foreach (var item in FuncoesAuxiliares.GetFiltros)
                 cmbFiltro.Items.Add(item);
 

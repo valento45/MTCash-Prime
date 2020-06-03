@@ -72,6 +72,8 @@ GO
  );
  go
 
+ select * from mtcash.tb_permissao_usuario where id_usuario = 2
+
 create table mtcash.tb_endereco_usuario(
 id_endereco_usuario int identity not null primary key,
 uf varchar(2) not null,
