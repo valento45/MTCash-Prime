@@ -54,6 +54,7 @@
   <ItemGroup>
     <Compile Include="Access.cs" />
     <Compile Include="EntitiesCash\Categoria.cs" />
+    <Compile Include="EntitiesCash\Despesa.cs" />
     <Compile Include="EntitiesCash\IConta.cs" />
     <Compile Include="EntitiesCash\PlanoConta.cs" />
     <Compile Include="EntitiesCash\Enums\TipoConta.cs" />

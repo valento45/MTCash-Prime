@@ -162,15 +162,14 @@ tipo_plano varchar(10) null,
 entidade_pai int null
 );
 go
-select * from mtcash.u_tb_categoria 
 
 create table mtcash.u_tb_receita(
 id_receita int identity not null primary key,
 descricao varchar(100) null,
-data_inicio datetime null,
-data_recibo datetime null,
-pagante varchar(100) not null,
-valor_receita decimal(8,2) not null
+valor_receita decimal(8,2) not null,
+data_vencimento datetime not null,
+periodo varchar(30) null,
+desconto decimal(8,2) null
 );
 go
 
@@ -229,12 +228,12 @@ go
 
 create table mtcash.u_tb_despesa(
 id_despesa int identity not null primary key,
-descricao varchar(100)  null,
-data_inicio datetime  null,
-data_vencimento datetime  null,
-favorecido varchar(100) null,
+descricao varchar(100) null,
 valor_despesa decimal(8,2) not null,
-desconto decimal(8,2) null
+data_vencimento datetime not null,
+periodo varchar(30) null,
+desconto decimal(8,2) null,
+paga varchar(5) null
 );
 go
 

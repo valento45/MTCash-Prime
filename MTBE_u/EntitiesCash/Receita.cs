@@ -15,28 +15,26 @@ namespace MTBE_u.EntitiesCash
         {
             Id = Convert.ToInt32(dr["id_receita"]);
             Descricao = dr["descricao"].ToString();
-            Data_Inicio = dr["data_inicio"] != null ? (DateTime?)dr["data_inicio"] : (DateTime?)null;
-            Data_Vecimento = dr["data_recibo"] != null ? (DateTime?)dr["data_recibo"] : (DateTime?)null;
-            Favorecido_Pagante = dr["pagante"].ToString();
             Valor = Convert.ToDecimal(dr["valor_receita"]);
+            Data_Vencimento = Convert.ToDateTime(dr["data_vencimento"]);
+            Periodo = dr["periodo"] != null ? dr["periodo"].ToString() : "";
+            Desconto = dr["desconto"] != null ? Convert.ToDecimal(dr["desconto"]) : 0;
             //Desconto = Convert.ToDecimal(dr["desconto"]);
         }
-        public override void Insert()
+        public void Insert(Receita receita)
         {
-            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, data_inicio, data_recibo, pagante, valor_receita) values (" +
-                $"'{Descricao}', '{Data_Inicio}', '{Data_Vecimento}', '{Valor}';");
+            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, valor_receita, data_vencimento, periodo, desconto) values (" +
+                $"'{receita.Descricao}', '{receita.Valor}', '{receita.Data_Vencimento}', '{receita.Periodo}', '{receita.Desconto}';");
             Access.ExecuteNonQuery(cmd);
         }
 
-        public override void Update(Conta conta)
+        public void Update(Receita receita)
         {
-            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_receita set descricao = @descricao, data_inicio = @data_inicio, data_recibo = @data_recibo, pagante = @pagante, valor_receita = @valor_receita where id_receita = @id_receita");
-            cmd.Parameters.AddWithValue(@"id_receita", Id);
-            cmd.Parameters.AddWithValue(@"descricao", Descricao);
-            cmd.Parameters.AddWithValue(@"data_inicio", Data_Inicio);
-            cmd.Parameters.AddWithValue(@"data_vencimento", Data_Vecimento);
-            cmd.Parameters.AddWithValue(@"pagante", Favorecido_Pagante);
-            cmd.Parameters.AddWithValue(@"valor_receita", Valor);
+            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_receita set descricao = @descricao, valor_receita = @valor_receita, data_vencimento = @data_vencimento, periodo = @periodo, desconto = @desconto where id_receita = @id_receita");
+            cmd.Parameters.AddWithValue(@"id_receita", receita.Id);
+            cmd.Parameters.AddWithValue(@"descricao", receita.Descricao);
+            cmd.Parameters.AddWithValue(@"valor_receita", receita.Valor);
+            cmd.Parameters.AddWithValue(@"data_vencimento", receita.Data_Vencimento);
             //cmd.Parameters.AddWithValue(@"desconto", Desconto);
             Access.ExecuteNonQuery(cmd);
 
@@ -52,7 +50,7 @@ namespace MTBE_u.EntitiesCash
             else
                 return new Receita();
         }
-        public override void Delete(Conta receita)
+        public void Delete(Receita receita)
         {
             SqlCommand cmd = new SqlCommand("delete from mtcash.u_tb_receita where id_receita = " + receita.Id);
             Access.ExecuteNonQuery(cmd);
