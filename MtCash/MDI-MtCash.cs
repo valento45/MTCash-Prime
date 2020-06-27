@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MT_u;
 using MT_u.Usuario;
 using MTBE_u;
 using MTBE_u.Entities;
@@ -117,6 +118,16 @@ namespace MtCash
                 frm.Focus();
             else
                 frm.Show();
+        }
+
+        private void planoDeContaToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmPlanoConta plano = new frmPlanoConta();
+            plano.MdiParent = this;
+            if (plano.Visible)
+                plano.Focus();
+            else
+                plano.Show();
         }
     }
 }

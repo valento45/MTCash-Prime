@@ -139,14 +139,14 @@
             // incluirToolStripMenuItem1
             // 
             this.incluirToolStripMenuItem1.Name = "incluirToolStripMenuItem1";
-            this.incluirToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.incluirToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem1.Text = "Incluir";
             this.incluirToolStripMenuItem1.Click += new System.EventHandler(this.incluirToolStripMenuItem1_Click);
             // 
             // pesquisarToolStripMenuItem1
             // 
             this.pesquisarToolStripMenuItem1.Name = "pesquisarToolStripMenuItem1";
-            this.pesquisarToolStripMenuItem1.Size = new System.Drawing.Size(124, 22);
+            this.pesquisarToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem1.Text = "Pesquisar";
             // 
             // ordemServiçoToolStripMenuItem
@@ -167,32 +167,33 @@
             this.planoDeContaToolStripMenuItem1,
             this.relatóriosToolStripMenuItem2});
             this.incluirToolStripMenuItem2.Name = "incluirToolStripMenuItem2";
-            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
+            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem2.Text = "Receitas";
             // 
             // incluirToolStripMenuItem3
             // 
             this.incluirToolStripMenuItem3.Name = "incluirToolStripMenuItem3";
-            this.incluirToolStripMenuItem3.Size = new System.Drawing.Size(153, 22);
+            this.incluirToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem3.Text = "Incluir";
             this.incluirToolStripMenuItem3.Click += new System.EventHandler(this.incluirToolStripMenuItem3_Click);
             // 
             // pesquisarToolStripMenuItem3
             // 
             this.pesquisarToolStripMenuItem3.Name = "pesquisarToolStripMenuItem3";
-            this.pesquisarToolStripMenuItem3.Size = new System.Drawing.Size(153, 22);
+            this.pesquisarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem3.Text = "Pesquisar";
             // 
             // planoDeContaToolStripMenuItem1
             // 
             this.planoDeContaToolStripMenuItem1.Name = "planoDeContaToolStripMenuItem1";
-            this.planoDeContaToolStripMenuItem1.Size = new System.Drawing.Size(153, 22);
+            this.planoDeContaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.planoDeContaToolStripMenuItem1.Text = "Plano de conta";
+            this.planoDeContaToolStripMenuItem1.Click += new System.EventHandler(this.planoDeContaToolStripMenuItem1_Click);
             // 
             // relatóriosToolStripMenuItem2
             // 
             this.relatóriosToolStripMenuItem2.Name = "relatóriosToolStripMenuItem2";
-            this.relatóriosToolStripMenuItem2.Size = new System.Drawing.Size(153, 22);
+            this.relatóriosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.relatóriosToolStripMenuItem2.Text = "Relatórios";
             // 
             // pesquisarToolStripMenuItem2
@@ -203,31 +204,31 @@
             this.planoDeContaToolStripMenuItem,
             this.relatóriosToolStripMenuItem3});
             this.pesquisarToolStripMenuItem2.Name = "pesquisarToolStripMenuItem2";
-            this.pesquisarToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
+            this.pesquisarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem2.Text = "Despesas";
             // 
             // incluirToolStripMenuItem4
             // 
             this.incluirToolStripMenuItem4.Name = "incluirToolStripMenuItem4";
-            this.incluirToolStripMenuItem4.Size = new System.Drawing.Size(153, 22);
+            this.incluirToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem4.Text = "Incluir";
             // 
             // pesquisarToolStripMenuItem4
             // 
             this.pesquisarToolStripMenuItem4.Name = "pesquisarToolStripMenuItem4";
-            this.pesquisarToolStripMenuItem4.Size = new System.Drawing.Size(153, 22);
+            this.pesquisarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem4.Text = "Pesquisar";
             // 
             // planoDeContaToolStripMenuItem
             // 
             this.planoDeContaToolStripMenuItem.Name = "planoDeContaToolStripMenuItem";
-            this.planoDeContaToolStripMenuItem.Size = new System.Drawing.Size(153, 22);
+            this.planoDeContaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.planoDeContaToolStripMenuItem.Text = "Plano de conta";
             // 
             // relatóriosToolStripMenuItem3
             // 
             this.relatóriosToolStripMenuItem3.Name = "relatóriosToolStripMenuItem3";
-            this.relatóriosToolStripMenuItem3.Size = new System.Drawing.Size(153, 22);
+            this.relatóriosToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.relatóriosToolStripMenuItem3.Text = "Relatórios";
             // 
             // relatóriosToolStripMenuItem
@@ -283,7 +284,7 @@
             // preferênciasToolStripMenuItem
             // 
             this.preferênciasToolStripMenuItem.Name = "preferênciasToolStripMenuItem";
-            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.preferênciasToolStripMenuItem.Text = "Preferências";
             // 
             // investimentosToolStripMenuItem

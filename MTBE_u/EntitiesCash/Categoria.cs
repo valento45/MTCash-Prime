@@ -13,12 +13,19 @@ namespace MTBE_u.EntitiesCash
         public int id_categoria { get; set; }
         public string categoria { get; set; }
         public string tipo_categoria { get; set; }
-        public int entidade_pai { get; private set; }
+        public int entidade_pai { get;  set; }
 
+        public Categoria()
+        {
+
+        }
 
         public Categoria(DataRow row)
         {
-
+            id_categoria = Convert.ToInt32(row["id_categoria"]);
+            categoria = row["categoria"].ToString();
+            tipo_categoria = row["tipo_categoria"].ToString();
+            entidade_pai = row["entidade_pai"] != null ? Convert.ToInt32(row["entidade_pai"]) : -1;
         }
 
         public  void InsertCategoria()
@@ -35,11 +42,22 @@ namespace MTBE_u.EntitiesCash
             Access.ExecuteNonQuery(cmd);
         }
 
-        //public static List<Categoria> GetAllCateogiras()
-        //{
-        //    List<Categoria> result = new List<Categoria>();
-        //    SqlCommand cmd = new SqlCommand("select * from mtcash.u_tb_categoria");
-        //    foreach()
-        //}
+        public static List<Categoria> GetAllCateogiras()
+        {
+            List<Categoria> result = new List<Categoria>();
+            SqlCommand cmd = new SqlCommand("select * from mtcash.u_tb_categoria");
+            foreach (DataRow dr in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Categoria(dr));
+            return result;
+        }
+
+        public static List<Categoria> GetSubCateogiras(int cod)
+        {
+            List<Categoria> result = new List<Categoria>();
+            SqlCommand cmd = new SqlCommand("select * from mtcash.u_tb_categoria where entidade_pai=" + cod);
+            foreach (DataRow dr in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Categoria(dr));
+            return result;
+        }
     }
 }

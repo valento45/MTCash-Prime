@@ -136,6 +136,10 @@
       <Project>{b26b2c9a-1e9f-40d7-8f09-f1fd330bae57}</Project>
       <Name>MTBE_u</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MT_u\MT_u.csproj">
+      <Project>{4DFF31AC-56AB-46D0-87E4-9238AF1320CB}</Project>
+      <Name>MT_u</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Acessar.png" />

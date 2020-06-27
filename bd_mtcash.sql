@@ -162,7 +162,7 @@ tipo_plano varchar(10) null,
 entidade_pai int null
 );
 go
-
+select * from mtcash.u_tb_categoria 
 
 create table mtcash.u_tb_receita(
 id_receita int identity not null primary key,

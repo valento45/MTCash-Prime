@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmPlanoConta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlanoConta.Designer.cs">
+      <DependentUpon>frmPlanoConta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -50,6 +56,15 @@
       <Project>{64c593dd-2800-4a60-b82e-d7df87747a1c}</Project>
       <Name>Aux_Mt</Name>
     </ProjectReference>
+    <ProjectReference Include="..\MTBE_u\MTBE_u.csproj">
+      <Project>{B26B2C9A-1E9F-40D7-8F09-F1FD330BAE57}</Project>
+      <Name>MTBE_u</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmPlanoConta.resx">
+      <DependentUpon>frmPlanoConta.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

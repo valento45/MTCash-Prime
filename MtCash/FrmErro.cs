@@ -20,7 +20,7 @@ namespace MtCash
             InitializeComponent();
             Ex = ex;
             Obs = observacoes;
-            txtErro.Text = "Ocorreu um erro inesperado! \r\n\r" + ex.Message + "\n\r" + Obs;
+            lblErro.Text = Ex.Message + "\n\r" + Obs;
             lblContato.Text = "Por favor entre em contato com nosso suporte através do número (11)96610-2618";
         }
 
@@ -33,6 +33,11 @@ namespace MtCash
             NetworkLog.Insert(ex, parametro);
             FrmErro erro = new FrmErro(ex, parametro);
             erro.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
