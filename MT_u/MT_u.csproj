@@ -43,6 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmIncluiDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmIncluiDespesa.Designer.cs">
+      <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +60,11 @@
       <Project>{B26B2C9A-1E9F-40D7-8F09-F1FD330BAE57}</Project>
       <Name>MTBE_u</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmIncluiDespesa.resx">
+      <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

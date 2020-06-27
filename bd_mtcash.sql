@@ -228,15 +228,15 @@ go
 
 create table mtcash.u_tb_despesa(
 id_despesa int identity not null primary key,
-descricao varchar(100) null,
-valor_despesa decimal(8,2) not null,
+descricao varchar(100) not null,
 data_vencimento datetime not null,
-periodo varchar(30) null,
+valor_despesa decimal(8,2) not null,
 desconto decimal(8,2) null,
+periodo varchar(30) null,
 paga varchar(5) null
 );
 go
-
+select * from mtcash.u_tb_despesa
 
 create table mtcash.u_tb_plano_conta(
 id_plano_conta int identity not null primary key,

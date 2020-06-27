@@ -122,12 +122,17 @@ namespace MtCash
 
         private void planoDeContaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmPlanoConta plano = new frmPlanoConta();
-            plano.MdiParent = this;
-            if (plano.Visible)
-                plano.Focus();
+          
+        }
+
+        private void incluirToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmIncluiDespesa frmIDespesa = new frmIncluiDespesa();
+            frmIDespesa.MdiParent = this;
+            if (frmIDespesa.Visible)
+                frmIDespesa.Focus();
             else
-                plano.Show();
+                frmIDespesa.Show();
         }
     }
 }

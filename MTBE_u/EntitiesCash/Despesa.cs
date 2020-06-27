@@ -38,13 +38,13 @@ namespace MTBE_u.EntitiesCash
             return Access.ExecuteNonQuery(cmd);
         }
 
-        public bool Delete(int id)
+        public static bool Delete(int id)
         {
             SqlCommand cmd = new SqlCommand("delete from mtcash.u_tb_despesa where id_despesa = " + id);
             return Access.ExecuteNonQuery(cmd);
         }
 
-        public List<Despesa> GetDespesas(bool apenaspendentes, bool todas = false)
+        public static List<Despesa> GetDespesas(bool apenaspendentes, bool todas = false)
         {
             List<Despesa> result = new List<Despesa>();
             string query = "select * from mtcash.u_tb_despesa";

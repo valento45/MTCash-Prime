@@ -41,12 +41,10 @@
             this.incluirToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisarToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
-            this.planoDeContaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisarToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisarToolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
-            this.planoDeContaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.conferênciaDeCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -164,7 +162,6 @@
             this.incluirToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incluirToolStripMenuItem3,
             this.pesquisarToolStripMenuItem3,
-            this.planoDeContaToolStripMenuItem1,
             this.relatóriosToolStripMenuItem2});
             this.incluirToolStripMenuItem2.Name = "incluirToolStripMenuItem2";
             this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
@@ -183,13 +180,6 @@
             this.pesquisarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem3.Text = "Pesquisar";
             // 
-            // planoDeContaToolStripMenuItem1
-            // 
-            this.planoDeContaToolStripMenuItem1.Name = "planoDeContaToolStripMenuItem1";
-            this.planoDeContaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.planoDeContaToolStripMenuItem1.Text = "Plano de conta";
-            this.planoDeContaToolStripMenuItem1.Click += new System.EventHandler(this.planoDeContaToolStripMenuItem1_Click);
-            // 
             // relatóriosToolStripMenuItem2
             // 
             this.relatóriosToolStripMenuItem2.Name = "relatóriosToolStripMenuItem2";
@@ -201,7 +191,6 @@
             this.pesquisarToolStripMenuItem2.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incluirToolStripMenuItem4,
             this.pesquisarToolStripMenuItem4,
-            this.planoDeContaToolStripMenuItem,
             this.relatóriosToolStripMenuItem3});
             this.pesquisarToolStripMenuItem2.Name = "pesquisarToolStripMenuItem2";
             this.pesquisarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
@@ -212,18 +201,13 @@
             this.incluirToolStripMenuItem4.Name = "incluirToolStripMenuItem4";
             this.incluirToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.incluirToolStripMenuItem4.Text = "Incluir";
+            this.incluirToolStripMenuItem4.Click += new System.EventHandler(this.incluirToolStripMenuItem4_Click);
             // 
             // pesquisarToolStripMenuItem4
             // 
             this.pesquisarToolStripMenuItem4.Name = "pesquisarToolStripMenuItem4";
             this.pesquisarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
             this.pesquisarToolStripMenuItem4.Text = "Pesquisar";
-            // 
-            // planoDeContaToolStripMenuItem
-            // 
-            this.planoDeContaToolStripMenuItem.Name = "planoDeContaToolStripMenuItem";
-            this.planoDeContaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.planoDeContaToolStripMenuItem.Text = "Plano de conta";
             // 
             // relatóriosToolStripMenuItem3
             // 
@@ -284,7 +268,7 @@
             // preferênciasToolStripMenuItem
             // 
             this.preferênciasToolStripMenuItem.Name = "preferênciasToolStripMenuItem";
-            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.preferênciasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
             this.preferênciasToolStripMenuItem.Text = "Preferências";
             // 
             // investimentosToolStripMenuItem
@@ -505,11 +489,9 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem incluirToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem pesquisarToolStripMenuItem3;
-        private System.Windows.Forms.ToolStripMenuItem planoDeContaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem incluirToolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem pesquisarToolStripMenuItem4;
-        private System.Windows.Forms.ToolStripMenuItem planoDeContaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem incluirToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem pesquisarToolStripMenuItem5;
