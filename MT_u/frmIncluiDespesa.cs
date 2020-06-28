@@ -56,7 +56,7 @@ namespace MT_u
             string campos = "";
             if (!(txtDespesa.Text.Length > 0 && txtDataVenc.Text.Length == 10 && txtValor.Text.Length > 0 && (rdbPaga.Checked || rdbPendente.Checked)))
             {
-                campos += txtDespesa.Text.Length <= 0 ? " Despesa" : "";
+                campos += txtDespesa.Text.Length <= 0 ? "Despesa" : "";
                 campos += txtDataVenc.Text.Length < 10 ? (campos.Length > 0 ? "\n " : "") + "Data vencimento" : "";
                 campos += txtValor.Text.Length <= 0 ? (campos.Length > 0 ? "\n " : "") + "Valor" : "";
                 campos += !rdbPaga.Checked || !rdbPendente.Checked ? (campos.Length > 0 ? "\n " : "") + "Status pgto" : "";
@@ -94,7 +94,10 @@ namespace MT_u
 
                         //Inserindo
                         if (Despesa.InsertDespesa())
+                        {
                             MessageBox.Show("Dados inseridos com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparCampos();
+                        }
                         else
                             MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
@@ -129,6 +132,7 @@ namespace MT_u
                                 MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
+                    
                 }
                 catch (Exception ex)
                 {

@@ -49,6 +49,12 @@
     <Compile Include="frmIncluiDespesa.Designer.cs">
       <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPesqDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPesqDespesa.Designer.cs">
+      <DependentUpon>frmPesqDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -64,6 +70,9 @@
   <ItemGroup>
     <EmbeddedResource Include="frmIncluiDespesa.resx">
       <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPesqDespesa.resx">
+      <DependentUpon>frmPesqDespesa.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
