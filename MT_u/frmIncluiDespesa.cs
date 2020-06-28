@@ -37,8 +37,9 @@ namespace MT_u
                 txtValor.Text = Despesa.Valor.ToString();
                 txtDesconto.Text = Despesa.Desconto.ToString();
                 rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Despesa.Periodo.Length > 0;
-                if (pnlPeriodo.Visible)
+                if (Despesa.Periodo.Length > 0)
                 {
+                    pnlPeriodo.Visible = true;
                     Periodo = Despesa.Periodo.Split(',');
                     txtDe.Text = Periodo[0];
                     txtAte.Text = Periodo[1];
@@ -47,7 +48,6 @@ namespace MT_u
                     rdbPaga.Checked = true;
                 else
                     rdbPendente.Checked = true;
-
             }
         }
 
@@ -126,18 +126,18 @@ namespace MT_u
                             if (Despesa.UpdateDespesa())
                             {
                                 MessageBox.Show("Dados atualizados com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                LimparCampos();
+                               
                             }
                             else
                                 MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
                     }
-                    
+
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show("Erro: " + ex.Message, "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }            
+                }
         }
 
         private void rdbEspecificarPeriodo_CheckedChanged(object sender, EventArgs e)
@@ -155,7 +155,20 @@ namespace MT_u
             txtDe.Clear();
             rdbUnico.Checked = true;
             rdbPaga.Checked = false;
-            rdbPendente.Checked = false;            
+            rdbPendente.Checked = false;
+        }
+
+        private void AjustarBotoes()
+        {
+            if (Alterar)
+                btAcao.Text = "Alterar";
+            else
+                btAcao.Text = "Incluir";
+        }
+
+        private void frmIncluiDespesa_Shown(object sender, EventArgs e)
+        {
+            AjustarBotoes();
         }
     }
 }

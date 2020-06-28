@@ -304,6 +304,7 @@
             this.Name = "frmIncluiDespesa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Incluir Despesa";
+            this.Shown += new System.EventHandler(this.frmIncluiDespesa_Shown);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

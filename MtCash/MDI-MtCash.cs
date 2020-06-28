@@ -134,5 +134,15 @@ namespace MtCash
             else
                 frmIDespesa.Show();
         }
+
+        private void pesquisarToolStripMenuItem4_Click(object sender, EventArgs e)
+        {
+            frmPesqDespesa pesqDespesa = new frmPesqDespesa();
+            pesqDespesa.MdiParent = this;
+            if (pesqDespesa.Visible)
+                pesqDespesa.Focus();
+            else
+                pesqDespesa.Show();
+        }
     }
 }

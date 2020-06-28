@@ -34,7 +34,7 @@ namespace MTBE_u.EntitiesCash
         public bool UpdateDespesa()
         {
             SqlCommand cmd = new SqlCommand("update mtcash.u_tb_despesa set descricao = " +
-                $"'{Descricao}', valor_despesa = '{Valor}', data_vencimento = '{Data_Vencimento}', periodo = '{Periodo}', desconto = '{Desconto}', paga = '{Status}' where id_despesa = '{Id}';");           
+                $"'{Descricao}', data_vencimento = '{Data_Vencimento}',valor_despesa = '{Valor}',desconto = '{Desconto}', periodo = '{Periodo}', paga = '{Status}' where id_despesa = '{Id}';");
             return Access.ExecuteNonQuery(cmd);
         }
 
@@ -61,5 +61,61 @@ namespace MTBE_u.EntitiesCash
 
             return result;
         }
+
+
+        public static List<Despesa> GetByDescricao(string descricao, bool apenaspendentes, bool todas = false)
+        {
+            List<Despesa> result = new List<Despesa>();
+            string query = "select * from mtcash.u_tb_despesa WHERE descricao like " + $"'{descricao}%'";
+
+            if (apenaspendentes)
+                query += " AND paga = False";
+            else if (!apenaspendentes && !todas)
+                query += " AND paga = True";
+
+            SqlCommand cmd = new SqlCommand(query);
+
+            foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Despesa(x));
+
+            return result;
+        }
+
+        public static List<Despesa> GetByID(int id, bool apenaspendentes, bool todas = false)
+        {
+            List<Despesa> result = new List<Despesa>();
+            string query = "select * from mtcash.u_tb_despesa WHERE id_despesa = " + $"'{id}'";
+
+            if (apenaspendentes)
+                query += " AND paga = False";
+            else if (!apenaspendentes && !todas)
+                query += " AND paga = True";
+
+            SqlCommand cmd = new SqlCommand(query);
+
+            foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Despesa(x));
+
+            return result;
+        }
+
+        public static List<Despesa> GetByPeriodo(string de, string ate, bool apenaspendentes, bool todas = false)
+        {
+            List<Despesa> result = new List<Despesa>();
+            string query = "select * from mtcash.u_tb_despesa WHERE data_vencimento >= " + $"'{de} 00:00:00' AND data_vencimento <= '{ate} 23:59:59'";
+
+            if (apenaspendentes)
+                query += " AND paga = False";
+            else if (!apenaspendentes && !todas)
+                query += " AND paga = True";
+
+            SqlCommand cmd = new SqlCommand(query);
+
+            foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Despesa(x));
+
+            return result;
+        }
+
     }
 }

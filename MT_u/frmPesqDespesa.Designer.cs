@@ -45,10 +45,10 @@
             this.pnlStatus = new System.Windows.Forms.Panel();
             this.rdbPaga = new System.Windows.Forms.RadioButton();
             this.rdbPendente = new System.Windows.Forms.RadioButton();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.btEditar = new System.Windows.Forms.Button();
+            this.btImprimir = new System.Windows.Forms.Button();
+            this.btExportarXml = new System.Windows.Forms.Button();
+            this.btExcluir = new System.Windows.Forms.Button();
             this.colChk = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colDescricao = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -142,6 +142,7 @@
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(121, 21);
             this.cmbFiltro.TabIndex = 1;
+            this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -169,6 +170,7 @@
             this.btPesquisar.TabIndex = 12;
             this.btPesquisar.Text = "Pesquisar";
             this.btPesquisar.UseVisualStyleBackColor = false;
+            this.btPesquisar.Click += new System.EventHandler(this.btPesquisar_Click);
             // 
             // pnlFiltro
             // 
@@ -258,49 +260,51 @@
             this.rdbPendente.Text = "Status pendente";
             this.rdbPendente.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btEditar
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Location = new System.Drawing.Point(56, 336);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 13;
-            this.button1.Text = "Editar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btEditar.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btEditar.Location = new System.Drawing.Point(56, 336);
+            this.btEditar.Name = "btEditar";
+            this.btEditar.Size = new System.Drawing.Size(75, 23);
+            this.btEditar.TabIndex = 13;
+            this.btEditar.Text = "Editar";
+            this.btEditar.UseVisualStyleBackColor = false;
+            this.btEditar.Click += new System.EventHandler(this.btEditar_Click);
             // 
-            // button2
+            // btImprimir
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Location = new System.Drawing.Point(137, 336);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 14;
-            this.button2.Text = "Imprimir";
-            this.button2.UseVisualStyleBackColor = false;
+            this.btImprimir.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btImprimir.Location = new System.Drawing.Point(137, 336);
+            this.btImprimir.Name = "btImprimir";
+            this.btImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btImprimir.TabIndex = 14;
+            this.btImprimir.Text = "Imprimir";
+            this.btImprimir.UseVisualStyleBackColor = false;
             // 
-            // button3
+            // btExportarXml
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Location = new System.Drawing.Point(218, 336);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(102, 23);
-            this.button3.TabIndex = 15;
-            this.button3.Text = "Exportar XML";
-            this.button3.UseVisualStyleBackColor = false;
+            this.btExportarXml.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btExportarXml.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExportarXml.Location = new System.Drawing.Point(218, 336);
+            this.btExportarXml.Name = "btExportarXml";
+            this.btExportarXml.Size = new System.Drawing.Size(102, 23);
+            this.btExportarXml.TabIndex = 15;
+            this.btExportarXml.Text = "Exportar XML";
+            this.btExportarXml.UseVisualStyleBackColor = false;
             // 
-            // button4
+            // btExcluir
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(652, 336);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 16;
-            this.button4.Text = "Excluir";
-            this.button4.UseVisualStyleBackColor = false;
+            this.btExcluir.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.btExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btExcluir.Location = new System.Drawing.Point(652, 336);
+            this.btExcluir.Name = "btExcluir";
+            this.btExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btExcluir.TabIndex = 16;
+            this.btExcluir.Text = "Excluir";
+            this.btExcluir.UseVisualStyleBackColor = false;
+            this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
             // colChk
             // 
@@ -359,10 +363,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(742, 364);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btExcluir);
+            this.Controls.Add(this.btExportarXml);
+            this.Controls.Add(this.btImprimir);
+            this.Controls.Add(this.btEditar);
             this.Controls.Add(this.pnlFundo);
             this.Name = "frmPesqDespesa";
             this.Text = "Pesquisar despesa";
@@ -399,10 +403,10 @@
         private System.Windows.Forms.Panel pnlStatus;
         private System.Windows.Forms.RadioButton rdbPendente;
         private System.Windows.Forms.RadioButton rdbPaga;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btEditar;
+        private System.Windows.Forms.Button btImprimir;
+        private System.Windows.Forms.Button btExportarXml;
+        private System.Windows.Forms.Button btExcluir;
         private System.Windows.Forms.DataGridViewCheckBoxColumn colChk;
         private System.Windows.Forms.DataGridViewTextBoxColumn colId;
         private System.Windows.Forms.DataGridViewTextBoxColumn colDescricao;
