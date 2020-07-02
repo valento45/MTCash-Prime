@@ -32,13 +32,13 @@
             this.pnlFilters = new System.Windows.Forms.Panel();
             this.btnPesquisar = new System.Windows.Forms.Button();
             this.cmbFiltro = new System.Windows.Forms.ComboBox();
+            this.pnlCpjCnpj = new System.Windows.Forms.Panel();
+            this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.pnlDocumento = new System.Windows.Forms.Panel();
             this.txtDocumento = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.pnlCpjCnpj = new System.Windows.Forms.Panel();
-            this.txtCpfCnpj = new System.Windows.Forms.MaskedTextBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.pnlNome = new System.Windows.Forms.Panel();
             this.txtNome = new System.Windows.Forms.TextBox();
             this.lblNome = new System.Windows.Forms.Label();
@@ -56,8 +56,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.pnlFundo.SuspendLayout();
             this.pnlFilters.SuspendLayout();
-            this.pnlDocumento.SuspendLayout();
             this.pnlCpjCnpj.SuspendLayout();
+            this.pnlDocumento.SuspendLayout();
             this.pnlNome.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).BeginInit();
             this.SuspendLayout();
@@ -114,6 +114,31 @@
             this.cmbFiltro.TabIndex = 2;
             this.cmbFiltro.SelectedIndexChanged += new System.EventHandler(this.cmbFiltro_SelectedIndexChanged);
             // 
+            // pnlCpjCnpj
+            // 
+            this.pnlCpjCnpj.Controls.Add(this.txtCpfCnpj);
+            this.pnlCpjCnpj.Controls.Add(this.label3);
+            this.pnlCpjCnpj.Location = new System.Drawing.Point(205, 12);
+            this.pnlCpjCnpj.Name = "pnlCpjCnpj";
+            this.pnlCpjCnpj.Size = new System.Drawing.Size(393, 62);
+            this.pnlCpjCnpj.TabIndex = 4;
+            // 
+            // txtCpfCnpj
+            // 
+            this.txtCpfCnpj.Location = new System.Drawing.Point(79, 23);
+            this.txtCpfCnpj.Name = "txtCpfCnpj";
+            this.txtCpfCnpj.Size = new System.Drawing.Size(181, 20);
+            this.txtCpfCnpj.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(24, 26);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(49, 13);
+            this.label3.TabIndex = 0;
+            this.label3.Text = "Cpf/Cpnj";
+            // 
             // pnlDocumento
             // 
             this.pnlDocumento.Controls.Add(this.txtDocumento);
@@ -148,31 +173,6 @@
             this.label1.Size = new System.Drawing.Size(53, 13);
             this.label1.TabIndex = 1;
             this.label1.Text = "Pesquisar";
-            // 
-            // pnlCpjCnpj
-            // 
-            this.pnlCpjCnpj.Controls.Add(this.txtCpfCnpj);
-            this.pnlCpjCnpj.Controls.Add(this.label3);
-            this.pnlCpjCnpj.Location = new System.Drawing.Point(205, 12);
-            this.pnlCpjCnpj.Name = "pnlCpjCnpj";
-            this.pnlCpjCnpj.Size = new System.Drawing.Size(393, 62);
-            this.pnlCpjCnpj.TabIndex = 4;
-            // 
-            // txtCpfCnpj
-            // 
-            this.txtCpfCnpj.Location = new System.Drawing.Point(79, 23);
-            this.txtCpfCnpj.Name = "txtCpfCnpj";
-            this.txtCpfCnpj.Size = new System.Drawing.Size(181, 20);
-            this.txtCpfCnpj.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 26);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(49, 13);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "Cpf/Cpnj";
             // 
             // pnlNome
             // 
@@ -342,13 +342,14 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Search Client";
             this.Load += new System.EventHandler(this.frmPesquisaClient_Load);
+            this.Shown += new System.EventHandler(this.frmPesquisaClient_Shown);
             this.pnlFundo.ResumeLayout(false);
             this.pnlFilters.ResumeLayout(false);
             this.pnlFilters.PerformLayout();
-            this.pnlDocumento.ResumeLayout(false);
-            this.pnlDocumento.PerformLayout();
             this.pnlCpjCnpj.ResumeLayout(false);
             this.pnlCpjCnpj.PerformLayout();
+            this.pnlDocumento.ResumeLayout(false);
+            this.pnlDocumento.PerformLayout();
             this.pnlNome.ResumeLayout(false);
             this.pnlNome.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClient)).EndInit();

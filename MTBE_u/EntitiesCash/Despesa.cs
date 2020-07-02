@@ -116,6 +116,20 @@ namespace MTBE_u.EntitiesCash
 
             return result;
         }
+        public override string ToString()
+        {
+            StringBuilder str = new StringBuilder();
+            str.AppendLine("ID: " + Id);
+            str.AppendLine("Despesa: " + Descricao);
+            str.AppendLine("Valor: " + Valor);            
+            str.AppendLine("Vencimento: " + Data_Vencimento);
+            str.AppendLine("Status: " + Status);
+            if (Periodo.Length > 0)
+                str.AppendLine("Período: " + Periodo);
+            if (Desconto > 0)
+                str.AppendLine("Desconto: " + Desconto);            
 
+            return str.ToString();
+        }
     }
 }

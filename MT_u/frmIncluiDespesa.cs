@@ -69,6 +69,9 @@ namespace MT_u
 
         private void btAcao_Click(object sender, EventArgs e)
         {
+            //FuncoesAuxiliaresAux.ColecaoAbstrataModelo();
+            
+
             if (ValidaCampos())
                 try
                 {
@@ -126,7 +129,7 @@ namespace MT_u
                             if (Despesa.UpdateDespesa())
                             {
                                 MessageBox.Show("Dados atualizados com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                               
+
                             }
                             else
                                 MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -169,6 +172,12 @@ namespace MT_u
         private void frmIncluiDespesa_Shown(object sender, EventArgs e)
         {
             AjustarBotoes();
+        }
+
+        private void btImprimir_Click(object sender, EventArgs e)
+        {
+            //Printer printer = new Printer();
+            //printer.ShowDialog();
         }
     }
 }

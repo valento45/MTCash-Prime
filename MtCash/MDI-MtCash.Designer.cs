@@ -74,6 +74,8 @@
             this.incluirAlterarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AmbientetoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatóriosToolStripMenuItem5 = new System.Windows.Forms.ToolStripMenuItem();
+            this.logDeAcessosEmTelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -131,7 +133,7 @@
             this.incluirToolStripMenuItem1,
             this.pesquisarToolStripMenuItem1});
             this.investimentoToolStripMenuItem1.Name = "investimentoToolStripMenuItem1";
-            this.investimentoToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.investimentoToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.investimentoToolStripMenuItem1.Text = "Investimento";
             // 
             // incluirToolStripMenuItem1
@@ -153,7 +155,7 @@
             this.incluirToolStripMenuItem2,
             this.pesquisarToolStripMenuItem2});
             this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
-            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.ordemServiçoToolStripMenuItem.Text = "Receita/Despesa";
             this.ordemServiçoToolStripMenuItem.Click += new System.EventHandler(this.ordemServiçoToolStripMenuItem_Click);
             // 
@@ -164,7 +166,7 @@
             this.pesquisarToolStripMenuItem3,
             this.relatóriosToolStripMenuItem2});
             this.incluirToolStripMenuItem2.Name = "incluirToolStripMenuItem2";
-            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
             this.incluirToolStripMenuItem2.Text = "Receitas";
             // 
             // incluirToolStripMenuItem3
@@ -193,27 +195,27 @@
             this.pesquisarToolStripMenuItem4,
             this.relatóriosToolStripMenuItem3});
             this.pesquisarToolStripMenuItem2.Name = "pesquisarToolStripMenuItem2";
-            this.pesquisarToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.pesquisarToolStripMenuItem2.Size = new System.Drawing.Size(122, 22);
             this.pesquisarToolStripMenuItem2.Text = "Despesas";
             // 
             // incluirToolStripMenuItem4
             // 
             this.incluirToolStripMenuItem4.Name = "incluirToolStripMenuItem4";
-            this.incluirToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem4.Size = new System.Drawing.Size(126, 22);
             this.incluirToolStripMenuItem4.Text = "Incluir";
             this.incluirToolStripMenuItem4.Click += new System.EventHandler(this.incluirToolStripMenuItem4_Click);
             // 
             // pesquisarToolStripMenuItem4
             // 
             this.pesquisarToolStripMenuItem4.Name = "pesquisarToolStripMenuItem4";
-            this.pesquisarToolStripMenuItem4.Size = new System.Drawing.Size(180, 22);
+            this.pesquisarToolStripMenuItem4.Size = new System.Drawing.Size(126, 22);
             this.pesquisarToolStripMenuItem4.Text = "Pesquisar";
             this.pesquisarToolStripMenuItem4.Click += new System.EventHandler(this.pesquisarToolStripMenuItem4_Click);
             // 
             // relatóriosToolStripMenuItem3
             // 
             this.relatóriosToolStripMenuItem3.Name = "relatóriosToolStripMenuItem3";
-            this.relatóriosToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.relatóriosToolStripMenuItem3.Size = new System.Drawing.Size(126, 22);
             this.relatóriosToolStripMenuItem3.Text = "Relatórios";
             // 
             // relatóriosToolStripMenuItem
@@ -225,7 +227,7 @@
             this.gráficosToolStripMenuItem,
             this.faturamentoToolStripMenuItem});
             this.relatóriosToolStripMenuItem.Name = "relatóriosToolStripMenuItem";
-            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.relatóriosToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
             this.relatóriosToolStripMenuItem.Text = "Relatórios";
             // 
             // conferênciaDeCaixaToolStripMenuItem
@@ -263,7 +265,7 @@
             this.configuraçõesToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.preferênciasToolStripMenuItem});
             this.configuraçõesToolStripMenuItem1.Name = "configuraçõesToolStripMenuItem1";
-            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.configuraçõesToolStripMenuItem1.Size = new System.Drawing.Size(160, 22);
             this.configuraçõesToolStripMenuItem1.Text = "Configurações";
             // 
             // preferênciasToolStripMenuItem
@@ -413,7 +415,8 @@
             // usuarioConfigurarToolStripMenuItem
             // 
             this.usuarioConfigurarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.incluirAlterarToolStripMenuItem});
+            this.incluirAlterarToolStripMenuItem,
+            this.relatóriosToolStripMenuItem5});
             this.usuarioConfigurarToolStripMenuItem.Name = "usuarioConfigurarToolStripMenuItem";
             this.usuarioConfigurarToolStripMenuItem.Size = new System.Drawing.Size(243, 22);
             this.usuarioConfigurarToolStripMenuItem.Text = "Usuário/Paramêtros/Permissões";
@@ -421,7 +424,7 @@
             // incluirAlterarToolStripMenuItem
             // 
             this.incluirAlterarToolStripMenuItem.Name = "incluirAlterarToolStripMenuItem";
-            this.incluirAlterarToolStripMenuItem.Size = new System.Drawing.Size(147, 22);
+            this.incluirAlterarToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.incluirAlterarToolStripMenuItem.Text = "Incluir/Alterar";
             this.incluirAlterarToolStripMenuItem.Click += new System.EventHandler(this.incluirAlterarToolStripMenuItem_Click);
             // 
@@ -436,6 +439,21 @@
             this.AmbientetoolStripMenuItem1.Name = "AmbientetoolStripMenuItem1";
             this.AmbientetoolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
             this.AmbientetoolStripMenuItem1.Text = "Ambiente";
+            // 
+            // relatóriosToolStripMenuItem5
+            // 
+            this.relatóriosToolStripMenuItem5.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.logDeAcessosEmTelaToolStripMenuItem});
+            this.relatóriosToolStripMenuItem5.Name = "relatóriosToolStripMenuItem5";
+            this.relatóriosToolStripMenuItem5.Size = new System.Drawing.Size(180, 22);
+            this.relatóriosToolStripMenuItem5.Text = "Relatórios";
+            // 
+            // logDeAcessosEmTelaToolStripMenuItem
+            // 
+            this.logDeAcessosEmTelaToolStripMenuItem.Name = "logDeAcessosEmTelaToolStripMenuItem";
+            this.logDeAcessosEmTelaToolStripMenuItem.Size = new System.Drawing.Size(195, 22);
+            this.logDeAcessosEmTelaToolStripMenuItem.Text = "Log de acessos em tela";
+            this.logDeAcessosEmTelaToolStripMenuItem.Click += new System.EventHandler(this.logDeAcessosEmTelaToolStripMenuItem_Click);
             // 
             // MDI_MtCash
             // 
@@ -509,6 +527,8 @@
         private System.Windows.Forms.ToolStripMenuItem estatísticaPrevisãoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem preferenciasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem AmbientetoolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem5;
+        private System.Windows.Forms.ToolStripMenuItem logDeAcessosEmTelaToolStripMenuItem;
     }
 }
 

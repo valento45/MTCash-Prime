@@ -13,6 +13,7 @@ using MT_u.Usuario;
 using MTBE_u;
 using MTBE_u.Entities;
 using MTBE_u.Entities.Enums;
+using MtCash.BusinessEntities;
 
 namespace MtCash
 {
@@ -143,6 +144,11 @@ namespace MtCash
                 pesqDespesa.Focus();
             else
                 pesqDespesa.Show();
+        }
+
+        private void logDeAcessosEmTelaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FuncoesAuxiliares.ImprimeLogAcessoFinanceiro(DateTime.Now.ToString("dd/MM/yyyy"));
         }
     }
 }

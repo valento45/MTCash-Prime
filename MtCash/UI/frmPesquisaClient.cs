@@ -27,13 +27,7 @@ namespace MtCash.UI
                 btnExcluir.Enabled = Modulo.CanExclude(Login.User, Modulos.Cliente);
                 btnExportXml.Enabled = btnPrint.Enabled = Modulo.CanRelatorio(Login.User, Modulos.Cliente);
             }
-
-            foreach (var item in FuncoesAuxiliares.GetFiltros)
-                cmbFiltro.Items.Add(item);
-
-            cmbFiltro.SelectedIndex = 0;
-            FillGridClient();
-            ControlFilter();
+            
             //cmbFiltro.SelectedItem = Enum.Parse(typeof(FuncoesAuxiliares.Filtro), "Documento");/*Conversão String Para Enum*/
         }
 
@@ -126,6 +120,18 @@ namespace MtCash.UI
                     dgvClient.Rows.Remove(dgvClient.SelectedRows[colCodigo.Index]);
                 }
             }
+        }
+
+        private void frmPesquisaClient_Shown(object sender, EventArgs e)
+        {
+            //T x;
+            //var filters = FuncoesAuxiliares.FiltroGetValuesEnum(x);
+            //foreach (var item in filters )
+            //    cmbFiltro.Items.Add(item);
+
+            cmbFiltro.SelectedIndex = 0;
+            FillGridClient();
+            ControlFilter();
         }
     }
 }

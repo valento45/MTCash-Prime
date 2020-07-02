@@ -15,6 +15,7 @@ namespace MT_u
 {
     public partial class frmPesqDespesa : frmDefault
     {
+        
         public frmPesqDespesa()
         {
             InitializeComponent();
@@ -109,6 +110,24 @@ namespace MT_u
             {
                 if(Despesa.Delete(obj.Id))
                     dgvDespesa.Rows.Remove(dgvDespesa.SelectedRows[0]);
+            }
+        }
+
+        private void btImprimir_Click(object sender, EventArgs e)
+        {
+            if(dgvDespesa.RowCount > 0)
+            {
+                PrintService<Despesa> printService = new PrintService<Despesa>();
+                for (int i = 0; i < dgvDespesa.RowCount; i++)
+                {
+                    if ((bool)dgvDespesa.Rows[i].Cells[colChk.Index].Value)
+                    {
+                        Despesa despesa = (Despesa)dgvDespesa.Rows[i].Cells[colObject.Index].Value;
+                        printService.AddValue(despesa);
+                    }                    
+                }
+              
+                printService.Print();
             }
         }
     }
