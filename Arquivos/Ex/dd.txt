@@ -1,0 +1,9 @@
+
+
+Despesa -
+ID: 2
+Despesa: Financiamento CB 300
+Valor: 505900,00
+Vencimento: 27/07/2020 00:00:00
+Status: True
+Período: 27/06/2020, 20/07/2020

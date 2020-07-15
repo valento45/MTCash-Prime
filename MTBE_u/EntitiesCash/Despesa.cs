@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Aux_Mt;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -31,10 +32,30 @@ namespace MTBE_u.EntitiesCash
             return Access.ExecuteNonQuery(cmd);
         }
 
-        public bool UpdateDespesa()
+
+        //public bool UpdateDespesa()
+        //{
+        //    SqlCommand cmd = new SqlCommand("update mtcash.u_tb_despesa set descricao = @descricao, valor_despesa = @valor_despesa, data_vencimento = @data_vencimento, periodo = @periodo, desconto = @desconto, paga = @paga where id_despesa = @id_despesa;");
+        //    cmd.Parameters.AddWithValue(@"id_despesa", Id);
+        //    cmd.Parameters.AddWithValue(@"descricao", Descricao);
+        //    cmd.Parameters.AddWithValue(@"valor_despesa", Valor);
+        //    cmd.Parameters.AddWithValue(@"data_vencimento", Data_Vencimento);
+        //    cmd.Parameters.AddWithValue(@"periodo", Periodo);
+        //    cmd.Parameters.AddWithValue(@"desconto", Desconto);
+        //    cmd.Parameters.AddWithValue(@"paga", Status);
+        //    return Access.ExecuteNonQuery(cmd);
+        //}
+
+        public override bool Update()
         {
-            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_despesa set descricao = " +
-                $"'{Descricao}', data_vencimento = '{Data_Vencimento}',valor_despesa = '{Valor}',desconto = '{Desconto}', periodo = '{Periodo}', paga = '{Status}' where id_despesa = '{Id}';");
+            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_despesa set descricao = @descricao, valor_despesa = @valor_despesa, data_vencimento = @data_vencimento, periodo = @periodo, desconto = @desconto, paga = @paga where id_despesa = @id_despesa;");
+            cmd.Parameters.AddWithValue(@"id_despesa", Id);
+            cmd.Parameters.AddWithValue(@"descricao", Descricao);
+            cmd.Parameters.AddWithValue(@"valor_despesa", Valor);
+            cmd.Parameters.AddWithValue(@"data_vencimento", Data_Vencimento);
+            cmd.Parameters.AddWithValue(@"periodo", Periodo);
+            cmd.Parameters.AddWithValue(@"desconto", Desconto);
+            cmd.Parameters.AddWithValue(@"paga", Status);
             return Access.ExecuteNonQuery(cmd);
         }
 
@@ -119,15 +140,16 @@ namespace MTBE_u.EntitiesCash
         public override string ToString()
         {
             StringBuilder str = new StringBuilder();
+            str.AppendLine("\n\r\n\rDespesa -");
             str.AppendLine("ID: " + Id);
             str.AppendLine("Despesa: " + Descricao);
-            str.AppendLine("Valor: " + Valor);            
+            str.AppendLine("Valor: " + Valor);
             str.AppendLine("Vencimento: " + Data_Vencimento);
             str.AppendLine("Status: " + Status);
             if (Periodo.Length > 0)
                 str.AppendLine("Período: " + Periodo);
             if (Desconto > 0)
-                str.AppendLine("Desconto: " + Desconto);            
+                str.AppendLine("Desconto: " + Desconto);
 
             return str.ToString();
         }

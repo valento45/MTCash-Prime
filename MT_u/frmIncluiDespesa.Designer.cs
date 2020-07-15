@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitulo = new System.Windows.Forms.Label();
             this.txtDespesa = new System.Windows.Forms.TextBox();
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -36,7 +36,7 @@
             this.txtDataVenc = new System.Windows.Forms.MaskedTextBox();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpStatus = new System.Windows.Forms.GroupBox();
             this.rdbPendente = new System.Windows.Forms.RadioButton();
             this.rdbPaga = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -51,20 +51,21 @@
             this.btAcao = new System.Windows.Forms.Button();
             this.btImprimir = new System.Windows.Forms.Button();
             this.btEnviarEmail = new System.Windows.Forms.Button();
-            this.groupBox1.SuspendLayout();
+            this.grpStatus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
             this.pnlFundo.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitulo
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(49, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Despesa";
+            this.lblTitulo.AutoSize = true;
+            this.lblTitulo.Location = new System.Drawing.Point(20, 14);
+            this.lblTitulo.Name = "lblTitulo";
+            this.lblTitulo.Size = new System.Drawing.Size(49, 13);
+            this.lblTitulo.TabIndex = 0;
+            this.lblTitulo.Text = "Despesa";
+            this.lblTitulo.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // txtDespesa
             // 
@@ -122,16 +123,16 @@
             this.label4.TabIndex = 6;
             this.label4.Text = "Desconto";
             // 
-            // groupBox1
+            // grpStatus
             // 
-            this.groupBox1.Controls.Add(this.rdbPendente);
-            this.groupBox1.Controls.Add(this.rdbPaga);
-            this.groupBox1.Location = new System.Drawing.Point(50, 63);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(113, 69);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Status pgto.";
+            this.grpStatus.Controls.Add(this.rdbPendente);
+            this.grpStatus.Controls.Add(this.rdbPaga);
+            this.grpStatus.Location = new System.Drawing.Point(50, 63);
+            this.grpStatus.Name = "grpStatus";
+            this.grpStatus.Size = new System.Drawing.Size(113, 69);
+            this.grpStatus.TabIndex = 8;
+            this.grpStatus.TabStop = false;
+            this.grpStatus.Text = "Status pgto.";
             // 
             // rdbPendente
             // 
@@ -242,10 +243,10 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlFundo.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlFundo.Controls.Add(this.label1);
+            this.pnlFundo.Controls.Add(this.lblTitulo);
             this.pnlFundo.Controls.Add(this.groupBox2);
             this.pnlFundo.Controls.Add(this.txtDespesa);
-            this.pnlFundo.Controls.Add(this.groupBox1);
+            this.pnlFundo.Controls.Add(this.grpStatus);
             this.pnlFundo.Controls.Add(this.label2);
             this.pnlFundo.Controls.Add(this.txtDesconto);
             this.pnlFundo.Controls.Add(this.txtValor);
@@ -306,8 +307,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Incluir Despesa";
             this.Shown += new System.EventHandler(this.frmIncluiDespesa_Shown);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpStatus.ResumeLayout(false);
+            this.grpStatus.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.pnlPeriodo.ResumeLayout(false);
@@ -320,7 +321,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitulo;
         private System.Windows.Forms.TextBox txtDespesa;
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label2;
@@ -328,7 +329,7 @@
         private System.Windows.Forms.MaskedTextBox txtDataVenc;
         private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpStatus;
         private System.Windows.Forms.RadioButton rdbPendente;
         private System.Windows.Forms.RadioButton rdbPaga;
         private System.Windows.Forms.GroupBox groupBox2;

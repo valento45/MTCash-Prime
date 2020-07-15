@@ -1,13 +1,35 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Aux_Mt
 {
-    public class FuncoesAuxiliaresAux
+    public static class FuncoesAuxiliaresAux
     {
+        public static Decimal FormatMoney(this string value)
+        {
+            try
+            {
+                if (value.Length > 0)
+                {
+                    value = value.Replace(",", ".");
+
+                    decimal result;
+                    if(decimal.TryParse(value, out result))
+                        return Convert.ToDecimal(value, CultureInfo.InvariantCulture);                    
+                }                
+            }
+            catch (Exception ex)
+            {                
+                MessageBox.Show("erro: " + ex.Message, "OPS!!!");
+            }
+            return -1;
+        }
+
         //  public static ConvertObjectForClass<T>(List<T> list)
         public static void ColecaoAbstrataModelo()
         {
@@ -31,7 +53,7 @@ namespace Aux_Mt
             Console.WriteLine("");
         }
 
-            
+
 
     }
 

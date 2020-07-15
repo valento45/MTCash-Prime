@@ -25,7 +25,7 @@ namespace MtCash
         static void Application_ThreadException(object sender, ThreadExceptionEventArgs e)
         {
             // Log the exception, display it, etc
-            FrmErro.Exception_(e.Exception, "Program.cs");
+            FrmErro.Exception_(e.Exception);
         }
     }
 }

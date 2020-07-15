@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Migrations.Model;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,6 +32,19 @@ namespace MTBE_u.EntitiesCash
         //    else
         //        return "";
         //}
+        public virtual bool Update()
+        {
+            throw new ArgumentException("Nenhum valor passado para o método atualizar!");
+        }
 
+        public virtual bool Insert()
+        {
+            throw new ArgumentException("Nenhum valor passado para o método inserir!");
+        }
+
+        public virtual bool Delete()
+        {
+            throw new ArgumentException("Nenhum valor passado para o método excluir!");
+        }
     }
 }

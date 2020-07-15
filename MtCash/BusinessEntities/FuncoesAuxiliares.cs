@@ -1,7 +1,9 @@
-﻿using System;
+﻿using MTBE_u;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -28,29 +30,48 @@ namespace MtCash.BusinessEntities
         //    var x = value_enum.GetTypeCode();
         //    return value_enum;
         //}
-
+        public static void IOCreateLogAcesso(string value, string descricao = "")
+        {
+            string data = DateTime.Now.ToString("ddMMyyyy");
+            string path = @"C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\Arquivos\LogAcesso\" + data + ".txt";
+            using (StreamWriter sw = File.CreateText(path))
+            {
+                sw.WriteLine(Login.User._Usuario + ", ");
+                sw.Close();
+            }
+        }
         public static void ImprimeLogAcessoFinanceiro(string data)
-        {            
+        {
             try
             {
                 string path = @"C:\Users\MRX\Desktop\CProfissional\JoalheriaPrime\Arquivos\LogAcesso\" + data.Replace("/", "") + ".txt";
                 List<string> listAcessos = new List<string>();
                 string texto = "";
-                using (StreamReader sr = File.OpenText(path))
+                if (File.Exists(path))
                 {
-                    while (!sr.EndOfStream)
+                    using (StreamReader sr = File.OpenText(path))
                     {
-                        string line = sr.ReadLine();
-                        if (listAcessos.Where(x => x == line).ToList().Count == 0)
+                        while (!sr.EndOfStream)
                         {
-                            listAcessos.Add(line);
-                            texto += line + ", \n";
+                            string line = sr.ReadLine();
+                            if (listAcessos.Where(x => x == line).ToList().Count == 0)
+                            {
+                                listAcessos.Add(line);
+                                texto += line + ", \n";
+                            }
+                            texto = texto.Substring(0, texto.Length - 2) + ".";
                         }
-                        texto = texto.Substring(0, texto.Length - 2) + ".";
+                        MessageBox.Show($"Total de acessos em {data}: {listAcessos.Count}" + "\n\r\n\r\n\rUSUÁRIOS: \n" + texto);
                     }
-                    MessageBox.Show($"Total de acessos em {data}: {listAcessos.Count}" + "\n\r\n\r\n\rUSUÁRIOS: \n"+ texto);
                 }
-
+                else
+                {
+                    using (StreamWriter sw = File.CreateText(path))
+                    {
+                        sw.WriteLine(Login.User._Usuario + ", ");
+                        sw.Close();
+                    }
+                }
             }
             catch (IOException iex)
             {
@@ -58,7 +79,7 @@ namespace MtCash.BusinessEntities
                 MessageBox.Show("" + iex.Message, "OPS!!!");
             }
         }
-
+      
         public enum Filtro
         {
             Nome = 'n',

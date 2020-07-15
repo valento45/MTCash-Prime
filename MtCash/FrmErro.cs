@@ -28,7 +28,7 @@ namespace MtCash
         {
 
         }
-        public static void Exception_(Exception ex, string parametro)
+        public static void Exception_(Exception ex, string parametro = "")
         {
             NetworkLog.Insert(ex, parametro);
             FrmErro erro = new FrmErro(ex, parametro);

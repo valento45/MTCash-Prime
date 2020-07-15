@@ -124,10 +124,11 @@ namespace MT_u
                     {
                         Despesa despesa = (Despesa)dgvDespesa.Rows[i].Cells[colObject.Index].Value;
                         printService.AddValue(despesa);
-                    }                    
+                    }              
                 }
               
-                printService.Print();
+                if(printService.Count() > 0)
+                    printService.Print();
             }
         }
     }

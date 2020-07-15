@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,40 +16,100 @@ namespace MT_u
 {
     public partial class frmIncluiDespesa : frmDefault
     {
+        private Conta Conta_ = null;
         private bool Alterar = false;
-        private Despesa Despesa = null;
+        private bool Receita = false;
+
         string[] Periodo = null;
+
+
         public frmIncluiDespesa()
         {
             InitializeComponent();
         }
 
-        public frmIncluiDespesa(Despesa despesa, bool alterar)
+        
+        public frmIncluiDespesa(Conta conta, bool alterar = false)
         {
             InitializeComponent();
-
-            Despesa = despesa;
+            Conta_ = conta;
             Alterar = alterar;
 
-            if (Despesa.Id > 0)
+            if (Conta_ is Receita)
             {
-                txtDespesa.Text = Despesa.Descricao;
-                txtDataVenc.Text = Despesa.Data_Vencimento.ToString();
-                txtValor.Text = Despesa.Valor.ToString();
-                txtDesconto.Text = Despesa.Desconto.ToString();
-                rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Despesa.Periodo.Length > 0;
-                if (Despesa.Periodo.Length > 0)
+                this.Text = "Incluir Receita";
+                this.lblTitulo.Text = "Receita";
+                Receita = true;
+            }
+            else
+            {
+                Receita = false;
+                this.Text = "Incluir Despesa";
+                this.lblTitulo.Text = "Despesa";
+            }
+
+            if (Conta_.Id > 0)
+            {
+                txtDespesa.Text = Conta_.Descricao;
+                txtDataVenc.Text = Conta_.Data_Vencimento.ToString();
+                txtValor.Text = Conta_.Valor.ToString();
+                txtDesconto.Text = Conta_.Desconto.ToString();
+                rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Conta_.Periodo.Length > 0;
+                if (Conta_.Periodo.Length > 0)
                 {
                     pnlPeriodo.Visible = true;
-                    Periodo = Despesa.Periodo.Split(',');
-                    txtDe.Text = Periodo[0];
-                    txtAte.Text = Periodo[1];
+                    Periodo = Conta_.Periodo.Split(',');
+                    txtDe.Text = Periodo[0].Trim();
+                    txtAte.Text = Periodo[1].Trim();
                 }
-                if (Despesa.Status.Equals("True"))
+                if (Conta_.Status.Equals("True"))
+                {
+                    rdbPendente.Enabled = rdbPaga.Enabled = false;
                     rdbPaga.Checked = true;
+                }
                 else
                     rdbPendente.Checked = true;
             }
+
+        }
+
+
+        //public frmIncluiDespesa(Despesa despesa, bool alterar)
+        //{
+        //    InitializeComponent();
+
+        //    Conta_ = despesa;
+        //    Alterar = alterar;
+
+        //    if (Conta_.Id > 0)
+        //    {
+        //        txtDespesa.Text = Conta_.Descricao;
+        //        txtDataVenc.Text = Conta_.Data_Vencimento.ToString();
+        //        txtValor.Text = Conta_.Valor.ToString();
+        //        txtDesconto.Text = Conta_.Desconto.ToString();
+        //        rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Conta_.Periodo.Length > 0;
+        //        if (Conta_.Periodo.Length > 0)
+        //        {
+        //            pnlPeriodo.Visible = true;
+        //            Periodo = Conta_.Periodo.Split(',');
+        //            txtDe.Text = Periodo[0];
+        //            txtAte.Text = Periodo[1];
+        //        }
+        //        if (Conta_.Status.Equals("True"))
+        //        {
+        //            rdbPendente.Enabled = rdbPaga.Enabled = false;
+        //            rdbPaga.Checked = true;
+        //        }
+        //        else
+        //            rdbPendente.Checked = true;
+        //    }
+        //}
+
+        private void IsReceita()
+        {
+            this.Text = "Incluir Receita";
+            this.lblTitulo.Text = "Receita";
+            Receita = true;
         }
 
         private bool ValidaCampos()
@@ -69,20 +130,25 @@ namespace MT_u
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            //FuncoesAuxiliaresAux.ColecaoAbstrataModelo();
-            
+            if (!Receita)
+                SalvarDespesa();
+            else
+                SalvarReceita();
+        }
 
+        private void SalvarReceita()
+        {
             if (ValidaCampos())
                 try
                 {
                     //se inclusao
                     if (!Alterar)
                     {
-                        Despesa = new Despesa();
-                        Despesa.Descricao = txtDespesa.Text.Trim();
-                        Despesa.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
-                        Despesa.Valor = Convert.ToDecimal(txtValor.Text);
-                        Despesa.Desconto = txtDesconto.Text.Length > 0 ? Convert.ToDecimal(txtDesconto.Text) : 0;
+                        Conta_ = new Receita();
+                        Conta_.Descricao = txtDespesa.Text.Trim();
+                        Conta_.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                        Conta_.Valor = txtValor.Text.FormatMoney();
+                        Conta_.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                         if (rdbEspecificarPeriodo.Checked)
                         {
                             if (txtDe.Text.Length < 10 && txtAte.Text.Length < 10)
@@ -91,12 +157,12 @@ namespace MT_u
                                 return;
                             }
                             else
-                                Despesa.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                                Conta_.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
                         }
-                        Despesa.Status = rdbPaga.Checked.ToString();
+                        Conta_.Status = rdbPaga.Checked.ToString();
 
-                        //Inserindo
-                        if (Despesa.InsertDespesa())
+                        //Insere
+                        if (Conta_.Insert())
                         {
                             MessageBox.Show("Dados inseridos com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LimparCampos();
@@ -107,12 +173,13 @@ namespace MT_u
                     //senao, alteração
                     else
                     {
-                        if (Despesa != null && Despesa.Id > 0)
+                        var obj = Conta_ as Receita;
+                        if (obj != null && obj.Id > 0)
                         {
-                            Despesa.Descricao = txtDespesa.Text.Trim();
-                            Despesa.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
-                            Despesa.Valor = Convert.ToDecimal(txtValor.Text);
-                            Despesa.Desconto = txtDesconto.Text.Length > 0 ? Convert.ToDecimal(txtDesconto.Text) : 0;
+                            obj.Descricao = txtDespesa.Text.Trim();
+                            obj.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                            obj.Valor = txtValor.Text.FormatMoney();
+                            obj.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                             if (rdbEspecificarPeriodo.Checked)
                             {
                                 if (txtDe.Text.Length < 10 && txtAte.Text.Length < 10)
@@ -121,15 +188,89 @@ namespace MT_u
                                     return;
                                 }
                                 else
-                                    Despesa.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                                    obj.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
                             }
-                            Despesa.Status = rdbPaga.Checked.ToString();
+                            obj.Status = rdbPaga.Checked.ToString();
 
                             //atualizando
-                            if (Despesa.UpdateDespesa())
+                            if (obj.Update())
                             {
                                 MessageBox.Show("Dados atualizados com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            }
+                            else
+                                MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erro: " + ex.Message, "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+        }
+
+        private void SalvarDespesa()
+        {
+            //FuncoesAuxiliaresAux.ColecaoAbstrataModelo();
+            if (ValidaCampos())
+                try
+                {
+                    //se inclusao
+                    if (!Alterar)
+                    {
+                        Conta_ = new Despesa();
+                        Conta_.Descricao = txtDespesa.Text.Trim();
+                        Conta_.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                        Conta_.Valor = txtValor.Text.FormatMoney();
+                        Conta_.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
+                        if (rdbEspecificarPeriodo.Checked)
+                        {
+                            if (txtDe.Text.Length < 10 && txtAte.Text.Length < 10)
+                            {
+                                MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                return;
+                            }
+                            else
+                                Conta_.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                        }
+                        Conta_.Status = rdbPaga.Checked.ToString();
+
+                        //Insere
+                        if (Conta_.Insert())
+                        {
+                            MessageBox.Show("Dados inseridos com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LimparCampos();
+                        }
+                        else
+                            MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    //senao, alteração
+                    else
+                    {
+                        var obj = Conta_ as Despesa;
+                        if (obj != null && obj.Id > 0)
+                        {
+                            obj.Descricao = txtDespesa.Text.Trim();
+                            obj.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                            obj.Valor = txtValor.Text.FormatMoney();
+                            obj.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
+                            if (rdbEspecificarPeriodo.Checked)
+                            {
+                                if (txtDe.Text.Length < 10 && txtAte.Text.Length < 10)
+                                {
+                                    MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                                    return;
+                                }
+                                else
+                                    obj.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                            }
+                            obj.Status = rdbPaga.Checked.ToString();
+
+                            //atualizando
+                            if (obj.Update())
+                            {
+                                MessageBox.Show("Dados atualizados com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                                 MessageBox.Show("Os dados não foram salvos corretamente! Por favor, verifique.", "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -178,6 +319,11 @@ namespace MT_u
         {
             //Printer printer = new Printer();
             //printer.ShowDialog();
+            if (Conta_ != null)
+            {
+                PrintService<Despesa> printService = new PrintService<Despesa>();
+                printService.Print(Conta_ as Despesa);
+            }
         }
     }
 }

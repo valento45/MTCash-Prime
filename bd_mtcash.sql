@@ -19,6 +19,7 @@ pais varchar(15) null
 );
 go
 
+
 create table mtcash.tb_cidade(	
 id_cidade int identity not null primary key,
 cidade varchar(30) not null,
@@ -172,6 +173,8 @@ periodo varchar(30) null,
 desconto decimal(8,2) null
 );
 go
+
+select * from mtcash.u_tb_receita;
 
 create table mtcash.u_tb_plano_receita(
 id_plano_conta int identity not null primary key,

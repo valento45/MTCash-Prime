@@ -13,6 +13,7 @@ using MT_u.Usuario;
 using MTBE_u;
 using MTBE_u.Entities;
 using MTBE_u.Entities.Enums;
+using MTBE_u.EntitiesCash;
 using MtCash.BusinessEntities;
 
 namespace MtCash
@@ -24,12 +25,12 @@ namespace MtCash
         {
             InitializeComponent();
 
-            if (user.Id_Pessoa > 0)
+            if (user != null && user.Id_Pessoa > 0)
             {
                 UsuarioLogado = user;
                 Permissoes_Usuario();
                 AjustarIcons();
-                    
+                FuncoesAuxiliares.IOCreateLogAcesso(Login.User._Usuario);
             }
         }
 
@@ -69,7 +70,12 @@ namespace MtCash
         {
             if (Modulo.CanInclude(Login.User, Modulos.Financeiro))
             {
-
+                frmIncluiDespesa frm = new frmIncluiDespesa(new MTBE_u.EntitiesCash.Receita());
+                frm.MdiParent = this;
+                if (frm.Visible)
+                    frm.Focus();
+                else
+                    frm.Show();
             }
             else
             {
@@ -123,12 +129,12 @@ namespace MtCash
 
         private void planoDeContaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-          
+
         }
 
         private void incluirToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            frmIncluiDespesa frmIDespesa = new frmIncluiDespesa();
+            frmIncluiDespesa frmIDespesa = new frmIncluiDespesa(new Despesa());
             frmIDespesa.MdiParent = this;
             if (frmIDespesa.Visible)
                 frmIDespesa.Focus();
@@ -149,6 +155,11 @@ namespace MtCash
         private void logDeAcessosEmTelaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FuncoesAuxiliares.ImprimeLogAcessoFinanceiro(DateTime.Now.ToString("dd/MM/yyyy"));
+        }
+
+        private void pesquisarToolStripMenuItem3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
