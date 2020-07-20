@@ -18,7 +18,7 @@ namespace MT_u
     {
         private Conta Conta_ = null;
         private bool Alterar = false;
-        private bool Receita = false;
+        private bool isReceita = false;
 
         string[] Periodo = null;
 
@@ -39,11 +39,11 @@ namespace MT_u
             {
                 this.Text = "Incluir Receita";
                 this.lblTitulo.Text = "Receita";
-                Receita = true;
+                isReceita = true;
             }
             else
             {
-                Receita = false;
+                isReceita = false;
                 this.Text = "Incluir Despesa";
                 this.lblTitulo.Text = "Despesa";
             }
@@ -109,7 +109,7 @@ namespace MT_u
         {
             this.Text = "Incluir Receita";
             this.lblTitulo.Text = "Receita";
-            Receita = true;
+            isReceita = true;
         }
 
         private bool ValidaCampos()
@@ -130,7 +130,7 @@ namespace MT_u
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            if (!Receita)
+            if (!isReceita)
                 SalvarDespesa();
             else
                 SalvarReceita();
