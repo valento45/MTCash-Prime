@@ -1,0 +1,4 @@
+Após criar o grafico de gasto mensal (inteligente, para que ao bater olho, o usuario tenho 
+capacidade de interpretar toda a informação que o grafico está exibindo)
+Após isto, criar, imediatamente, mensagem de aviso de vencimento de contas como receita, despesa, etc.
+para que seja possível lançar a primeira versão do software imediatamente.

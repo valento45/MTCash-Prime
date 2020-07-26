@@ -76,6 +76,7 @@ namespace Aux_Mt
         private void frmDefault_Load(object sender, EventArgs e)
         {
             GetAllControls(this);
+            
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace MT_u
 {
-    partial class frmIncluiDespesa
+    partial class frmIncluiConta
     {
         /// <summary>
         /// Required designer variable.
@@ -33,7 +33,6 @@
             this.txtValor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtDataVenc = new System.Windows.Forms.MaskedTextBox();
             this.txtDesconto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grpStatus = new System.Windows.Forms.GroupBox();
@@ -51,6 +50,7 @@
             this.btAcao = new System.Windows.Forms.Button();
             this.btImprimir = new System.Windows.Forms.Button();
             this.btEnviarEmail = new System.Windows.Forms.Button();
+            this.txtDataVenc = new System.Windows.Forms.MaskedTextBox();
             this.grpStatus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
@@ -98,14 +98,6 @@
             this.label3.Size = new System.Drawing.Size(60, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Data venc.";
-            // 
-            // txtDataVenc
-            // 
-            this.txtDataVenc.Location = new System.Drawing.Point(75, 37);
-            this.txtDataVenc.Mask = "00/00/0000";
-            this.txtDataVenc.Name = "txtDataVenc";
-            this.txtDataVenc.Size = new System.Drawing.Size(100, 20);
-            this.txtDataVenc.TabIndex = 2;
             // 
             // txtDesconto
             // 
@@ -293,7 +285,15 @@
             this.btEnviarEmail.Text = "Enviar email";
             this.btEnviarEmail.UseVisualStyleBackColor = false;
             // 
-            // frmIncluiDespesa
+            // txtDataVenc
+            // 
+            this.txtDataVenc.Location = new System.Drawing.Point(75, 37);
+            this.txtDataVenc.Mask = "00/00/0000";
+            this.txtDataVenc.Name = "txtDataVenc";
+            this.txtDataVenc.Size = new System.Drawing.Size(100, 20);
+            this.txtDataVenc.TabIndex = 2;
+            // 
+            // frmIncluiConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,7 +303,7 @@
             this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.btAcao);
             this.MaximizeBox = false;
-            this.Name = "frmIncluiDespesa";
+            this.Name = "frmIncluiConta";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Incluir Despesa";
             this.Shown += new System.EventHandler(this.frmIncluiDespesa_Shown);
@@ -326,7 +326,6 @@
         private System.Windows.Forms.TextBox txtValor;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.MaskedTextBox txtDataVenc;
         private System.Windows.Forms.TextBox txtDesconto;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox grpStatus;
@@ -344,5 +343,6 @@
         private System.Windows.Forms.Button btAcao;
         private System.Windows.Forms.Button btImprimir;
         private System.Windows.Forms.Button btEnviarEmail;
+        private System.Windows.Forms.MaskedTextBox txtDataVenc;
     }
 }

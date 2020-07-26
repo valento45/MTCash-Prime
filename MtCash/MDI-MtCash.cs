@@ -70,7 +70,7 @@ namespace MtCash
         {
             if (Modulo.CanInclude(Login.User, Modulos.Financeiro))
             {
-                frmIncluiDespesa frm = new frmIncluiDespesa(new MTBE_u.EntitiesCash.Receita());
+                frmIncluiConta frm = new frmIncluiConta(new MTBE_u.EntitiesCash.Receita());
                 frm.MdiParent = this;
                 if (frm.Visible)
                     frm.Focus();
@@ -134,7 +134,7 @@ namespace MtCash
 
         private void incluirToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            frmIncluiDespesa frmIDespesa = new frmIncluiDespesa(new Despesa());
+            frmIncluiConta frmIDespesa = new frmIncluiConta(new Despesa());
             frmIDespesa.MdiParent = this;
             if (frmIDespesa.Visible)
                 frmIDespesa.Focus();
@@ -144,7 +144,7 @@ namespace MtCash
 
         private void pesquisarToolStripMenuItem4_Click(object sender, EventArgs e)
         {
-            frmPesqDespesa pesqDespesa = new frmPesqDespesa();
+            frmPesqConta pesqDespesa = new frmPesqConta("Despesa");
             pesqDespesa.MdiParent = this;
             if (pesqDespesa.Visible)
                 pesqDespesa.Focus();
@@ -159,7 +159,8 @@ namespace MtCash
 
         private void pesquisarToolStripMenuItem3_Click(object sender, EventArgs e)
         {
-
+            frmPesqConta s = new frmPesqConta("Receita");
+            s.ShowDialog();
         }
     }
 }

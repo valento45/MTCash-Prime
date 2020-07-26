@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MT_u
 {
-    public partial class frmIncluiDespesa : frmDefault
+    public partial class frmIncluiConta : frmDefault
     {
         private Conta Conta_ = null;
         private bool Alterar = false;
@@ -23,13 +23,13 @@ namespace MT_u
         string[] Periodo = null;
 
 
-        public frmIncluiDespesa()
+        public frmIncluiConta()
         {
             InitializeComponent();
         }
 
         
-        public frmIncluiDespesa(Conta conta, bool alterar = false)
+        public frmIncluiConta(Conta conta, bool alterar = false)
         {
             InitializeComponent();
             Conta_ = conta;
@@ -51,7 +51,7 @@ namespace MT_u
             if (Conta_.Id > 0)
             {
                 txtDespesa.Text = Conta_.Descricao;
-                txtDataVenc.Text = Conta_.Data_Vencimento.ToString();
+                txtAte.Text = Conta_.Data_Vencimento.ToString();
                 txtValor.Text = Conta_.Valor.ToString();
                 txtDesconto.Text = Conta_.Desconto.ToString();
                 rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Conta_.Periodo.Length > 0;
@@ -146,7 +146,7 @@ namespace MT_u
                     {
                         Conta_ = new Receita();
                         Conta_.Descricao = txtDespesa.Text.Trim();
-                        Conta_.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                        Conta_.Data_Vencimento = Convert.ToDateTime(txtAte.Text);
                         Conta_.Valor = txtValor.Text.FormatMoney();
                         Conta_.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                         if (rdbEspecificarPeriodo.Checked)
@@ -177,7 +177,7 @@ namespace MT_u
                         if (obj != null && obj.Id > 0)
                         {
                             obj.Descricao = txtDespesa.Text.Trim();
-                            obj.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                            obj.Data_Vencimento = Convert.ToDateTime(txtAte.Text);
                             obj.Valor = txtValor.Text.FormatMoney();
                             obj.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                             if (rdbEspecificarPeriodo.Checked)
@@ -221,7 +221,7 @@ namespace MT_u
                     {
                         Conta_ = new Despesa();
                         Conta_.Descricao = txtDespesa.Text.Trim();
-                        Conta_.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                        Conta_.Data_Vencimento = Convert.ToDateTime(txtAte.Text);
                         Conta_.Valor = txtValor.Text.FormatMoney();
                         Conta_.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                         if (rdbEspecificarPeriodo.Checked)
@@ -252,7 +252,7 @@ namespace MT_u
                         if (obj != null && obj.Id > 0)
                         {
                             obj.Descricao = txtDespesa.Text.Trim();
-                            obj.Data_Vencimento = Convert.ToDateTime(txtDataVenc.Text);
+                            obj.Data_Vencimento = Convert.ToDateTime(txtAte.Text);
                             obj.Valor = txtValor.Text.FormatMoney();
                             obj.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                             if (rdbEspecificarPeriodo.Checked)
@@ -319,10 +319,18 @@ namespace MT_u
         {
             //Printer printer = new Printer();
             //printer.ShowDialog();
-            if (Conta_ != null)
+            if (Conta_ != null && Conta_.Id > 0)
             {
-                PrintService<Despesa> printService = new PrintService<Despesa>();
-                printService.Print(Conta_ as Despesa);
+                if (Conta_ is Despesa)
+                {
+                    PrintService<Despesa> printService = new PrintService<Despesa>();
+                    printService.Print(Conta_ as Despesa);
+                }
+                else if (Conta_ is Receita)
+                {
+                    PrintService<Receita> printService = new PrintService<Receita>();
+                    printService.Print(Conta_ as Receita);
+                }
             }
         }
     }

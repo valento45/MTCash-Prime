@@ -1,6 +1,6 @@
 ﻿namespace MT_u
 {
-    partial class frmPesqDespesa
+    partial class frmPesqConta
     {
         /// <summary>
         /// Required designer variable.
@@ -98,16 +98,16 @@
             // 
             this.pnlStatus.Controls.Add(this.rdbPendente);
             this.pnlStatus.Controls.Add(this.rdbPaga);
-            this.pnlStatus.Location = new System.Drawing.Point(193, 36);
+            this.pnlStatus.Location = new System.Drawing.Point(38, 91);
             this.pnlStatus.Name = "pnlStatus";
-            this.pnlStatus.Size = new System.Drawing.Size(200, 64);
+            this.pnlStatus.Size = new System.Drawing.Size(149, 49);
             this.pnlStatus.TabIndex = 15;
-            this.pnlStatus.Visible = false;
             // 
             // rdbPendente
             // 
             this.rdbPendente.AutoSize = true;
-            this.rdbPendente.Location = new System.Drawing.Point(29, 36);
+            this.rdbPendente.Checked = true;
+            this.rdbPendente.Location = new System.Drawing.Point(29, 29);
             this.rdbPendente.Name = "rdbPendente";
             this.rdbPendente.Size = new System.Drawing.Size(103, 17);
             this.rdbPendente.TabIndex = 1;
@@ -118,7 +118,7 @@
             // rdbPaga
             // 
             this.rdbPaga.AutoSize = true;
-            this.rdbPaga.Location = new System.Drawing.Point(29, 11);
+            this.rdbPaga.Location = new System.Drawing.Point(29, 6);
             this.rdbPaga.Name = "rdbPaga";
             this.rdbPaga.Size = new System.Drawing.Size(82, 17);
             this.rdbPaga.TabIndex = 0;
@@ -217,8 +217,7 @@
             this.cmbFiltro.Items.AddRange(new object[] {
             "Código",
             "Descrição",
-            "Período",
-            "Status"});
+            "Período"});
             this.cmbFiltro.Location = new System.Drawing.Point(66, 55);
             this.cmbFiltro.Name = "cmbFiltro";
             this.cmbFiltro.Size = new System.Drawing.Size(121, 21);

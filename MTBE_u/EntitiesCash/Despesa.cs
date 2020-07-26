@@ -64,7 +64,11 @@ namespace MTBE_u.EntitiesCash
             SqlCommand cmd = new SqlCommand("delete from mtcash.u_tb_despesa where id_despesa = " + id);
             return Access.ExecuteNonQuery(cmd);
         }
-
+        public override bool Delete()
+        {
+            SqlCommand cmd = new SqlCommand("delete from mtcash.u_tb_despesa where id_despesa = " + Id);
+            return Access.ExecuteNonQuery(cmd);
+        }
         public static List<Despesa> GetDespesas(bool apenaspendentes, bool todas = false)
         {
             List<Despesa> result = new List<Despesa>();

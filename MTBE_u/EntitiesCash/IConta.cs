@@ -39,7 +39,7 @@ namespace MTBE_u.EntitiesCash
 
         public virtual bool Insert()
         {
-            throw new ArgumentException("Nenhum valor passado para o método inserir!");
+            throw new ArgumentException("Nenhum valor atribuído para o objeto que chama o método Insert");
         }
 
         public virtual bool Delete()

@@ -35,6 +35,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -43,17 +44,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="frmIncluiDespesa.cs">
+    <Compile Include="frmIncluiConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmIncluiDespesa.Designer.cs">
-      <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
+    <Compile Include="frmIncluiConta.Designer.cs">
+      <DependentUpon>frmIncluiConta.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmPesqDespesa.cs">
+    <Compile Include="frmPesqConta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmPesqDespesa.Designer.cs">
-      <DependentUpon>frmPesqDespesa.cs</DependentUpon>
+    <Compile Include="frmPesqConta.Designer.cs">
+      <DependentUpon>frmPesqConta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRelatorioGrafico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRelatorioGrafico.Designer.cs">
+      <DependentUpon>frmRelatorioGrafico.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -68,11 +75,14 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="frmIncluiDespesa.resx">
-      <DependentUpon>frmIncluiDespesa.cs</DependentUpon>
+    <EmbeddedResource Include="frmIncluiConta.resx">
+      <DependentUpon>frmIncluiConta.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmPesqDespesa.resx">
-      <DependentUpon>frmPesqDespesa.cs</DependentUpon>
+    <EmbeddedResource Include="frmPesqConta.resx">
+      <DependentUpon>frmPesqConta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRelatorioGrafico.resx">
+      <DependentUpon>frmRelatorioGrafico.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

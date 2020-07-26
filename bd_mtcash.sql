@@ -1,3 +1,4 @@
+
 --use master;
 --GO
 --drop database bd_mtcash;
@@ -166,11 +167,12 @@ go
 
 create table mtcash.u_tb_receita(
 id_receita int identity not null primary key,
-descricao varchar(100) null,
-valor_receita decimal(8,2) not null,
+descricao varchar(100) not null,
 data_vencimento datetime not null,
+valor_receita decimal(8,2) not null,
+desconto decimal(8,2) null,
 periodo varchar(30) null,
-desconto decimal(8,2) null
+paga varchar(5) null
 );
 go
 
