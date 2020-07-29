@@ -73,7 +73,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Despesa.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
 
                 }
@@ -82,7 +83,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Despesa.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
                 }
                 else if (cmbFiltro.SelectedIndex == 2 && txtDe.Text.Length == 10 && txtAte.Text.Length == 10)
@@ -90,7 +92,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Despesa.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
                 }
                 //else if (cmbFiltro.SelectedIndex == 3 && (rdbPaga.Checked || rdbPendente.Checked))
@@ -109,7 +112,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Receita.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
 
                 }
@@ -118,7 +122,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Receita.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
                 }
                 else if (cmbFiltro.SelectedIndex == 2 && txtDe.Text.Length == 10 && txtAte.Text.Length == 10)
@@ -126,7 +131,8 @@ namespace MT_u
                     dgvDespesa.Rows.Clear();
                     foreach (var x in Receita.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, true))
                     {
-                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, x.Data_Vencimento, x.Valor, x.Desconto, x.Status, x);
+                        string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
+                        dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
                 }
             }

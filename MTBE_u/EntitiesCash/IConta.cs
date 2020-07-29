@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity.Migrations.Model;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,10 +12,12 @@ namespace MTBE_u.EntitiesCash
     {
         public int Id { get; set; }
         public string Descricao { get; set; }
+        public string DiaVencimento { get; set; }
+        public string MesVencimento { get; set; }
+        public string AnoVencimento { get; set; }
         public decimal Valor { get; set; }
-        public DateTime? Data_Vencimento { get; set; }
-        public string Periodo { get; set; }
         public decimal Desconto { get; set; }
+        public string Periodo { get; set; }        
         public string Status { get; set; }
 
         //public virtual string GetString(Conta conta)

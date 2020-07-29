@@ -52,8 +52,7 @@ namespace Aux_Mt
             }
             Console.WriteLine("");
         }
-
-
+            
 
     }
 

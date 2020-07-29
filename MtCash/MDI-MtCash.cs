@@ -162,5 +162,17 @@ namespace MtCash
             frmPesqConta s = new frmPesqConta("Receita");
             s.ShowDialog();
         }
+
+        private void gráficosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!(Modulo.CanAccess(Modulos.Financeiro)))
+            {
+                MessageBox.Show("Você não possui permissão para prosseguir!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            CalculoEntradaSaida calc = CalculoEntradaSaida.GetByMes(DateTime.Now);
+            frmRelatorioGrafico frmGrafic = new frmRelatorioGrafico(calc);
+            frmGrafic.ShowDialog();
+        }
     }
 }

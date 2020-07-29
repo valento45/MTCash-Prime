@@ -16,7 +16,9 @@ namespace MTBE_u.EntitiesCash
             Id = Convert.ToInt32(dr["id_receita"]);
             Descricao = dr["descricao"].ToString();
             Valor = Convert.ToDecimal(dr["valor_receita"]);
-            Data_Vencimento = Convert.ToDateTime(dr["data_vencimento"]);
+            DiaVencimento = dr["dia"].ToString();
+            MesVencimento = dr["mes"].ToString();
+            AnoVencimento = dr["ano"].ToString();
             Periodo = dr["periodo"] != null ? dr["periodo"].ToString() : "";
             Desconto = dr["desconto"] != null ? Convert.ToDecimal(dr["desconto"]) : 0;
             Status = dr["paga"] != null ? dr["paga"].ToString() : "";
@@ -24,10 +26,12 @@ namespace MTBE_u.EntitiesCash
         }
         public override bool Insert()
         {
-            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, valor_receita, data_vencimento, periodo, desconto, paga) values (@descricao, @valor_receita, @data_vencimento, @periodo, @desconto, @paga)");
+            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, valor_receita, dia, mes, ano, periodo, desconto, paga) values (@descricao, @valor_receita, @dia, @mes, @ano, @periodo, @desconto, @paga)");
             cmd.Parameters.AddWithValue(@"descricao", Descricao);
             cmd.Parameters.AddWithValue(@"valor_receita", Valor);
-            cmd.Parameters.AddWithValue(@"data_vencimento", Data_Vencimento);
+            cmd.Parameters.AddWithValue(@"dia", DiaVencimento);
+            cmd.Parameters.AddWithValue(@"mes", MesVencimento);
+            cmd.Parameters.AddWithValue(@"ano", AnoVencimento);
             cmd.Parameters.AddWithValue(@"periodo", Periodo);
             cmd.Parameters.AddWithValue(@"desconto", Desconto);
             cmd.Parameters.AddWithValue(@"paga", Status);
@@ -40,7 +44,9 @@ namespace MTBE_u.EntitiesCash
             cmd.Parameters.AddWithValue(@"id_receita", Id);
             cmd.Parameters.AddWithValue(@"descricao", Descricao);
             cmd.Parameters.AddWithValue(@"valor_receita", Valor);
-            cmd.Parameters.AddWithValue(@"data_vencimento", Data_Vencimento);
+            cmd.Parameters.AddWithValue(@"dia", DiaVencimento);
+            cmd.Parameters.AddWithValue(@"mes", MesVencimento);
+            cmd.Parameters.AddWithValue(@"ano", AnoVencimento);
             cmd.Parameters.AddWithValue(@"periodo", Periodo);
             cmd.Parameters.AddWithValue(@"desconto", Desconto);
             //cmd.Parameters.AddWithValue(@"desconto", Desconto);

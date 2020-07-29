@@ -53,6 +53,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Access.cs" />
+    <Compile Include="EntitiesCash\CalculoEntradaSaida.cs" />
     <Compile Include="EntitiesCash\Categoria.cs" />
     <Compile Include="EntitiesCash\Despesa.cs" />
     <Compile Include="EntitiesCash\IConta.cs" />

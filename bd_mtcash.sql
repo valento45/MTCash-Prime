@@ -168,7 +168,9 @@ go
 create table mtcash.u_tb_receita(
 id_receita int identity not null primary key,
 descricao varchar(100) not null,
-data_vencimento datetime not null,
+dia varchar(2) not null,
+mes varchar(2) not null,
+ano varchar(4) not null,
 valor_receita decimal(8,2) not null,
 desconto decimal(8,2) null,
 periodo varchar(30) null,
@@ -176,7 +178,8 @@ paga varchar(5) null
 );
 go
 
-select * from mtcash.u_tb_receita;
+--select * from mtcash.u_tb_receita WHERE descricao like '%' AND paga = 'False'
+--select * from mtcash.u_tb_receita;
 
 create table mtcash.u_tb_plano_receita(
 id_plano_conta int identity not null primary key,
@@ -234,7 +237,9 @@ go
 create table mtcash.u_tb_despesa(
 id_despesa int identity not null primary key,
 descricao varchar(100) not null,
-data_vencimento datetime not null,
+dia varchar(2) not null,
+mes varchar(2) not null,
+ano varchar(4) not null,
 valor_despesa decimal(8,2) not null,
 desconto decimal(8,2) null,
 periodo varchar(30) null,

@@ -172,21 +172,21 @@
             // incluirToolStripMenuItem3
             // 
             this.incluirToolStripMenuItem3.Name = "incluirToolStripMenuItem3";
-            this.incluirToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.incluirToolStripMenuItem3.Size = new System.Drawing.Size(126, 22);
             this.incluirToolStripMenuItem3.Text = "Incluir";
             this.incluirToolStripMenuItem3.Click += new System.EventHandler(this.incluirToolStripMenuItem3_Click);
             // 
             // pesquisarToolStripMenuItem3
             // 
             this.pesquisarToolStripMenuItem3.Name = "pesquisarToolStripMenuItem3";
-            this.pesquisarToolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.pesquisarToolStripMenuItem3.Size = new System.Drawing.Size(126, 22);
             this.pesquisarToolStripMenuItem3.Text = "Pesquisar";
             this.pesquisarToolStripMenuItem3.Click += new System.EventHandler(this.pesquisarToolStripMenuItem3_Click);
             // 
             // relatóriosToolStripMenuItem2
             // 
             this.relatóriosToolStripMenuItem2.Name = "relatóriosToolStripMenuItem2";
-            this.relatóriosToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.relatóriosToolStripMenuItem2.Size = new System.Drawing.Size(126, 22);
             this.relatóriosToolStripMenuItem2.Text = "Relatórios";
             // 
             // pesquisarToolStripMenuItem2
@@ -254,6 +254,7 @@
             this.gráficosToolStripMenuItem.Name = "gráficosToolStripMenuItem";
             this.gráficosToolStripMenuItem.Size = new System.Drawing.Size(185, 22);
             this.gráficosToolStripMenuItem.Text = "Gráficos";
+            this.gráficosToolStripMenuItem.Click += new System.EventHandler(this.gráficosToolStripMenuItem_Click);
             // 
             // faturamentoToolStripMenuItem
             // 
