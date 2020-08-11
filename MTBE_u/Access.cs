@@ -12,7 +12,7 @@ using System.Windows.Forms;
 
 namespace MTBE_u
 {
-    public class Access
+    public static class Access
     {
         public static int ExecuteScalar(IDbCommand cmd, bool registrolog = true)
         {
@@ -163,7 +163,7 @@ namespace MTBE_u
 
         public static IDbConnection GetConnection()
         {
-            string connectionString = @"Data Source=MX15733\DEVELOPER;Initial Catalog=bd_mtcash;Integrated Security=true;";
+            string connectionString = @"Data Source=MRX\DEVIGOR;Initial Catalog=bd_mtcash;Integrated Security=true;";
             SqlConnection con = new SqlConnection(connectionString);
             return con;
         }
