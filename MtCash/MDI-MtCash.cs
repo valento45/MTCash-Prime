@@ -36,8 +36,7 @@ namespace MtCash
 
         private void AjustarIcons()
         {
-            this.BackColor = Color.White;
-            this.BackgroundImage = Image.FromFile(@"C:\Users\MRX\Pictures\Images\84d.jpg");
+            this.BackColor = Color.White;           
         }
         private void Permissoes_Usuario()
         {

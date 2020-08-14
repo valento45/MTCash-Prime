@@ -60,7 +60,7 @@ modulos varchar(50) null,
 user_atv bit null,
 tipo varchar(50) null,
 usuario varchar(30) unique not null,
-senha varchar(30) not null
+senha varchar(300) not null
 );
 GO
 

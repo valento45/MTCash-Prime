@@ -93,7 +93,7 @@ namespace MT_u
                 if (usuario.Id_Pessoa <= 0)                
                     throw new UsuarioException("Usuário ou senha inválidos!");
 
-                if(!(bool)usuario.User_atv)
+                if(usuario.User_atv != null && !(bool)usuario.User_atv)
                     throw new UsuarioException("Usuário bloqueado ou inativo!");
 
                 else
@@ -110,8 +110,7 @@ namespace MT_u
                             //if (MessageBox.Show("Deseja encerrar o programa?", "Saindo...", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                                 Application.Exit();                            
                         }
-                    }
-                    this.Visible = true;
+                    }                    
                 }
             }
         }

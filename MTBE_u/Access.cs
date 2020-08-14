@@ -163,7 +163,7 @@ namespace MTBE_u
 
         public static IDbConnection GetConnection()
         {
-            string connectionString = @"Data Source=MRX\DEVIGOR;Initial Catalog=bd_mtcash;Integrated Security=true;";
+            string connectionString = @"Data Source=MRX\DEVIGOR;Initial Catalog=bd_mtcash;User Id=supervisor;Password=Sh1n1g4m3!@#";
             SqlConnection con = new SqlConnection(connectionString);
             return con;
         }
