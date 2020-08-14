@@ -19,7 +19,7 @@ namespace MTBE_u.EntitiesCash
         public decimal Desconto { get; set; }
         public string Periodo { get; set; }        
         public string Status { get; set; }
-
+        public string Tipo { get; set; }
         //public virtual string GetString(Conta conta)
         //{
         //    StringBuilder str = new StringBuilder();

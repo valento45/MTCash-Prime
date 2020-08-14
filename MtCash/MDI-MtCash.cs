@@ -169,8 +169,8 @@ namespace MtCash
                 MessageBox.Show("Você não possui permissão para prosseguir!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            CalculoEntradaSaida calc = CalculoEntradaSaida.GetByMes(DateTime.Now);
-            frmRelatorioGrafico frmGrafic = new frmRelatorioGrafico(calc);
+            
+            frmRelatorioGrafico frmGrafic = new frmRelatorioGrafico();
             frmGrafic.ShowDialog();
         }
     }

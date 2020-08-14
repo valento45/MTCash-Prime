@@ -17,6 +17,49 @@ namespace MTBE_u.EntitiesCash
         public List<Receita> ListReceita { get; set; } = new List<Receita>();
         public List<Despesa> ListDespesa { get; set; } = new List<Despesa>();
         public List<Conta> AllContas { get; set; } = new List<Conta>();
+
+        public static CalculoEntradaSaida GetByPeriodo(DateTime de, DateTime ate)
+        {
+            CalculoEntradaSaida result = new CalculoEntradaSaida();
+            SqlCommand cmd = new SqlCommand();
+            try
+            {
+                //Adicionando receita
+                string query = $"select * from mtcash.u_tb_receita where" +
+                    $" (mes >= '{de.Month}' AND ano >= '{de.Year}') AND (mes <= '{ate.Month}' AND ano <= '{ate.Year}');";
+                cmd.CommandText = query;
+                cmd.Connection = Access.GetConnection() as SqlConnection;
+                if (cmd.Connection.State == ConnectionState.Closed)
+                    cmd.Connection.Open();                
+                foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result.ListReceita.Add(new Receita(x));
+                    AddConta(result, new Receita(x));
+                }
+
+                //Adicionando despesa
+                query = $"select * from mtcash.u_tb_despesa where" +
+                    $" (mes >= '{de.Month}' AND ano >= '{de.Year}') AND (mes <= '{ate.Month}' AND ano <= '{ate.Year}');";
+                cmd.CommandText = query;
+
+                foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                {
+                    result.ListDespesa.Add(new Despesa(x));
+                    AddConta(result, new Despesa(x));
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("" + ex.Message, "OPS", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                NetworkLog.Insert(ex, "CalculoEntradaSaida.cs in Method GetByPeriodo");
+            }
+            finally
+            {
+                if (cmd.Connection.State == ConnectionState.Open)
+                    cmd.Connection.Close();
+            }
+            return result;
+        }
         public static CalculoEntradaSaida GetByMes(DateTime data)
         {
             CalculoEntradaSaida result = new CalculoEntradaSaida();
@@ -81,6 +124,8 @@ namespace MTBE_u.EntitiesCash
         public decimal GetTotalReceitaMes(DateTime mes)
         {
             decimal result = 0;
+            if (!(ListReceita.Count > 0))
+                return -1;
             foreach (var x in ListReceita)
             {
                 if (x.MesVencimento.GetHashCode() == mes.Month.GetHashCode())
@@ -94,6 +139,8 @@ namespace MTBE_u.EntitiesCash
         public decimal GetTotalDespesaMes(DateTime mes)
         {
             decimal result = 0;
+            if (!(ListDespesa.Count > 0))
+                return -1;
             foreach (var x in ListDespesa)
             {
                 if (x.MesVencimento.GetHashCode() == mes.Month.GetHashCode())

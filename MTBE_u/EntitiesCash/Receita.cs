@@ -10,6 +10,7 @@ namespace MTBE_u.EntitiesCash
 {
     public class Receita : Conta
     {
+        private const string Type_ = "Receita";
         public Receita() { }
         public Receita(DataRow dr)
         {
@@ -23,6 +24,7 @@ namespace MTBE_u.EntitiesCash
             Desconto = dr["desconto"] != null ? Convert.ToDecimal(dr["desconto"]) : 0;
             Status = dr["paga"] != null ? dr["paga"].ToString() : "";
             //Desconto = Convert.ToDecimal(dr["desconto"]);
+            Tipo = Type_;
         }
         public override bool Insert()
         {
