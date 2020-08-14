@@ -12,6 +12,7 @@ namespace MTBE_u.EntitiesCash
 {
     public class Despesa : Conta
     {
+        private const string Type_ = "Despesa";
         public Despesa() { }
         public Despesa(DataRow dr)
         {
@@ -24,6 +25,7 @@ namespace MTBE_u.EntitiesCash
             Periodo = dr["periodo"].ToString();
             Desconto = dr["desconto"] != null ? Convert.ToDecimal(dr["desconto"]) : 0;
             Status = dr["paga"].ToString();
+            Tipo = Type_;
         }
 
         public bool InsertDespesa()
