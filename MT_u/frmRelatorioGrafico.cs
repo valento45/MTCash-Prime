@@ -38,8 +38,11 @@ namespace MT_u
             {
                 decimal ganhoTotal = Calculo.ListReceita.Sum(x => x.Valor);
                 decimal gastoTotal = Calculo.ListDespesa.Sum(x => x.Valor);
-                if (ganhoTotal == 0)
-                    throw new InvalidOperationException("Impossível divisão por zero!");
+                if (ganhoTotal == 0 || gastoTotal == 0)
+                {
+                    MessageBox.Show("Nenhuma receita ou despesa foi registrada! Impossível prosseguir com a geração do gráfico.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    Close();
+                }
 
                 decimal porcentagemDeGasto = 0;
                 if (gastoTotal > 0)
@@ -101,10 +104,9 @@ namespace MT_u
                 Calculo = CalculoEntradaSaida.GetByMes(DateTime.Now);
                 PreencheGraficoMensal();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
-                MessageBox.Show("Erro: " + ex.Message, "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                
+                MessageBox.Show(ex.Message, "OPS!!!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -137,16 +139,24 @@ namespace MT_u
 
         private void btAcao_Click(object sender, EventArgs e)
         {
-            if (!(txtDe.Text.Trim().Length == 10 && txtAte.Text.Trim().Length == 10))
-            {
-                MessageBox.Show("Por favor, preencha o período corretamente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-
             if (cmbFiltro.SelectedIndex == 0)
+            {
+                if (!(txtDe.Text.Trim().Length == 10 && txtAte.Text.Trim().Length == 10))
+                {
+                    MessageBox.Show("Por favor, preencha o período corretamente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 GeraGraficoPorPeriodo(Convert.ToDateTime(txtDe.Text), Convert.ToDateTime(txtAte.Text));
+            }
             else
+            {
+                if (!(txtDe.Text.Trim().Length == 10))
+                {
+                    MessageBox.Show("Por favor, preencha a data corretamente!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
                 GeraGraficoPorPeriodo(Convert.ToDateTime(txtDe.Text), Convert.ToDateTime(txtDe.Text));
+            }
         }
 
         private void cmbFiltro_SelectedIndexChanged(object sender, EventArgs e)

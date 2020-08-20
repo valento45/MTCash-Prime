@@ -181,16 +181,33 @@ go
 --select * from mtcash.u_tb_receita WHERE descricao like '%' AND paga = 'False'
 --select * from mtcash.u_tb_receita;
 
-create table mtcash.u_tb_plano_receita(
-id_plano_conta int identity not null primary key,
-id_categoria int not null,
-id_receita int unique not null
-foreign key(id_categoria)
-references mtcash.u_tb_categoria(id_categoria),
+create table mtcash.u_parcela_receita_tb(
+id_parcela int identity not null primary key,
+id_receita int not null,
+numero_parcela int not null,
+total_parcelas int not null,
+valor_parcela decimal(8,2) not null,
+data_vencimento datetime not null,
+desconto decimal(8,2) null,
+quitada bit not null
 foreign key(id_receita)
 references mtcash.u_tb_receita(id_receita)
 );
-go
+GO
+
+create table mtcash.u_recebimento_parcela_receita_tb(
+id_recebimento int identity not null primary key,
+id_usuario int not null,
+id_parcela int not null,
+data_recebimento datetime null,
+total_recebido decimal(8,2) not null
+foreign key(id_usuario)
+references mtcash.tb_usuario(id_usuario),
+foreign key(id_parcela)
+references mtcash.u_parcela_receita_tb(id_parcela)
+);
+GO
+
 
 create table mtcash.u_tb_recibo(
 id_recibo int identity not null primary key,
@@ -215,7 +232,7 @@ references mtcash.u_tb_recibo(id_recibo)
 );
 go
 
-create table mtcash.u_tb_recebimento(
+create table mtcash.u_tb_quita_receita(
 id_recebimento int identity not null primary key,
 id_usuario int not null,
 id_conta_corrente int null,

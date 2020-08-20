@@ -155,22 +155,25 @@ namespace MT_u
 
         private void btExcluir_Click(object sender, EventArgs e)
         {
-            if (isReceita)
+            if (dgvDespesa.RowCount > 0)
             {
-                Receita objctReceita = ((Receita)dgvDespesa.SelectedCells[colObject.Index].Value);
-                if (MessageBox.Show($"Deseja realmente excluir a receita {objctReceita.Descricao} ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (isReceita)
                 {
-                    if (objctReceita.Delete())
-                        dgvDespesa.Rows.Remove(dgvDespesa.SelectedRows[0]);
+                    Receita objctReceita = ((Receita)dgvDespesa.SelectedCells[colObject.Index].Value);
+                    if (MessageBox.Show($"Deseja realmente excluir a receita {objctReceita.Descricao} ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (objctReceita.Delete())
+                            dgvDespesa.Rows.Remove(dgvDespesa.SelectedRows[0]);
+                    }
                 }
-            }
-            else
-            {
-                Despesa obj = ((Despesa)dgvDespesa.SelectedCells[colObject.Index].Value);
-                if (MessageBox.Show("Deseja excluir a despesa " + obj.Descricao + "?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                else
                 {
-                    if (obj.Delete())
-                        dgvDespesa.Rows.Remove(dgvDespesa.SelectedRows[0]);
+                    Despesa obj = ((Despesa)dgvDespesa.SelectedCells[colObject.Index].Value);
+                    if (MessageBox.Show("Deseja excluir a despesa " + obj.Descricao + "?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        if (obj.Delete())
+                            dgvDespesa.Rows.Remove(dgvDespesa.SelectedRows[0]);
+                    }
                 }
             }
         }
