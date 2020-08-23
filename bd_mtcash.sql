@@ -196,7 +196,7 @@ references mtcash.u_tb_receita(id_receita)
 GO
 
 create table mtcash.u_recebimento_parcela_receita_tb(
-id_recebimento int identity not null primary key,
+id_recebimento_parcela int identity not null primary key,
 id_usuario int not null,
 id_parcela int not null,
 data_recebimento datetime null,
@@ -222,32 +222,25 @@ go
 create table mtcash.u_tb_item_recibo(
 id_item_recibo int identity not null primary key,
 id_recibo int not null,
-id_receita int not null,
-valor_receita decimal(8,2) not null,
+id_parcela int not null,
+valor decimal(8,2) not null,
 desconto decimal(8,2) null
-foreign key(id_receita)
-references mtcash.u_tb_receita(id_receita),
 foreign key(id_recibo)
 references mtcash.u_tb_recibo(id_recibo)
 );
 go
 
 create table mtcash.u_tb_quita_receita(
-id_recebimento int identity not null primary key,
+id_quitacao int identity not null primary key,
+id_receita int not null,
 id_usuario int not null,
-id_conta_corrente int null,
-id_recibo int not null,
-status varchar(45) not null,
-data_recebimento datetime not null,
-forma_pgto varchar(20) not null,
-valor_pago decimal(8,2) null,
-troco decimal(8,2) null
-foreign key(id_recibo)
-references mtcash.u_tb_recibo(id_recibo),
-foreign key (id_usuario)
-references mtcash.tb_usuario(id_usuario),
-foreign key(id_conta_corrente)
-references mtcash.u_tb_conta_corrente(id_conta_corrente)
+valor_total decimal(8,2) not null,
+desconto_total decimal(8,2) null,
+data_quitacao datetime not null
+foreign key(id_receita)
+references mtcash.u_tb_receita(id_receita),
+foreign key(id_usuario)
+references mtcash.tb_usuario(id_usuario)
 );
 go
 
