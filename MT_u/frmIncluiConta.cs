@@ -36,9 +36,9 @@ namespace MT_u
 
             if (Conta_ is Receita)
             {
+                isReceita = true;
                 this.Text = "Incluir Receita";
                 this.lblTitulo.Text = "Receita";
-                isReceita = true;
             }
             else
             {
@@ -71,39 +71,6 @@ namespace MT_u
             }
 
         }
-
-
-        //public frmIncluiDespesa(Despesa despesa, bool alterar)
-        //{
-        //    InitializeComponent();
-
-        //    Conta_ = despesa;
-        //    Alterar = alterar;
-
-        //    if (Conta_.Id > 0)
-        //    {
-        //        txtDespesa.Text = Conta_.Descricao;
-        //        txtDataVenc.Text = Conta_.Data_Vencimento.ToString();
-        //        txtValor.Text = Conta_.Valor.ToString();
-        //        txtDesconto.Text = Conta_.Desconto.ToString();
-        //        rdbEspecificarPeriodo.Checked = pnlPeriodo.Visible = Conta_.Periodo.Length > 0;
-        //        if (Conta_.Periodo.Length > 0)
-        //        {
-        //            pnlPeriodo.Visible = true;
-        //            Periodo = Conta_.Periodo.Split(',');
-        //            txtDe.Text = Periodo[0];
-        //            txtAte.Text = Periodo[1];
-        //        }
-        //        if (Conta_.Status.Equals("True"))
-        //        {
-        //            rdbPendente.Enabled = rdbPaga.Enabled = false;
-        //            rdbPaga.Checked = true;
-        //        }
-        //        else
-        //            rdbPendente.Checked = true;
-        //    }
-        //}
-
         private void IsReceita()
         {
             this.Text = "Incluir Receita";
@@ -260,7 +227,7 @@ namespace MT_u
                                         parcela.Total_parcelas = totalMeses;
                                         parcela.Valor_parcela = Conta_.Valor;
                                         parcela.Data_vencimento = date;
-                                        parcela.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
+                                        parcela.Desconto = txtDesconto.Text.Trim().Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
                                         parcela.Quitada = false;
                                         parcela.Insert();
                                         date = date.AddMonths(1);
@@ -298,7 +265,7 @@ namespace MT_u
                                 }
                                 obj.Status = rdbPaga.Checked.ToString();
 
-                                //atualizando
+                                //altera
                                 if (obj.Update())
                                 {
                                     MessageBox.Show("Dados atualizados com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);

@@ -62,6 +62,12 @@
     <Compile Include="frmRelatorioGrafico.Designer.cs">
       <DependentUpon>frmRelatorioGrafico.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmVerParcelas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmVerParcelas.Designer.cs">
+      <DependentUpon>frmVerParcelas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
