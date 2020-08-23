@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace MT_u
 {
-    public partial class frmVerParcelas : Aux_Mt.frmDefault
+    public partial class frmVerParcelas : Form
     {
         public frmVerParcelas()
         {

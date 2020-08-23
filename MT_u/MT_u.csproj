@@ -90,6 +90,9 @@
     <EmbeddedResource Include="frmRelatorioGrafico.resx">
       <DependentUpon>frmRelatorioGrafico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmVerParcelas.resx">
+      <DependentUpon>frmVerParcelas.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="DataSets\" />
