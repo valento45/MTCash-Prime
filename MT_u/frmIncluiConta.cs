@@ -19,9 +19,8 @@ namespace MT_u
         private Conta Conta_ = null;
         private bool Alterar = false;
         private bool isReceita = false;
-
         string[] Periodo = null;
-
+        List<Parcela> ParcelasList = new List<Parcela>();
 
         public frmIncluiConta()
         {
@@ -132,13 +131,22 @@ namespace MT_u
         {
             Salvar();
         }
-
+        private int TotalMeses(DateTime de, DateTime ate)
+        {
+            var time = ate.Subtract(de);
+            double meses = time.Days / 30;
+            meses = Math.Round(meses);
+            return Convert.ToInt32(meses);
+        }
         private void Salvar()
         {
             //FuncoesAuxiliaresAux.ColecaoAbstrataModelo();
             if (ValidaCampos())
                 try
                 {
+                    bool periodo = false;
+                    #region DESPESA
+                    //se for DESPESA
                     if (!isReceita)
                     {
                         //se inclusao
@@ -159,8 +167,8 @@ namespace MT_u
                                     MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return;
                                 }
-                                else
-                                    Conta_.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                                Conta_.Periodo = txtDe.Text + ", " + txtAte.Text;
+                                periodo = true;
                             }
                             Conta_.Status = rdbPaga.Checked.ToString();
 
@@ -193,8 +201,8 @@ namespace MT_u
                                         MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         return;
                                     }
-                                    else
-                                        obj.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                                    obj.Periodo = txtDe.Text + ", " + txtAte.Text;
+                                    periodo = true;
                                 }
                                 obj.Status = rdbPaga.Checked.ToString();
 
@@ -208,6 +216,10 @@ namespace MT_u
                             }
                         }
                     }
+                    #endregion
+
+                    #region RECEITA
+                    //se receita
                     else
                     {
                         //se inclusao
@@ -228,14 +240,33 @@ namespace MT_u
                                     MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                     return;
                                 }
-                                else
-                                    Conta_.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+                                Conta_.Periodo = txtDe.Text + ", " + txtAte.Text;
+                                periodo = true;
                             }
                             Conta_.Status = rdbPaga.Checked.ToString();
 
                             //Insere
                             if (Conta_.Insert())
                             {
+                                if (periodo)
+                                {
+                                    int totalMeses = TotalMeses(DateTime.Parse(txtDe.Text), DateTime.Parse(txtAte.Text));
+                                    DateTime date = (Convert.ToDateTime(txtDe.Text));
+                                    for (int i = 0; i < totalMeses; i++)
+                                    {
+                                        Parcela parcela = new Parcela();
+                                        parcela.Id_receita = Conta_.Id;
+                                        parcela.Numero_parcela = i + 1;
+                                        parcela.Total_parcelas = totalMeses;
+                                        parcela.Valor_parcela = Conta_.Valor;
+                                        parcela.Data_vencimento = date;
+                                        parcela.Desconto = txtDesconto.Text.Length > 0 ? txtDesconto.Text.FormatMoney() : 0;
+                                        parcela.Quitada = false;
+                                        parcela.Insert();
+                                        date = date.AddMonths(1);
+                                        ParcelasList.Add(parcela);
+                                    }
+                                }
                                 MessageBox.Show("Dados inseridos com sucesso!", "OK", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 LimparCampos();
                             }
@@ -262,8 +293,8 @@ namespace MT_u
                                         MessageBox.Show("Por favor especifique o período corretamente!", "Valida campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                                         return;
                                     }
-                                    else
-                                        obj.Periodo = rdbEspecificarPeriodo.Checked ? txtDe.Text + ", " + txtAte.Text : "";
+
+                                    obj.Periodo = txtDe.Text + ", " + txtAte.Text;
                                 }
                                 obj.Status = rdbPaga.Checked.ToString();
 
@@ -277,6 +308,7 @@ namespace MT_u
                             }
                         }
                     }
+                    #endregion
 
                 }
                 catch (Exception ex)

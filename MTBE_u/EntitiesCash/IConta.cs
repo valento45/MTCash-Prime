@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.Entity.Migrations.Model;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -17,7 +19,7 @@ namespace MTBE_u.EntitiesCash
         public string AnoVencimento { get; set; }
         public decimal Valor { get; set; }
         public decimal Desconto { get; set; }
-        public string Periodo { get; set; }        
+        public string Periodo { get; set; }
         public string Status { get; set; }
         public string Tipo { get; set; }
         //public virtual string GetString(Conta conta)
@@ -49,5 +51,57 @@ namespace MTBE_u.EntitiesCash
         {
             throw new ArgumentException("Nenhum valor passado para o método excluir!");
         }
+    }
+
+    public class Parcela
+    {
+        public int Id { get; set; }
+        public int Id_receita { get; set; }
+        public int Numero_parcela { get; set; }
+        public int Total_parcelas { get; set; }
+        public decimal Valor_parcela { get; set; }
+        public DateTime? Data_vencimento { get; set; }
+        public decimal Desconto { get; set; }
+        public bool Quitada { get; set; }
+
+        public Parcela() { }
+        public Parcela(DataRow dr)
+        {
+            Id = Convert.ToInt32(dr["id_parcela"]);
+            Id_receita = Convert.ToInt32(dr["id_receita"]);
+            Numero_parcela = Convert.ToInt32(dr["numero_parcela"]);
+            Total_parcelas = Convert.ToInt32(dr["total_parcelas"]);
+            Valor_parcela = Convert.ToDecimal(dr["valor_parcela"]);
+            Data_vencimento = (DateTime?)(dr["data_vencimento"] != null ? dr["data_vencimento"] : null);
+            Desconto = Convert.ToDecimal(dr["desconto"]);
+            Quitada = Convert.ToBoolean(dr["quitada"]);
+        }
+
+        public void Insert()
+        {
+            string query = "insert into mtcash.u_parcela_receita_tb (id_receita, numero_parcela, total_parcelas, valor_parcela, data_vencimento, desconto, quitada) values (" +
+                $"'{Id_receita}', '{Numero_parcela}', '{Total_parcelas}', '{Valor_parcela}', '{Data_vencimento}', '{Desconto}', '{Quitada}');SELECT SCOPE_IDENTITY();";
+            SqlCommand cmd = new SqlCommand(query);
+            Id = Access.ExecuteScalar(cmd);
+        }
+
+        public static List<Parcela> GetById(int id)
+        {
+            if (id > 0)
+            {
+                List<Parcela> result = new List<Parcela>();
+
+                string query = "select * from mtcash.u_parcela_receita_tb where id_receita = " + id;
+                SqlCommand cmd = new SqlCommand(query);
+
+                foreach (DataRow dr in Access.ExecuteReader(cmd).Tables[0].Rows)
+                    result.Add(new Parcela(dr));
+                return result;
+            }
+            else
+                return new List<Parcela>();
+
+        }
+
     }
 }

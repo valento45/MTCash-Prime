@@ -11,6 +11,21 @@ namespace MTBE_u.EntitiesCash
     public class Receita : Conta
     {
         private const string Type_ = "Receita";
+        public List<Parcela> Parcelas
+        {
+            get
+            {
+                if (this.Parcelas == null || this.Parcelas.Count == 0)
+                    return Parcela.GetById(Id);
+                else
+                    return Parcelas;
+            }
+            set
+            {
+                Parcelas = value;
+            }
+
+        }
         public Receita() { }
         public Receita(DataRow dr)
         {
@@ -25,10 +40,11 @@ namespace MTBE_u.EntitiesCash
             Status = dr["paga"] != null ? dr["paga"].ToString() : "";
             //Desconto = Convert.ToDecimal(dr["desconto"]);
             Tipo = Type_;
+            Parcelas = Parcela.GetById(Id);
         }
         public override bool Insert()
-        {
-            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, valor_receita, dia, mes, ano, periodo, desconto, paga) values (@descricao, @valor_receita, @dia, @mes, @ano, @periodo, @desconto, @paga)");
+        {            
+            SqlCommand cmd = new SqlCommand("insert into mtcash.u_tb_receita (descricao, valor_receita, dia, mes, ano, periodo, desconto, paga) values (@descricao, @valor_receita, @dia, @mes, @ano, @periodo, @desconto, @paga);SELECT SCOPE_IDENTITY();");
             cmd.Parameters.AddWithValue(@"descricao", Descricao);
             cmd.Parameters.AddWithValue(@"valor_receita", Valor);
             cmd.Parameters.AddWithValue(@"dia", DiaVencimento);
@@ -37,7 +53,9 @@ namespace MTBE_u.EntitiesCash
             cmd.Parameters.AddWithValue(@"periodo", Periodo);
             cmd.Parameters.AddWithValue(@"desconto", Desconto);
             cmd.Parameters.AddWithValue(@"paga", Status);
-            return Access.ExecuteNonQuery(cmd);
+            Id = Access.ExecuteScalar(cmd);
+            return Id > 0;
+
         }
 
         public override bool Update()

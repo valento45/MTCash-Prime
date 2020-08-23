@@ -26,6 +26,7 @@ namespace MTBE_u.EntitiesCash
             Desconto = dr["desconto"] != null ? Convert.ToDecimal(dr["desconto"]) : 0;
             Status = dr["paga"].ToString();
             Tipo = Type_;
+            
         }
 
         public bool InsertDespesa()
