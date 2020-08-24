@@ -29,15 +29,24 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.btnPesquisar = new System.Windows.Forms.Button();
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnPesquisar = new System.Windows.Forms.Button();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.dgvParcelas = new System.Windows.Forms.DataGridView();
             this.btAcao = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.colId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colObj = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colIdReceita = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colNumeroParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colTotalParcelas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colValorParcela = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDataVenc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colDesconto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.colQuitada = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvParcelas)).BeginInit();
             this.SuspendLayout();
@@ -56,22 +65,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informações";
             // 
-            // label1
+            // btnPesquisar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(27, 26);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(40, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Código";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(73, 23);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.ReadOnly = true;
-            this.txtCodigo.Size = new System.Drawing.Size(46, 20);
-            this.txtCodigo.TabIndex = 1;
+            this.btnPesquisar.Location = new System.Drawing.Point(518, 21);
+            this.btnPesquisar.Name = "btnPesquisar";
+            this.btnPesquisar.Size = new System.Drawing.Size(89, 23);
+            this.btnPesquisar.TabIndex = 4;
+            this.btnPesquisar.Text = "Pesquisar";
+            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.btnPesquisar.Click += new System.EventHandler(this.btnPesquisar_Click);
             // 
             // txtDescricao
             // 
@@ -80,6 +82,7 @@
             this.txtDescricao.ReadOnly = true;
             this.txtDescricao.Size = new System.Drawing.Size(309, 20);
             this.txtDescricao.TabIndex = 3;
+            this.txtDescricao.Visible = false;
             // 
             // label2
             // 
@@ -89,20 +92,41 @@
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 2;
             this.label2.Text = "Descrição";
+            this.label2.Visible = false;
             // 
-            // btnPesquisar
+            // txtCodigo
             // 
-            this.btnPesquisar.Location = new System.Drawing.Point(518, 21);
-            this.btnPesquisar.Name = "btnPesquisar";
-            this.btnPesquisar.Size = new System.Drawing.Size(89, 23);
-            this.btnPesquisar.TabIndex = 4;
-            this.btnPesquisar.Text = "Pesquisar";
-            this.btnPesquisar.UseVisualStyleBackColor = true;
+            this.txtCodigo.Location = new System.Drawing.Point(73, 23);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.ReadOnly = true;
+            this.txtCodigo.Size = new System.Drawing.Size(46, 20);
+            this.txtCodigo.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(27, 26);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(40, 13);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Código";
             // 
             // dgvParcelas
             // 
-            this.dgvParcelas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvParcelas.AllowUserToAddRows = false;
+            this.dgvParcelas.AllowUserToDeleteRows = false;
+            this.dgvParcelas.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgvParcelas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvParcelas.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.colId,
+            this.colObj,
+            this.colIdReceita,
+            this.colNumeroParcela,
+            this.colTotalParcelas,
+            this.colValorParcela,
+            this.colDataVenc,
+            this.colDesconto,
+            this.colQuitada});
             this.dgvParcelas.Location = new System.Drawing.Point(12, 155);
             this.dgvParcelas.Name = "dgvParcelas";
             this.dgvParcelas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -139,6 +163,52 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             // 
+            // colId
+            // 
+            this.colId.HeaderText = "Código";
+            this.colId.Name = "colId";
+            // 
+            // colObj
+            // 
+            this.colObj.HeaderText = "obj";
+            this.colObj.Name = "colObj";
+            this.colObj.Visible = false;
+            // 
+            // colIdReceita
+            // 
+            this.colIdReceita.HeaderText = "Cód. receita";
+            this.colIdReceita.Name = "colIdReceita";
+            // 
+            // colNumeroParcela
+            // 
+            this.colNumeroParcela.HeaderText = "Parcela";
+            this.colNumeroParcela.Name = "colNumeroParcela";
+            // 
+            // colTotalParcelas
+            // 
+            this.colTotalParcelas.HeaderText = "Total de parcelas";
+            this.colTotalParcelas.Name = "colTotalParcelas";
+            // 
+            // colValorParcela
+            // 
+            this.colValorParcela.HeaderText = "Valor";
+            this.colValorParcela.Name = "colValorParcela";
+            // 
+            // colDataVenc
+            // 
+            this.colDataVenc.HeaderText = "Vencimento";
+            this.colDataVenc.Name = "colDataVenc";
+            // 
+            // colDesconto
+            // 
+            this.colDesconto.HeaderText = "Desconto";
+            this.colDesconto.Name = "colDesconto";
+            // 
+            // colQuitada
+            // 
+            this.colQuitada.HeaderText = "Quitada";
+            this.colQuitada.Name = "colQuitada";
+            // 
             // frmVerParcelas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -172,5 +242,14 @@
         private System.Windows.Forms.Button btAcao;
         private System.Windows.Forms.Button btnEditar;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colObj;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colIdReceita;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colNumeroParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colTotalParcelas;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colValorParcela;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDataVenc;
+        private System.Windows.Forms.DataGridViewTextBoxColumn colDesconto;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn colQuitada;
     }
 }

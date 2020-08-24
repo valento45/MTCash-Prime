@@ -85,22 +85,18 @@ namespace MTBE_u.EntitiesCash
             Id = Access.ExecuteScalar(cmd);
         }
 
-        public static List<Parcela> GetById(int id)
+        public static List<Parcela> GetByIdReceita(int id)
         {
+            List<Parcela> result = new List<Parcela>();
             if (id > 0)
             {
-                List<Parcela> result = new List<Parcela>();
-
                 string query = "select * from mtcash.u_parcela_receita_tb where id_receita = " + id;
                 SqlCommand cmd = new SqlCommand(query);
 
                 foreach (DataRow dr in Access.ExecuteReader(cmd).Tables[0].Rows)
                     result.Add(new Parcela(dr));
-                return result;
             }
-            else
-                return new List<Parcela>();
-
+            return result;
         }
 
     }

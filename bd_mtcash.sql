@@ -1,4 +1,3 @@
-
 --use master;
 --GO
 --drop database bd_mtcash;
