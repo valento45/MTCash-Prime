@@ -53,6 +53,7 @@
     <Reference Include="TXTextControl.Windows.Forms, Version=28.0.1300.500, Culture=neutral, PublicKeyToken=6b83fe9a75cfb638, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ExtensionMethods.cs" />
     <Compile Include="frmDefault.cs">
       <SubType>Form</SubType>
     </Compile>

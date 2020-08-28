@@ -77,6 +77,7 @@ namespace MT_u
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
 
+                    var lista = Despesa.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true);                  
                 }
                 else if (cmbFiltro.SelectedIndex == 1)
                 {
@@ -124,7 +125,7 @@ namespace MT_u
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
-                    }
+                    }                    
                 }
                 else if (cmbFiltro.SelectedIndex == 2 && txtDe.Text.Length == 10 && txtAte.Text.Length == 10)
                 {
@@ -142,14 +143,18 @@ namespace MT_u
         {
             if (dgvDespesa.RowCount > 0)
             {
-                Despesa obj = ((Despesa)dgvDespesa.SelectedCells[colObject.Index].Value);
-                frmIncluiConta frm = new frmIncluiConta(obj, true);
-
-                if (frm.ShowDialog() == DialogResult.OK)
+                if (!isReceita)
                 {
-
+                    Despesa obj = ((Despesa)dgvDespesa.SelectedCells[colObject.Index].Value);
+                    frmIncluiConta frm = new frmIncluiConta(obj, true);
+                    frm.ShowDialog();
                 }
-
+                else
+                {
+                    Receita obj = ((Receita)dgvDespesa.SelectedCells[colObject.Index].Value);
+                    frmIncluiConta frm = new frmIncluiConta(obj, true);
+                    frm.ShowDialog();
+                }
             }
         }
 
@@ -180,20 +185,24 @@ namespace MT_u
 
         private void btImprimir_Click(object sender, EventArgs e)
         {
+
             if (dgvDespesa.RowCount > 0)
             {
-                PrintService<Despesa> printService = new PrintService<Despesa>();
-                for (int i = 0; i < dgvDespesa.RowCount; i++)
+                if (!isReceita)
                 {
-                    if ((bool)dgvDespesa.Rows[i].Cells[colChk.Index].Value)
+                    PrintService<Despesa> printService = new PrintService<Despesa>();
+                    for (int i = 0; i < dgvDespesa.RowCount; i++)
                     {
-                        Despesa despesa = (Despesa)dgvDespesa.Rows[i].Cells[colObject.Index].Value;
-                        printService.AddValue(despesa);
+                        if ((bool)dgvDespesa.Rows[i].Cells[colChk.Index].Value)
+                        {
+                            Despesa despesa = (Despesa)dgvDespesa.Rows[i].Cells[colObject.Index].Value;
+                            printService.AddValue(despesa);
+                        }
                     }
-                }
 
-                if (printService.Count() > 0)
-                    printService.Print();
+                    if (printService.Count() > 0)
+                        printService.Print();
+                }
             }
         }
     }

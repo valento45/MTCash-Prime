@@ -31,17 +31,25 @@ namespace MT_u
         public frmIncluiConta(Conta conta, bool alterar = false)
         {
             InitializeComponent();
-            Conta_ = conta;
+            
             Alterar = alterar;
 
-            if (Conta_ is Receita)
+            if (conta is Receita)
             {
+                Conta_ = conta as Receita;
                 isReceita = true;
                 this.Text = "Incluir Receita";
                 this.lblTitulo.Text = "Receita";
+
+                string dateString = ((Receita)Conta_).Parcelas.Where(x => x.Quitada == false).Select(y => y.Data_vencimento).FirstOrDefault().ToString();
+                txtDataVenc.Text = dateString;
+
+                ((Receita)Conta_).Parcelas.UpdateAll(x => x.Quitada == false, y => y.Quitada = true);
+                MessageBox.Show(((Receita)Conta_).Parcelas[0].Quitada.ToString());
             }
             else
             {
+                Conta_ = conta as Despesa;
                 isReceita = false;
                 this.Text = "Incluir Despesa";
                 this.lblTitulo.Text = "Despesa";
@@ -67,7 +75,8 @@ namespace MT_u
                     rdbPaga.Checked = true;
                 }
                 else
-                    rdbPendente.Checked = true;
+                    rdbPendente.Checked = true;                    
+     
             }
 
         }
@@ -86,7 +95,7 @@ namespace MT_u
                 campos += txtDespesa.Text.Length <= 0 ? "Despesa" : "";
                 campos += txtDataVenc.Text.Length < 10 ? (campos.Length > 0 ? "\n " : "") + "Data vencimento" : "";
                 campos += txtValor.Text.Length <= 0 ? (campos.Length > 0 ? "\n " : "") + "Valor" : "";
-                campos += !rdbPaga.Checked || !rdbPendente.Checked ? (campos.Length > 0 ? "\n " : "") + "Status pgto" : "";
+                campos += !rdbPaga.Checked && !rdbPendente.Checked ? (campos.Length > 0 ? "\n " : "") + "Status pgto" : "";
                 MessageBox.Show("Verifique o preenchimento dos campos: \n\r\n" + campos, "Valida Campos", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return false;
             }

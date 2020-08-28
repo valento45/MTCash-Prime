@@ -51,6 +51,11 @@ namespace MTBE_u.EntitiesCash
         {
             throw new ArgumentException("Nenhum valor passado para o método excluir!");
         }
+
+        public virtual List<T> ParcelasAbstract<T>(int id)
+        {
+            throw new ArgumentException("");
+        }
     }
 
     public class Parcela

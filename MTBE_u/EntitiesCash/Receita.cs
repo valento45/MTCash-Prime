@@ -11,29 +11,30 @@ namespace MTBE_u.EntitiesCash
     public class Receita : Conta
     {
         private const string Type_ = "Receita";
+        private List<Parcela> PrivateParcelas = new List<Parcela>();
+
         public List<Parcela> Parcelas
         {
             get
             {
-                if (this.Parcelas == null || this.Parcelas.Count == 0)
+                if (this.PrivateParcelas == null || this.PrivateParcelas.Count == 0)
                 {
                     if (Id > 0)
                         return Parcela.GetByIdReceita(Id);
                     else return new List<Parcela>();
                 }
                 else
-                    return Parcelas;
+                    return PrivateParcelas;
             }
             set
             {
-                Parcelas = value;
+                PrivateParcelas = value;
             }
-
         }
 
         public Receita() { }
         public Receita(DataRow dr)
-        {
+        {           
             Id = Convert.ToInt32(dr["id_receita"]);
             Descricao = dr["descricao"].ToString();
             Valor = Convert.ToDecimal(dr["valor_receita"]);
@@ -65,7 +66,7 @@ namespace MTBE_u.EntitiesCash
 
         public override bool Update()
         {
-            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_receita set descricao = @descricao, valor_receita = @valor_receita, data_vencimento = @data_vencimento, periodo = @periodo, desconto = @desconto where id_receita = @id_receita");
+            SqlCommand cmd = new SqlCommand("update mtcash.u_tb_receita set descricao = @descricao, valor_receita = @valor_receita, dia = @dia, mes = @mes, ano = @ano, periodo = @periodo, desconto = @desconto where id_receita = @id_receita");
             cmd.Parameters.AddWithValue(@"id_receita", Id);
             cmd.Parameters.AddWithValue(@"descricao", Descricao);
             cmd.Parameters.AddWithValue(@"valor_receita", Valor);
@@ -165,5 +166,10 @@ namespace MTBE_u.EntitiesCash
 
             return result;
         }
+
+        //public override List<T> ParcelasAbstract<T>(int id)
+        //{
+        //    return Parcelas as List<T>;
+        //}
     }
 }
