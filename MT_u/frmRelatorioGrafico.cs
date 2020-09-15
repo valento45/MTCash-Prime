@@ -41,7 +41,8 @@ namespace MT_u
                 if (ganhoTotal == 0 || gastoTotal == 0)
                 {
                     MessageBox.Show("Nenhuma receita ou despesa foi registrada! Impossível prosseguir com a geração do gráfico.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    Close();
+                    //Close();
+                    return;
                 }
 
                 decimal porcentagemDeGasto = 0;
@@ -101,8 +102,8 @@ namespace MT_u
         {
             try
             {
-                Calculo = CalculoEntradaSaida.GetByMes(DateTime.Now);
-                PreencheGraficoMensal();
+                //Calculo = CalculoEntradaSaida.GetByMes(DateTime.Now);
+                //PreencheGraficoMensal();
             }
             catch (Exception ex)
             {
