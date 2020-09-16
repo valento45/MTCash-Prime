@@ -18,6 +18,8 @@ namespace MTBE_u.EntitiesCash
         public List<Despesa> ListDespesa { get; set; } = new List<Despesa>();
         public List<Conta> AllContas { get; set; } = new List<Conta>();
 
+        public CalculoEntradaSaida() { }
+
         public static CalculoEntradaSaida GetByPeriodo(DateTime de, DateTime ate)
         {
             CalculoEntradaSaida result = new CalculoEntradaSaida();

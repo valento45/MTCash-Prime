@@ -38,53 +38,35 @@ namespace MT_u
             {
                 decimal ganhoTotal = Calculo.ListReceita.Sum(x => x.Valor);
                 decimal gastoTotal = Calculo.ListDespesa.Sum(x => x.Valor);
+                //validação
                 if (ganhoTotal == 0 || gastoTotal == 0)
                 {
                     MessageBox.Show("Nenhuma receita ou despesa foi registrada! Impossível prosseguir com a geração do gráfico.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    //Close();
                     return;
                 }
 
                 decimal porcentagemDeGasto = 0;
+                //se o gasto for maior que 0, pega a porcentagem que gastou baseando-se no que ganha
                 if (gastoTotal > 0)
                     porcentagemDeGasto = GetPorcentagemDeGasto(gastoTotal, ganhoTotal);
 
-                //graficObj.DataSource = value;
+                //Adiciona despesa ao grafico
                 for (int i = 0; i < Calculo.ListDespesa.Count; i++)
                 {
                     graficObj.Series[0].Points.AddXY(Calculo.ListDespesa[i].Descricao, Calculo.ListDespesa[i].Valor);
-                    // graficObj.Series[0].Points.AddXY("", "");
+
                 }
+                //adiciona receita ao grafico
                 for (int i = 0; i < Calculo.ListReceita.Count; i++)
                 {
 
                     graficObj.Series[1].Points.AddXY(Calculo.ListReceita[i].Descricao, Calculo.ListReceita[i].Valor);
-                    //graficObj.Series[1].Points.AddXY("", "");
+
                 }
-                //foreach (var x in Calculo.ListDespesa)
-                //    graficObj.Series[0].Points.AddXY(x.Descricao, x.Valor);
 
-                //foreach (var x in Calculo.ListReceita)
-                //    graficObj.Series[1].Points.AddXY(x.Descricao, x.Valor);
-
+                //atualiza grafico
                 graficObj.Update();
-                //foreach (var x in Calculo.AllContas)
-                //{
-                //    Series serie = new Series();
-                //    if (x is Receita)
-                //    {
-                //        //serie.XValueMember = "Receita: " + x.Descricao;
-                //        //serie.YValueMembers = x.Valor.ToString();
-                //    }
-                //    else if (x is Despesa)
-                //    {
-                //        //serie.XValueMember = "Despesa: " + x.Descricao;
-                //        //serie.YValueMembers = x.Valor.ToString();
-                //    }
 
-                //    graficObj.Series.Add(serie);
-                //    graficObj.DataSource = Calculo.AllContas;
-                //}
             }
         }
 
