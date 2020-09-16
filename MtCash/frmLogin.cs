@@ -94,7 +94,7 @@ namespace MT_u
                     throw new UsuarioException("Usuário ou senha inválidos!");
 
                 if(usuario.User_atv != null && !(bool)usuario.User_atv)
-                    throw new UsuarioException("Usuário bloqueado ou inativo!");
+                    throw new UsuarioException("Usuário bloqueado e/ou inativo!");
 
                 else
                 {

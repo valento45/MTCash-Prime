@@ -30,7 +30,7 @@ namespace MtCash
                 UsuarioLogado = user;
                 Permissoes_Usuario();
                 AjustarIcons();
-                FuncoesAuxiliares.IOCreateLogAcesso(Login.User._Usuario);
+                //FuncoesAuxiliares.IOCreateLogAcesso(Login.User._Usuario);
             }
         }
 
