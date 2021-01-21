@@ -6,8 +6,10 @@ using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Aux_Mt;
 using MT_u;
 using MT_u.Usuario;
 using MTBE_u;
@@ -20,6 +22,7 @@ namespace MtCash
 {
     public partial class MDI_MtCash : Form
     {
+        private System.Threading.Timer EmitirAlertaContas;
         Usuario UsuarioLogado;
         public MDI_MtCash(Usuario user)
         {
@@ -36,7 +39,7 @@ namespace MtCash
 
         private void AjustarIcons()
         {
-            this.BackColor = Color.White;           
+            this.BackColor = Color.White;
         }
         private void Permissoes_Usuario()
         {
@@ -112,6 +115,35 @@ namespace MtCash
 
         private void MDI_MtCash_Load(object sender, EventArgs e)
         {
+           // Thread thread = new Thread(_ => ThreadStart)
+        }
+
+
+        private void IniciarAlertaContas()
+        {
+            EmitirAlertaContas = new System.Threading.Timer(_ => EmiteAlertaContas(), null, 0, 1000);
+        }
+
+        private void EmiteAlertaContas()
+        {
+            List<Despesa> despesas = new List<Despesa>();
+
+            despesas = Despesa.GetDespesas(true).Where(x => x.DiaVencimento.StringToInt() + 7 <= DateTime.Now.Day).ToList();
+            if (despesas.Count > 0)
+            {
+                this.Invoke(new Action(() =>
+                    {
+                        lbtitAvisoContas.Text = "ATENÇÃO. Verificar as despesas próximas do vencimento.";
+                        lbMessageAvisoContas.Text = "Existem contas vencidas ou próximas do vencimento.\r\n\r\n";
+                        foreach (var item in despesas)
+                        {
+                            lbMessageAvisoContas.Text += "Conta: " + item.Descricao + " Vencimento: " + $"{item.DiaVencimento}/{item.MesVencimento}/{item.AnoVencimento}" + " Valor: " + decimal.Round(item.Valor);
+                        }
+
+                        btnCloseAvisoEstoqueMin.Click += btnCloseAvisoEstoqueMin_Click;
+                        pnlAlertaAvisoContas.Visible = true;
+                    }));
+            }
 
         }
 
@@ -169,9 +201,19 @@ namespace MtCash
                 MessageBox.Show("Você não possui permissão para prosseguir!", "Acesso negado", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            
+
             frmRelatorioGrafico frmGrafic = new frmRelatorioGrafico();
             frmGrafic.ShowDialog();
+        }
+
+        private void btnCloseAvisoEstoqueMin_Click(object sender, EventArgs e)
+        {
+            pnlAlertaAvisoContas.Visible = false;
+        }
+
+        private void MDI_MtCash_Shown(object sender, EventArgs e)
+        {
+            IniciarAlertaContas();
         }
     }
 }

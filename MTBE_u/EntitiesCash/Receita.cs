@@ -78,14 +78,14 @@ namespace MTBE_u.EntitiesCash
             //cmd.Parameters.AddWithValue(@"desconto", Desconto);
             return Access.ExecuteNonQuery(cmd);
         }
-        public static List<Receita> GetByID(int id, bool apenaspendentes, bool todas = false)
+        public static List<Receita> GetByID(int id, bool apenaspendentes, bool apenasPaga = false)
         {
             List<Receita> result = new List<Receita>();
             string query = "select * from mtcash.u_tb_receita WHERE id_receita = " + $"'{id}'";
 
             if (apenaspendentes)
                 query += " AND paga = False";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPaga)
                 query += " AND paga = True";
 
             SqlCommand cmd = new SqlCommand(query);
@@ -131,14 +131,14 @@ namespace MTBE_u.EntitiesCash
                 return new List<Receita>();
         }
 
-        public static List<Receita> GetByDescricao(string descricao, bool apenaspendentes, bool todas = false)
+        public static List<Receita> GetByDescricao(string descricao, bool apenaspendentes, bool apenasPaga = false)
         {
             List<Receita> result = new List<Receita>();
             string query = "select * from mtcash.u_tb_receita WHERE descricao like " + $"'{descricao}%'";
 
             if (apenaspendentes)
                 query += " AND paga = 'False'";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPaga)
                 query += " AND paga = 'True'";
 
             SqlCommand cmd = new SqlCommand(query);
@@ -149,14 +149,14 @@ namespace MTBE_u.EntitiesCash
             return result;
         }
 
-        public static List<Receita> GetByPeriodo(string de, string ate, bool apenaspendentes, bool todas = false)
+        public static List<Receita> GetByPeriodo(string de, string ate, bool apenaspendentes, bool apenasPaga = false)
         {
             List<Receita> result = new List<Receita>();
             string query = "select * from mtcash.u_tb_receita WHERE data_vencimento >= " + $"'{de} 00:00:00' AND data_vencimento <= '{ate} 23:59:59'";
 
             if (apenaspendentes)
                 query += " AND paga = False";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPaga)
                 query += " AND paga = True";
 
             SqlCommand cmd = new SqlCommand(query);

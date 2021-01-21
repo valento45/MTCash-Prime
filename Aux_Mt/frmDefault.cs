@@ -18,34 +18,7 @@ namespace Aux_Mt
         }
 
         private void GetAllControls(Control container)
-        {
-            #region OLD
-            //foreach (Control c in container.Controls)
-            //{
-            //    if (c is Button)
-            //    {
-            //        ((Button)c).BackColor = Color.MidnightBlue;
-            //    }
-            //    else if (c is TextBox)
-            //    {
-            //        ((TextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
-            //    }
-            //    else if (c is MaskedTextBox)
-            //    {
-            //        ((MaskedTextBox)c).Font = new Font("Arial", 9, FontStyle.Regular);
-            //    }
-            //    else if (c is DataGridView)
-            //    {
-            //        ((DataGridView)c).BackgroundColor = Color.White;
-            //    }
-            //    else
-            //        for (int i = 0; i < c.Controls.Count; i++)
-            //        {
-            //            GetAllControls(c.Controls[i]);
-            //        }
-            //}
-            #endregion
-
+        {           
             AplicarThemes(container);
             for (int i = 0; i < container.Controls.Count; i++)
             {
@@ -75,7 +48,7 @@ namespace Aux_Mt
 
         private void frmDefault_Load(object sender, EventArgs e)
         {
-            GetAllControls(this);
+          //  GetAllControls(this);
             
         }
     }

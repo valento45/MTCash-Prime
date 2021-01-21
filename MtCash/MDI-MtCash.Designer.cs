@@ -76,8 +76,22 @@
             this.logDeAcessosEmTelaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.preferenciasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.AmbientetoolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.configuraçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.controleDeReceitadespesaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnVisualizarAvisoContas = new System.Windows.Forms.Button();
+            this.chkNaoExibirAvisoContas = new System.Windows.Forms.CheckBox();
+            this.btnCloseAvisoEstoqueMin = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbMessageAvisoContas = new System.Windows.Forms.TextBox();
+            this.panelTituloAvisoContas = new System.Windows.Forms.Panel();
+            this.lbtitAvisoContas = new System.Windows.Forms.Label();
+            this.pnlAlertaAvisoContas = new System.Windows.Forms.Panel();
             this.statusStrip.SuspendLayout();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseAvisoEstoqueMin)).BeginInit();
+            this.panel1.SuspendLayout();
+            this.panelTituloAvisoContas.SuspendLayout();
+            this.pnlAlertaAvisoContas.SuspendLayout();
             this.SuspendLayout();
             // 
             // statusStrip
@@ -153,7 +167,8 @@
             // 
             this.ordemServiçoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.incluirToolStripMenuItem2,
-            this.pesquisarToolStripMenuItem2});
+            this.pesquisarToolStripMenuItem2,
+            this.configuraçõesToolStripMenuItem});
             this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
             this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ordemServiçoToolStripMenuItem.Text = "Receita/Despesa";
@@ -457,12 +472,120 @@
             this.AmbientetoolStripMenuItem1.Size = new System.Drawing.Size(243, 22);
             this.AmbientetoolStripMenuItem1.Text = "Ambiente";
             // 
+            // configuraçõesToolStripMenuItem
+            // 
+            this.configuraçõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.controleDeReceitadespesaToolStripMenuItem});
+            this.configuraçõesToolStripMenuItem.Name = "configuraçõesToolStripMenuItem";
+            this.configuraçõesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.configuraçõesToolStripMenuItem.Text = "Configurações";
+            // 
+            // controleDeReceitadespesaToolStripMenuItem
+            // 
+            this.controleDeReceitadespesaToolStripMenuItem.Name = "controleDeReceitadespesaToolStripMenuItem";
+            this.controleDeReceitadespesaToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
+            this.controleDeReceitadespesaToolStripMenuItem.Text = "Controle de receita/despesa";
+            // 
+            // btnVisualizarAvisoContas
+            // 
+            this.btnVisualizarAvisoContas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnVisualizarAvisoContas.Font = new System.Drawing.Font("Segoe UI Semibold", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVisualizarAvisoContas.Location = new System.Drawing.Point(114, 124);
+            this.btnVisualizarAvisoContas.Name = "btnVisualizarAvisoContas";
+            this.btnVisualizarAvisoContas.Size = new System.Drawing.Size(139, 25);
+            this.btnVisualizarAvisoContas.TabIndex = 13;
+            this.btnVisualizarAvisoContas.Text = "Visualizar";
+            this.btnVisualizarAvisoContas.UseVisualStyleBackColor = true;
+            // 
+            // chkNaoExibirAvisoContas
+            // 
+            this.chkNaoExibirAvisoContas.AutoSize = true;
+            this.chkNaoExibirAvisoContas.Location = new System.Drawing.Point(16, 127);
+            this.chkNaoExibirAvisoContas.Name = "chkNaoExibirAvisoContas";
+            this.chkNaoExibirAvisoContas.Size = new System.Drawing.Size(79, 17);
+            this.chkNaoExibirAvisoContas.TabIndex = 12;
+            this.chkNaoExibirAvisoContas.Text = "Não exibir?";
+            this.chkNaoExibirAvisoContas.UseVisualStyleBackColor = true;
+            // 
+            // btnCloseAvisoEstoqueMin
+            // 
+            this.btnCloseAvisoEstoqueMin.BackColor = System.Drawing.Color.Transparent;
+            this.btnCloseAvisoEstoqueMin.ErrorImage = null;
+            this.btnCloseAvisoEstoqueMin.Image = global::MtCash.Properties.Resources.excluir;
+            this.btnCloseAvisoEstoqueMin.ImageLocation = "";
+            this.btnCloseAvisoEstoqueMin.Location = new System.Drawing.Point(330, 12);
+            this.btnCloseAvisoEstoqueMin.Margin = new System.Windows.Forms.Padding(0);
+            this.btnCloseAvisoEstoqueMin.Name = "btnCloseAvisoEstoqueMin";
+            this.btnCloseAvisoEstoqueMin.Size = new System.Drawing.Size(18, 18);
+            this.btnCloseAvisoEstoqueMin.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.btnCloseAvisoEstoqueMin.TabIndex = 11;
+            this.btnCloseAvisoEstoqueMin.TabStop = false;
+            this.btnCloseAvisoEstoqueMin.Click += new System.EventHandler(this.btnCloseAvisoEstoqueMin_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(255)))));
+            this.panel1.Controls.Add(this.lbMessageAvisoContas);
+            this.panel1.Location = new System.Drawing.Point(16, 41);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(332, 78);
+            this.panel1.TabIndex = 9;
+            // 
+            // lbMessageAvisoContas
+            // 
+            this.lbMessageAvisoContas.BackColor = System.Drawing.Color.White;
+            this.lbMessageAvisoContas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lbMessageAvisoContas.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lbMessageAvisoContas.Location = new System.Drawing.Point(0, 0);
+            this.lbMessageAvisoContas.Multiline = true;
+            this.lbMessageAvisoContas.Name = "lbMessageAvisoContas";
+            this.lbMessageAvisoContas.ReadOnly = true;
+            this.lbMessageAvisoContas.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.lbMessageAvisoContas.Size = new System.Drawing.Size(332, 78);
+            this.lbMessageAvisoContas.TabIndex = 0;
+            // 
+            // panelTituloAvisoContas
+            // 
+            this.panelTituloAvisoContas.BackColor = System.Drawing.Color.White;
+            this.panelTituloAvisoContas.Controls.Add(this.lbtitAvisoContas);
+            this.panelTituloAvisoContas.Location = new System.Drawing.Point(16, 12);
+            this.panelTituloAvisoContas.Name = "panelTituloAvisoContas";
+            this.panelTituloAvisoContas.Size = new System.Drawing.Size(309, 23);
+            this.panelTituloAvisoContas.TabIndex = 10;
+            // 
+            // lbtitAvisoContas
+            // 
+            this.lbtitAvisoContas.AutoSize = true;
+            this.lbtitAvisoContas.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold);
+            this.lbtitAvisoContas.ForeColor = System.Drawing.Color.Black;
+            this.lbtitAvisoContas.Location = new System.Drawing.Point(7, 4);
+            this.lbtitAvisoContas.Name = "lbtitAvisoContas";
+            this.lbtitAvisoContas.Size = new System.Drawing.Size(37, 15);
+            this.lbtitAvisoContas.TabIndex = 0;
+            this.lbtitAvisoContas.Text = "titulo";
+            // 
+            // pnlAlertaAvisoContas
+            // 
+            this.pnlAlertaAvisoContas.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlAlertaAvisoContas.BackColor = System.Drawing.Color.Maroon;
+            this.pnlAlertaAvisoContas.Controls.Add(this.panelTituloAvisoContas);
+            this.pnlAlertaAvisoContas.Controls.Add(this.btnVisualizarAvisoContas);
+            this.pnlAlertaAvisoContas.Controls.Add(this.panel1);
+            this.pnlAlertaAvisoContas.Controls.Add(this.chkNaoExibirAvisoContas);
+            this.pnlAlertaAvisoContas.Controls.Add(this.btnCloseAvisoEstoqueMin);
+            this.pnlAlertaAvisoContas.Location = new System.Drawing.Point(826, 353);
+            this.pnlAlertaAvisoContas.Name = "pnlAlertaAvisoContas";
+            this.pnlAlertaAvisoContas.Size = new System.Drawing.Size(354, 154);
+            this.pnlAlertaAvisoContas.TabIndex = 14;
+            this.pnlAlertaAvisoContas.Visible = false;
+            // 
             // MDI_MtCash
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(1180, 532);
+            this.Controls.Add(this.pnlAlertaAvisoContas);
             this.Controls.Add(this.statusStrip);
             this.Controls.Add(this.menuStrip1);
             this.DoubleBuffered = true;
@@ -474,10 +597,18 @@
             this.Text = "MDI-MtCash";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.MDI_MtCash_Load);
+            this.Shown += new System.EventHandler(this.MDI_MtCash_Shown);
             this.statusStrip.ResumeLayout(false);
             this.statusStrip.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCloseAvisoEstoqueMin)).EndInit();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panelTituloAvisoContas.ResumeLayout(false);
+            this.panelTituloAvisoContas.PerformLayout();
+            this.pnlAlertaAvisoContas.ResumeLayout(false);
+            this.pnlAlertaAvisoContas.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,6 +662,16 @@
         private System.Windows.Forms.ToolStripMenuItem AmbientetoolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem relatóriosToolStripMenuItem5;
         private System.Windows.Forms.ToolStripMenuItem logDeAcessosEmTelaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem configuraçõesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem controleDeReceitadespesaToolStripMenuItem;
+        private System.Windows.Forms.Button btnVisualizarAvisoContas;
+        private System.Windows.Forms.CheckBox chkNaoExibirAvisoContas;
+        private System.Windows.Forms.PictureBox btnCloseAvisoEstoqueMin;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.TextBox lbMessageAvisoContas;
+        private System.Windows.Forms.Panel panelTituloAvisoContas;
+        private System.Windows.Forms.Label lbtitAvisoContas;
+        private System.Windows.Forms.Panel pnlAlertaAvisoContas;
     }
 }
 

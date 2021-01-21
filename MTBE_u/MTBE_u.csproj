@@ -43,6 +43,7 @@
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -68,6 +69,12 @@
     <Compile Include="Entities\Pessoa.cs" />
     <Compile Include="Exceptions\UsuarioException.cs" />
     <Compile Include="Entities\Login.cs" />
+    <Compile Include="frmControleReceitaDespesa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmControleReceitaDespesa.Designer.cs">
+      <DependentUpon>frmControleReceitaDespesa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Gateway\MtGateway.cs" />
     <Compile Include="Gateway\NetworkLog.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -85,6 +92,11 @@
       <Project>{64c593dd-2800-4a60-b82e-d7df87747a1c}</Project>
       <Name>Aux_Mt</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="frmControleReceitaDespesa.resx">
+      <DependentUpon>frmControleReceitaDespesa.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

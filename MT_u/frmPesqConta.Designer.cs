@@ -358,17 +358,18 @@
             this.btExcluir.UseVisualStyleBackColor = false;
             this.btExcluir.Click += new System.EventHandler(this.btExcluir_Click);
             // 
-            // frmPesqDespesa
+            // frmPesqConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(742, 364);
             this.Controls.Add(this.btExcluir);
             this.Controls.Add(this.btExportarXml);
             this.Controls.Add(this.btImprimir);
             this.Controls.Add(this.btEditar);
             this.Controls.Add(this.pnlFundo);
-            this.Name = "frmPesqDespesa";
+            this.Name = "frmPesqConta";
             this.Text = "Pesquisar despesa";
             this.pnlFundo.ResumeLayout(false);
             this.panel1.ResumeLayout(false);

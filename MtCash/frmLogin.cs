@@ -17,7 +17,7 @@ using Aux_Mt;
 
 namespace MT_u
 {
-    public partial class frmLogin : frmDefault
+    public partial class frmLogin : Form
     {
         public frmLogin()
         {

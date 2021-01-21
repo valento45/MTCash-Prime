@@ -13,7 +13,7 @@ using System.Windows.Forms;
 
 namespace MT_u
 {
-    public partial class frmPesqConta : frmDefault
+    public partial class frmPesqConta : Form
     {
         private bool isReceita = false;
         public frmPesqConta(string tipoConta)
@@ -71,18 +71,17 @@ namespace MT_u
                 if (cmbFiltro.SelectedIndex == 0 && txtFiltro.Text.Length > 0)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Despesa.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true))
+                    foreach (var x in Despesa.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
                     }
-
-                    var lista = Despesa.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true);                  
+               
                 }
                 else if (cmbFiltro.SelectedIndex == 1)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Despesa.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, true))
+                    foreach (var x in Despesa.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
@@ -91,7 +90,7 @@ namespace MT_u
                 else if (cmbFiltro.SelectedIndex == 2 && txtDe.Text.Length == 10 && txtAte.Text.Length == 10)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Despesa.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, true))
+                    foreach (var x in Despesa.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
@@ -111,7 +110,7 @@ namespace MT_u
                 if (cmbFiltro.SelectedIndex == 0 && txtFiltro.Text.Length > 0)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Receita.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, true))
+                    foreach (var x in Receita.GetByID(Convert.ToInt32(txtFiltro.Text), rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
@@ -121,7 +120,7 @@ namespace MT_u
                 else if (cmbFiltro.SelectedIndex == 1)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Receita.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, true))
+                    foreach (var x in Receita.GetByDescricao(txtFiltro.Text, rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);
@@ -130,7 +129,7 @@ namespace MT_u
                 else if (cmbFiltro.SelectedIndex == 2 && txtDe.Text.Length == 10 && txtAte.Text.Length == 10)
                 {
                     dgvDespesa.Rows.Clear();
-                    foreach (var x in Receita.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, true))
+                    foreach (var x in Receita.GetByPeriodo(txtDe.Text, txtAte.Text, rdbPendente.Checked, rdbPaga.Checked))
                     {
                         string data = $"{x.DiaVencimento}/{x.MesVencimento}/{x.AnoVencimento}";
                         dgvDespesa.Rows.Add(false, x.Id, x.Descricao, Convert.ToDateTime(data), x.Valor, x.Desconto, x.Status, x);

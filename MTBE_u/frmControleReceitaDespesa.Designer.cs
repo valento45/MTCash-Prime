@@ -1,6 +1,6 @@
-﻿namespace Aux_Mt
+﻿namespace MTBE_u
 {
-    partial class frmDefault
+    partial class frmControleReceitaDespesa
     {
         /// <summary>
         /// Required designer variable.
@@ -28,21 +28,36 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.pnlFundo = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
-            // frmDefault
+            // pnlFundo
+            // 
+            this.pnlFundo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlFundo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pnlFundo.Location = new System.Drawing.Point(12, 12);
+            this.pnlFundo.Name = "pnlFundo";
+            this.pnlFundo.Size = new System.Drawing.Size(1062, 427);
+            this.pnlFundo.TabIndex = 0;
+            // 
+            // frmControleReceitaDespesa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Teal;
-            this.ClientSize = new System.Drawing.Size(810, 292);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "frmDefault";
-            this.Text = "frmDefault";
+            this.ClientSize = new System.Drawing.Size(1086, 451);
+            this.Controls.Add(this.pnlFundo);
+            this.Name = "frmControleReceitaDespesa";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Controle de receita/despesa";
             this.ResumeLayout(false);
 
         }
 
         #endregion
+
+        private System.Windows.Forms.Panel pnlFundo;
     }
 }

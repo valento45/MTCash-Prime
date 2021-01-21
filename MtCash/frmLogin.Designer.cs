@@ -1,6 +1,6 @@
 ﻿namespace MT_u
 {
-    partial class frmLogin
+    partial class frmLogin 
     {
         /// <summary>
         /// Required designer variable.

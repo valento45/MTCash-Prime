@@ -47,10 +47,10 @@
             this.rdbEspecificarPeriodo = new System.Windows.Forms.RadioButton();
             this.rdbUnico = new System.Windows.Forms.RadioButton();
             this.pnlFundo = new System.Windows.Forms.Panel();
+            this.txtDataVenc = new System.Windows.Forms.MaskedTextBox();
             this.btAcao = new System.Windows.Forms.Button();
             this.btImprimir = new System.Windows.Forms.Button();
             this.btEnviarEmail = new System.Windows.Forms.Button();
-            this.txtDataVenc = new System.Windows.Forms.MaskedTextBox();
             this.grpStatus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.pnlPeriodo.SuspendLayout();
@@ -158,7 +158,7 @@
             this.groupBox2.Size = new System.Drawing.Size(316, 69);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Período";
+            this.groupBox2.Text = "Período a receber";
             // 
             // pnlPeriodo
             // 
@@ -250,6 +250,14 @@
             this.pnlFundo.Size = new System.Drawing.Size(501, 175);
             this.pnlFundo.TabIndex = 10;
             // 
+            // txtDataVenc
+            // 
+            this.txtDataVenc.Location = new System.Drawing.Point(75, 37);
+            this.txtDataVenc.Mask = "00/00/0000";
+            this.txtDataVenc.Name = "txtDataVenc";
+            this.txtDataVenc.Size = new System.Drawing.Size(100, 20);
+            this.txtDataVenc.TabIndex = 2;
+            // 
             // btAcao
             // 
             this.btAcao.BackColor = System.Drawing.SystemColors.ControlLightLight;
@@ -285,18 +293,11 @@
             this.btEnviarEmail.Text = "Enviar email";
             this.btEnviarEmail.UseVisualStyleBackColor = false;
             // 
-            // txtDataVenc
-            // 
-            this.txtDataVenc.Location = new System.Drawing.Point(75, 37);
-            this.txtDataVenc.Mask = "00/00/0000";
-            this.txtDataVenc.Name = "txtDataVenc";
-            this.txtDataVenc.Size = new System.Drawing.Size(100, 20);
-            this.txtDataVenc.TabIndex = 2;
-            // 
             // frmIncluiConta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Teal;
             this.ClientSize = new System.Drawing.Size(524, 220);
             this.Controls.Add(this.btEnviarEmail);
             this.Controls.Add(this.pnlFundo);

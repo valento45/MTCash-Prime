@@ -95,14 +95,14 @@ namespace MTBE_u.EntitiesCash
             SqlCommand cmd = new SqlCommand("delete from mtcash.u_tb_despesa where id_despesa = " + Id);
             return Access.ExecuteNonQuery(cmd);
         }
-        public static List<Despesa> GetDespesas(bool apenaspendentes, bool todas = false)
+        public static List<Despesa> GetDespesas(bool apenaspendentes, bool apenasPagas = false)
         {
             List<Despesa> result = new List<Despesa>();
             string query = "select * from mtcash.u_tb_despesa";
 
-            if (apenaspendentes)
+            if (apenaspendentes && !apenasPagas)
                 query += " where paga = False";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPagas)
                 query += " where paga = True";
 
             SqlCommand cmd = new SqlCommand(query);
@@ -114,14 +114,14 @@ namespace MTBE_u.EntitiesCash
         }
 
 
-        public static List<Despesa> GetByDescricao(string descricao, bool apenaspendentes, bool todas = false)
+        public static List<Despesa> GetByDescricao(string descricao, bool apenaspendentes, bool apenasPagas)
         {
             List<Despesa> result = new List<Despesa>();
             string query = "select * from mtcash.u_tb_despesa WHERE descricao like " + $"'{descricao}%'";
 
             if (apenaspendentes)
                 query += " AND paga = 'False'";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPagas)
                 query += " AND paga = 'True'";
 
             SqlCommand cmd = new SqlCommand(query);
@@ -132,14 +132,33 @@ namespace MTBE_u.EntitiesCash
             return result;
         }
 
-        public static List<Despesa> GetByID(int id, bool apenaspendentes, bool todas = false)
+        public static List<Despesa> GetByID(int id, bool apenaspendentes, bool apenaspagas = false)
         {
             List<Despesa> result = new List<Despesa>();
             string query = "select * from mtcash.u_tb_despesa WHERE id_despesa = " + $"'{id}'";
 
             if (apenaspendentes)
                 query += " AND paga = False";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenaspagas)
+                query += " AND paga = True";
+
+
+            SqlCommand cmd = new SqlCommand(query);
+
+            foreach (DataRow x in Access.ExecuteReader(cmd).Tables[0].Rows)
+                result.Add(new Despesa(x));
+
+            return result;
+        }
+
+        public static List<Despesa> GetByPeriodoVencimento(string de, string ate, bool apenaspendentes, bool apenasPaga)
+        {
+            List<Despesa> result = new List<Despesa>();
+            string query = "select * from mtcash.u_tb_despesa WHERE data_vencimento >= " + $"'{de} 00:00:00' AND data_vencimento <= '{ate} 23:59:59'";
+
+            if (apenaspendentes)
+                query += " AND paga = False";
+            else if (!apenaspendentes && apenasPaga)
                 query += " AND paga = True";
 
             SqlCommand cmd = new SqlCommand(query);
@@ -150,14 +169,14 @@ namespace MTBE_u.EntitiesCash
             return result;
         }
 
-        public static List<Despesa> GetByPeriodo(string de, string ate, bool apenaspendentes, bool todas = false)
+        public static List<Despesa> GetByPeriodo(string de, string ate, bool apenaspendentes, bool apenasPaga )
         {
             List<Despesa> result = new List<Despesa>();
             string query = "select * from mtcash.u_tb_despesa WHERE data_vencimento >= " + $"'{de} 00:00:00' AND data_vencimento <= '{ate} 23:59:59'";
 
             if (apenaspendentes)
                 query += " AND paga = False";
-            else if (!apenaspendentes && !todas)
+            else if (!apenaspendentes && apenasPaga)
                 query += " AND paga = True";
 
             SqlCommand cmd = new SqlCommand(query);

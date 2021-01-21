@@ -19,12 +19,12 @@ namespace Aux_Mt
                     value = value.Replace(",", ".");
 
                     decimal result;
-                    if(decimal.TryParse(value, out result))
-                        return Convert.ToDecimal(value, CultureInfo.InvariantCulture);                    
-                }                
+                    if (decimal.TryParse(value, out result))
+                        return Convert.ToDecimal(value, CultureInfo.InvariantCulture);
+                }
             }
             catch (Exception ex)
-            {                
+            {
                 MessageBox.Show("erro: " + ex.Message, "OPS!!!");
             }
             return -1;
@@ -52,7 +52,15 @@ namespace Aux_Mt
             }
             Console.WriteLine("");
         }
-            
+        public static string GetMaskCPF()
+        {
+            return "000.000.000-00";
+        }
+        public static string GetMaskCnpj()
+        {
+            return "00.000.000/0000-00";
+        }
+
 
     }
 

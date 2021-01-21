@@ -14,5 +14,14 @@ namespace Aux_Mt
             foreach (var item in listFiltrada)
                 action(item);
         }
+
+        public static int StringToInt(this string value, int default_value = -1)
+        {
+            int result;
+            if (int.TryParse(value, out result))
+                return result;
+            else
+                return default_value;
+        }
     }
 }

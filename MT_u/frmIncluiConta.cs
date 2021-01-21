@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace MT_u
 {
-    public partial class frmIncluiConta : frmDefault
+    public partial class frmIncluiConta : Form
     {
         private Conta Conta_ = null;
         private bool Alterar = false;

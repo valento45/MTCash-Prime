@@ -15,7 +15,7 @@ using System.Windows.Forms;
 
 namespace MtCash.UI
 {
-    public partial class frmPesquisaClient : frmDefault
+    public partial class frmPesquisaClient : Form
     {
         public frmPesquisaClient()
         {
@@ -67,27 +67,30 @@ namespace MtCash.UI
 
         private void ControlFilter()
         {
-            if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Nome)
+            if (cmbFiltro.SelectedIndex > -1)
             {
-                pnlDocumento.Visible = pnlCpjCnpj.Visible = false;
-                pnlNome.Visible = true;
-            }
-            if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Documento)
-            {
-                pnlCpjCnpj.Visible = pnlNome.Visible = false;
-                pnlDocumento.Visible = true;
-            }
-            if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Cpf)
-            {
-                pnlNome.Visible = pnlDocumento.Visible = false;
-                pnlCpjCnpj.Visible = true;
-                txtCpfCnpj.Mask = "000.000.000-00";
-            }
-            if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Cnpj)
-            {
-                pnlNome.Visible = pnlDocumento.Visible = false;
-                 pnlCpjCnpj.Visible = true;
-                txtCpfCnpj.Mask = "00.000.000/0000-00";
+                if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Nome)
+                {
+                    pnlDocumento.Visible = pnlCpjCnpj.Visible = false;
+                    pnlNome.Visible = true;
+                }
+                if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Documento)
+                {
+                    pnlCpjCnpj.Visible = pnlNome.Visible = false;
+                    pnlDocumento.Visible = true;
+                }
+                if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Cpf)
+                {
+                    pnlNome.Visible = pnlDocumento.Visible = false;
+                    pnlCpjCnpj.Visible = true;
+                    txtCpfCnpj.Mask = "000.000.000-00";
+                }
+                if ((FuncoesAuxiliares.Filtro)cmbFiltro.SelectedItem == FuncoesAuxiliares.Filtro.Cnpj)
+                {
+                    pnlNome.Visible = pnlDocumento.Visible = false;
+                    pnlCpjCnpj.Visible = true;
+                    txtCpfCnpj.Mask = FuncoesAuxiliaresAux.GetMaskCnpj();
+                }
             }
         }
 
@@ -129,7 +132,7 @@ namespace MtCash.UI
             //foreach (var item in filters )
             //    cmbFiltro.Items.Add(item);
 
-            cmbFiltro.SelectedIndex = 0;
+           // cmbFiltro.SelectedIndex = 0;
             FillGridClient();
             ControlFilter();
         }
