@@ -13,7 +13,7 @@ using MtCash.BusinessEntities;
 using Aux_Mt;
 namespace MtCash.UI
 {
-    public partial class frmIncluiCliente : frmDefault
+    public partial class frmIncluiCliente : Form
     {
         Cliente Client_;
         bool alterar = false;

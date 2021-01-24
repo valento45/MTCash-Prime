@@ -14,7 +14,7 @@ using System.Windows.Forms;
 using Aux_Mt;
 namespace MT_u.Usuario
 {
-    public partial class frmConfigurarU : frmDefault
+    public partial class frmConfigurarU : Form
     {
         MTBE_u.Usuario user;
         bool alterar = false;
