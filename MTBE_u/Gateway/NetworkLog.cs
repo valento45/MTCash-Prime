@@ -28,7 +28,7 @@ namespace MTBE_u.Gateway
                 xml.Add(cabecalho);
 
                 string caminho = Application.StartupPath.Substring(0, Application.StartupPath.Length - 16);
-                xml.Save(caminho + "Engenharia de software\\LOG\\" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace("/", "").Replace(":", "") + ".xml");
+                xml.Save(caminho + "LOG\\" + DateTime.Now.ToString("dd/MM/yyyy HH:mm:ss").Replace("/", "").Replace(":", "") + ".xml");
             }
             catch
             { };
